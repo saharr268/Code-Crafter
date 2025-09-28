@@ -1,11 +1,14 @@
 import React from "react";
+import Footer from "../components/common/Footer";
+import HeroSection from "../components/sections/HeroSection";
+import HeroBanner from "../components/sections/HeroBanner";
 
 const Home = () => {
   return (
     <div>
-      <h1 className="bg-red-900 text-center text-3xl font-bold">
-        HELLO CODE CRAFTER 🥰🥰😊
-      </h1>
+      <HeroSection />
+      <HeroBanner/>
+      <Footer/>
     </div>
   );
 };
