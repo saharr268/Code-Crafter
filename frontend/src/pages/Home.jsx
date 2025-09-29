@@ -7,7 +7,7 @@ import MostViewedSection from "../components/home/MostViewedSection";
 const Home = () => {
   return (
     <div>
-    <AboutSection />
+      <AboutSection />
       <CardSection />
       <CommentsSection />
       <BannerSection />
