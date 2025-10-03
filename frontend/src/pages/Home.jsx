@@ -1,3 +1,5 @@
+import React from "react";
+import Footer from "../components/common/Footer";
 import AboutSection from "../components/home/AboutSection";
 import BannerSection from "../components/home/BannerSection";
 import CardSection from "../components/home/CardSection";
@@ -7,6 +9,7 @@ import MostViewedSection from "../components/home/MostViewedSection";
 const Home = () => {
   return (
     <div>
+      <Footer/>
       <AboutSection />
       <CardSection />
       <CommentsSection />
