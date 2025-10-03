@@ -12,8 +12,8 @@ const Home = () => {
   return (
     <div>
       <HeroSection />
-      <HeroBanner/>
-      <AboutSection />
+      <HeroBanner />
+      <AboutSection/>
       <CardSection />
       <CommentsSection />
       <BannerSection />
