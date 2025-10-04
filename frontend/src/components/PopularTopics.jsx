@@ -14,7 +14,7 @@ export default function PopularTopics() {
   return (
     <section className="w-full flex flex-col items-center py-10 px-4">
       {/* Section Title */}
-      <h2 className="text-xl font-bold text-gray-800 mb-8 text-center">
+
         مطالب پر بازدید
       </h2>
 
