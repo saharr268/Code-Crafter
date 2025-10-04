@@ -27,18 +27,22 @@ const MobileBanner = () => {
            برای دسترسی آسان و سریع،
             اپلیکیشن موبایل صدا را دانلود کنید 
           </h2>
-          <div className="flex justify-end gap-4">
-            <img
-              src={googlePlay}
-              alt="Google Play"
-              className="w- [3rem] h-auto"
-            />
-            <img
-              src={appStore}
-              alt="App Store"
-              className="w-28 h-auto"
-            />
-          </div>
+          
+          <div className="flex justify-end items-center gap-4">
+  <img
+    src={googlePlay}
+    alt="Google Play"
+    className="object-contain"
+    style={{ height: "7.8rem", width: "auto" }} 
+  />
+  <img
+    src={appStore}
+    alt="App Store"
+    className="object-contain"
+    style={{ height: "7rem", width: "auto" }}
+  />
+</div>
+
         </div>
       </div>
     </section>
