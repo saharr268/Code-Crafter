@@ -31,7 +31,7 @@ const MobileBanner = () => {
             <img
               src={googlePlay}
               alt="Google Play"
-              className="w-28 h-auto"
+              className="w- [3rem] h-auto"
             />
             <img
               src={appStore}
