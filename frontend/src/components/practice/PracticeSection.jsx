@@ -72,10 +72,12 @@ export default function Quizzes() {
               </span>
             </div>
 
+            {/* Button */}
             <button className=" bg-[#03C0C1] hover:bg-teal-600 text-white px-4 py-2 rounded-md">
               شروع کن
             </button>
 
+            {/* Background decoration */}
             <img
               src="../../../public/images/practice.png" // عکس قفل و برگ رو اینجا بزار (public)
               alt="decoration"
