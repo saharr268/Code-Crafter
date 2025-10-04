@@ -1,13 +1,14 @@
 import React from "react";
+import MobileBanner from "../components/MobileBanner";
+import PopularTopics from "../components/PopularTopics";
 
 const Home = () => {
   return (
     <div>
-      <h1 className="bg-red-900 text-center text-3xl font-bold">
-        HELLO CODE CRAFTER 🥰🥰😊
-      </h1>
+      <MobileBanner/>
+       <PopularTopics />
     </div>
   );
 };
-
 export default Home;
+
