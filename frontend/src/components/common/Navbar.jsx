@@ -18,13 +18,13 @@ export default function Navbar() {
             <a href="#" className="hover:text-[#03C0C1]">
               پشتیبانی
             </a>
-            <a href="#" className="hover:text-[#03C0C1]">
+            <a href="practice" className="hover:text-[#03C0C1]">
               تمرین
             </a>
-            <a href="#" className="hover:text-[#03C0C1]">
+            <a href="learm" className="hover:text-[#03C0C1]">
               آموزش
             </a>
-            <a href="#" className="hover:text-[#03C0C1]">
+            <a href="/" className="hover:text-[#03C0C1]">
               خانه
             </a>
           </nav>
