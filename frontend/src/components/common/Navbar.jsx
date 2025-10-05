@@ -15,7 +15,7 @@ export default function Navbar() {
 
           {/* Menu */}
           <nav className="w-full md:w-auto flex flex-col md:flex-row items-center gap-5 md:gap-8 text-white text-2xl mb-2 md:mb-0">
-            <a href="" className="hover:text-[#03C0C1]">
+            <a href="#" className="hover:text-[#03C0C1]">
               پشتیبانی
             </a>
             <a href="practice" className="hover:text-[#03C0C1]">
@@ -24,7 +24,7 @@ export default function Navbar() {
             <a href="learm" className="hover:text-[#03C0C1]">
               آموزش
             </a>
-            <a href="home" className="hover:text-[#03C0C1]">
+            <a href="/" className="hover:text-[#03C0C1]">
               خانه
             </a>
           </nav>
