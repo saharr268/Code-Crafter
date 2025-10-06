@@ -1,11 +1,13 @@
 import React from 'react'
 
-const CommentsSection = () => {
+const Testimonials = () => {
   return (
     <div>
+      
+
       
     </div>
   )
 }
 
-export default CommentsSection
+export default Testimonials
