@@ -12,6 +12,8 @@ import HeroBanner from "../components/home/HeroBanner";
 const Home = () => {
   return (
     <div>
+      <MobileBanner/>
+       <PopularTopics />
       <HeroSection />
       <HeroBanner />
       <AboutSection />
