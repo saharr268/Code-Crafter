@@ -1,5 +1,5 @@
 import React from "react";
-import MobileBanner from "../components/home/MobileBanner";
+import MobileBanner from "../components";
 import PopularTopics from "../components/home/PopularTopics";
 import Footer from "../components/common/Footer";
 import AboutSection from "../components/home/AboutSection";
