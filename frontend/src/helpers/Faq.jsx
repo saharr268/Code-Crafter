@@ -39,10 +39,6 @@ export default function FAQSection() {
 
   return (
     <section className="bg-white min-h-screen">
-      {/* Navbar */}
-      <div className="fixed top-6 px-6 w-full z-50 ">
-        <Navbar />
-      </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-44 justify-center items-center">
         {/* Left side - FAQs */}
         <div className="md:col-span-2 pl-16">
@@ -95,10 +91,6 @@ export default function FAQSection() {
             </ul>
           </div>
         </div>
-      </div>
-      {/* Footer */}
-      <div className="mt-20">
-        <Footer />
       </div>
     </section>
   );
