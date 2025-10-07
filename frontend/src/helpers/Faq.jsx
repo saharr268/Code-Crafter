@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
 import Navbar from "../components/common/Navbar";
-import Footer from "../components/common/Footer";
 
 const faqs = [
   {
@@ -40,6 +39,9 @@ export default function FAQSection() {
   return (
     <section className="bg-white min-h-screen">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-44 justify-center items-center">
+        <div className="absolute top-0 left-0 w-full mt-6">
+          <Navbar/>
+        </div>
         {/* Left side - FAQs */}
         <div className="md:col-span-2 pl-16">
           <h2 className="text-2xl font-bold mb-8 text-right">سوالات مکرر</h2>
