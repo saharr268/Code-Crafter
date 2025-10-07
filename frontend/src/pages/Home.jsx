@@ -1,14 +1,28 @@
+import React from "react";
+import MobileBanner from "../components/home/MobileBanner";
+import PopularTopics from "../components/home/PopularTopics";
+import Footer from "../components/common/Footer";
 import AboutSection from "../components/home/AboutSection";
 import BannerSection from "../components/home/BannerSection";
+ services
 import CardSection from "../components/CardSection";
 import Testimonials from "../components/Testimonials";
 import MostViewedSection from "../components/home/MostViewedSection";
 import { FaComments, FaFolder, FaQuestionCircle, FaBook } from "react-icons/fa";
 
+
+import CardSection from "../components/home/CardSection";
+import HeroSection from "../components/home/HeroSection";
+import HeroBanner from "../components/home/HeroBanner";
+
+
 const Home = () => {
   return (
     <div>
+      <HeroSection />
+      <HeroBanner />
       <AboutSection />
+
       
     
        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -44,10 +58,19 @@ const Home = () => {
       <Testimonials />
        
 
+      <CardSection />
+
       <BannerSection />
-      <MostViewedSection/>
+      <MobileBanner />
+      <PopularTopics />
+      <Footer />
     </div>
+ services
   )
 }
 
+  );
+};
+
 export default Home;
+
