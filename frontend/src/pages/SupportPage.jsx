@@ -1,14 +1,14 @@
-import React from 'react'
-import Navbar from '../components/common/Navbar'
 import Faq from '../helpers/Faq'
 import Footer from '../components/common/Footer'
 import OfflineTips from '../helpers/OfflineTips'
+import ChatBox from "../helpers/ChatBox";
 
 const SupportPage = () => {
   return (
     <div>
       <Faq />
-      <OfflineTips/>
+      <OfflineTips />
+      <ChatBox/>
       <Footer/>
     </div>
   );
