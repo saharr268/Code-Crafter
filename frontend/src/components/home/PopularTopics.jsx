@@ -1,8 +1,8 @@
 import { FaThumbsUp } from "react-icons/fa";
 
-import digitalSafety from "../assets/images/digital-safety.png";
-import privacy from "../assets/images/privacy.png";
-import phishing from "../assets/images/phishing.png";
+import digitalSafety from "../../assets/images/digital-safety.png";
+import privacy from "../../assets/images/privacy.png";
+import phishing from "../../assets/images/phishing.png";
 
 const topics = [
   { id: 1, title: "اهمیت امنیت در دنیای دیجیتال", image: digitalSafety, likes: 345 },

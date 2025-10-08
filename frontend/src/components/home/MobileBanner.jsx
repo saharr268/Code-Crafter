@@ -1,8 +1,8 @@
 import React from 'react';
-import bannerBg from '../assets/images/banner-bg.png';
-import mobileBanner from '../assets/images/mobile-banner.png';
-import googlePlay from '../assets/images/google-play.png';
-import appStore from '../assets/images/app-store.png';
+import bannerBg from '../../assets/images/banner-bg.png';
+import mobileBanner from '../../assets/images/mobile-banner.png';
+import googlePlay from '../../assets/images/google-play.png';
+import appStore from '../../assets/images/app-store.png';
 
 
 const MobileBanner = () => {
