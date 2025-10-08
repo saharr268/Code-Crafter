@@ -9,8 +9,22 @@ export const routes = [
     path: "/",
     children: [
       { index: true, element: <Home /> },
-      { index: true, path: "practice", element: <PracticePage /> },
-      { index: true, path: "support", element: <SupportPage /> },
+      // { path: "practice", element: <PracticePage /> },
+      {
+        path: "practice",
+        children: [
+          { index: true, element: <PracticePage /> },
+          // { path: "/:id", element: <PracticePage /> },
+        ],
+      },
+      // {
+      //   path: "lessons",
+      //   children: [
+      //     { index: true, element: <LessonPage /> },
+      // { path: "/:id", element: <PracticePage /> },
+      //   ],
+      // },
+      { path: "support", element: <SupportPage /> },
       { path: "*", element: <NotFound /> },
       // other routes
     ],
