@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
+import ResourceDetails from "./pages/ResourceDetails"
 
 export const routes = [
   {
@@ -8,6 +9,7 @@ export const routes = [
     children: [
       { index: true, element: <Home /> },
       { path: "*", element: <NotFound /> },
+      { index: true, element: <ResourceDetails /> },
       // other routes
     ],
   },
