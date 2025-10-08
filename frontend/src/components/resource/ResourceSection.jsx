@@ -1,10 +1,10 @@
 // frontend/src/components/ResourceSection.jsx
-import ResourceCard from "./ResourceCard";
-import expressvpnLogo from "../assets/expressvpn.png";
-import nordvpnLogo from "../assets/nordvpn.png";
-import clearvpnLogo from "../assets/clearvpn.png";
-import hotspotLogo from "../assets/hotspot.png";
-import protonLogo from "../assets/protonvpn.png";
+import ResourceCard from './ResourceCard';
+import expressvpnLogo from './assets/image/expressvpn.png';
+import nordvpnLogo from './assets/image/nordvpn.png';
+import clearvpnLogo from './assets/image/clearvpn.webp';
+import hotspotLogo from './assets/image/hotspot.webp';
+import protonLogo from './assets/image/protonvpn.png';
 
 const resourceData = [
   {
