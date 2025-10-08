@@ -1,4 +1,6 @@
 import React from "react";
+
+import ResourcesPage from "../components/ResourcesPage";
 import MobileBanner from "../components/home/MobileBanner";
 import PopularTopics from "../components/home/PopularTopics";
 import Footer from "../components/common/Footer";
@@ -12,6 +14,9 @@ import HeroBanner from "../components/home/HeroBanner";
 const Home = () => {
   return (
     <div>
+      <MobileBanner/>
+       <PopularTopics />
+        <ResourcesPage />
       <HeroSection />
       <HeroBanner />
       <AboutSection />
