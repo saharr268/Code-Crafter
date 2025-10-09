@@ -30,7 +30,7 @@ export const routes = [
       // { path: "/:id", element: <PracticePage /> },
       //   ],
       // },
-      { path: "support", element: <SupportPage /> }{ path: "*", element: <NotFound /> },
+      { path: "support", element: <SupportPage /> },{ path: "*", element: <NotFound /> },
       // other routes
     ],
   },
