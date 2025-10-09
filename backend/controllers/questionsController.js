@@ -48,7 +48,7 @@ export const getQuestionById = async (req, res) => {
 };
 
 export const addQuestion = async (req, res) => {
-  const { question_id, option_text, is_correct } = req.body;
+  const { quiz_id, question_text, question_type, correct_answer } = req.body;
 
   try {
     if (!question_text) {
@@ -60,7 +60,6 @@ export const addQuestion = async (req, res) => {
       quiz_id,
       question_text,
       question_type,
-      created_at,
       correct_answer,
     });
     res.status(201).json(newQuestion);
@@ -71,13 +70,12 @@ export const addQuestion = async (req, res) => {
 };
 export const updateQuestion = async (req, res) => {
   const { id } = req.params;
-  const { question_id, option_text, is_correct } = req.body;
+  const { quiz_id, question_text, question_type, correct_answer } = req.body;
   try {
     const updated = await editQuestion(id, {
       quiz_id,
       question_text,
       question_type,
-      created_at,
       correct_answer,
     });
 

@@ -41,8 +41,8 @@ CREATE TABLE questions (
     quiz_id integer NOT NULL,
     question_text text NOT NULL,
     question_type integer DEFAULT 0,
-    created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
-    correct_answer text
+    correct_answer text,
+    created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE quiz_attempts (
