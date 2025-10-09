@@ -11,9 +11,9 @@ export default function HeroSection() {
         </div>
 
         {/* 🔹 Hero Content */}
-        <div className="flex justify-between m-0 px-16 py-16 grid-cols-1 md:grid-cols-2 gap-10 ">
+        <div className="flex justify-between m-0 px-16 py-16 grid-cols-1 md:grid-cols-2  ">
           {/* Left Image */}
-          <div className="">
+          <div className=" mt-20 ">
             <img
               src="../.././../public/images/bro.png"
               alt="security illustration"
@@ -30,9 +30,9 @@ export default function HeroSection() {
               با <span className="text-[#03C0C1]">صدای</span>، ما
               <br />! امنیت را جستجو کنید
             </h1>
-              <button className="px-8 py-4 mt-20 bg-[#03C0C1] text-white rounded-xl shadow hover:text-[#03C0C1]">
-                مشاهده‌ی مطالب
-              </button>
+            <button className="px-8 py-4 mt-20 bg-[#03C0C1] text-white rounded-xl shadow hover:text-[#03C0C1]">
+              مشاهده‌ی مطالب
+            </button>
           </div>
         </div>
       </div>
