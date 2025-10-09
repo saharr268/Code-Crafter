@@ -53,7 +53,7 @@ export default function Navbar() {
             <a href="practice" className="hover:text-[#03C0C1]">
               تمرین
             </a>
-            <a href="learm" className="hover:text-[#03C0C1]">
+            <a href="learn" className="hover:text-[#03C0C1]">
               آموزش
             </a>
             <a href="/" className="hover:text-[#03C0C1]">

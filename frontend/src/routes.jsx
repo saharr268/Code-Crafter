@@ -13,7 +13,7 @@ export const routes = [
 
       { index: true, path: "practice", element: <PracticePage /> },
       { index: true, path: "support", element: <SupportPage /> },
-      {index: true, path: "lean", element: <LearnPage /> },
+      { index: true, path: "learn", element: <LearnPage /> },
 
       // { path: "practice", element: <PracticePage /> },
       {

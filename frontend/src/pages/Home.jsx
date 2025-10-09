@@ -10,8 +10,6 @@ import Testimonials from "../components/home/Testimonials";
 import CardSection from "../components/home/CardSection";
 import HeroSection from "../components/home/HeroSection";
 import HeroBanner from "../components/home/HeroBanner";
-import MostVisitedPost from "../components/learn/MostVisitedPost";
-import AllPosts from "../components/learn/AllPosts";
 
 
 const Home = () => {
@@ -26,8 +24,6 @@ const Home = () => {
       <MobileBanner />
       <PopularTopics />
       <ResourcesPage />
-      <MostVisitedPost />
-      <AllPosts/>
       <Footer />
     </div>
   );
