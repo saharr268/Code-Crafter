@@ -34,8 +34,12 @@ const services = [
 
 const CardSection = () => {
   return (
+    
     <section className="bg-[#F5F5F5] w-screen py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-[#F5F5F5] rounded-[60px] w-full py-24">
+      <div className=" mx-auto px-4 sm:px-6 lg:px-8">
+    main
           {/* Title */}
       <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
         صدا چگونه به شما کمک می‌کند؟
@@ -77,5 +81,7 @@ const CardSection = () => {
   );
 };
 
+
 export default CardSection;
+
 
