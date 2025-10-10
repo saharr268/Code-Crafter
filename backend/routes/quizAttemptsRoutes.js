@@ -9,10 +9,10 @@ import {
 
 const router = e.Router();
 
-router.get("/", addQuizAttempt);
-router.post("/", getQuizAttempts);
-router.get("/:id", updateQuizAttempt);
-router.put("/:id", getQuizAttemptById);
+router.post("/", addQuizAttempt);
+router.get("/", getQuizAttempts);
+router.put("/:id", updateQuizAttempt);
+router.get("/:id", getQuizAttemptById);
 router.delete("/:id", deleteQuizAttempt);
 
 export default router;

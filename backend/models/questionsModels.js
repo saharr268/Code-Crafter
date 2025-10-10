@@ -57,23 +57,22 @@ export const createQuestion = async ({
   quiz_id,
   question_text,
   question_type,
-  created_at,
   correct_answer,
 }) => {
   const result = await db.query(
-    "INSERT INTO questions (quiz_id,question_text,question_type, created_at, correct_answer) VALUES ($1, $2, $3,NOW(), $4) RETURNING *",
-    [quiz_id, question_text, question_type, created_at, correct_answer]
+    "INSERT INTO questions (quiz_id,question_text,question_type, correct_answer) VALUES ($1, $2, $3, $4) RETURNING *",
+    [quiz_id, question_text, question_type, correct_answer]
   );
   return result.rows[0];
 };
 
 export const editQuestion = async (
   id,
-  { quiz_id, question_text, question_type, created_at, correct_answer }
+  { quiz_id, question_text, question_type, correct_answer }
 ) => {
   const result = await db.query(
-    "UPDATE questions SET quiz_id = $1, question_text = $2, question_type = $3, created_at = $4, correct_answer = $5  WHERE id = $6 RETURNING *",
-    [quiz_id, question_text, question_type, created_at, correct_answer, id]
+    "UPDATE questions SET quiz_id = $1, question_text = $2, question_type = $3, correct_answer = $4  WHERE id = $5 RETURNING *",
+    [quiz_id, question_text, question_type, correct_answer, id]
   );
   return result.rows[0];
 };

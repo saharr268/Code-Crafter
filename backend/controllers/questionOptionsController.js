@@ -52,9 +52,9 @@ export const addQuestionOption = async (req, res) => {
   const { question_id, option_text, is_correct } = req.body;
 
   try {
-    if (!question_option_text) {
+    if (!option_text) {
       return res.status(400).json({
-        error: "question_option text are required",
+        error: "option_text are required",
       });
     }
     const newQuestionOption = await createQuestionOption({

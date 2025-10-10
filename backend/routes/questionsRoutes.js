@@ -9,10 +9,10 @@ import {
 
 const router = e.Router();
 
-router.get("/", addQuestion);
-router.post("/", getQuestions);
-router.get("/:id", updateQuestion);
-router.put("/:id", getQuestionById);
+router.post("/", addQuestion);
+router.get("/", getQuestions);
+router.put("/:id", updateQuestion);
+router.get("/:id", getQuestionById);
 router.delete("/:id", deleteQuestion);
 
 export default router;

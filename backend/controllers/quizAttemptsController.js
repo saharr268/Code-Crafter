@@ -49,26 +49,20 @@ export const getQuizAttemptById = async (req, res) => {
 };
 
 export const addQuizAttempt = async (req, res) => {
-  const {
-    quiz_id,
-    quiz_attempt_text,
-    quiz_attempt_type,
-    created_at,
-    correct_answer,
-  } = req.body;
+  const { quiz_id, score, duration_seconds, started_at, ended_at } = req.body;
 
   try {
-    if (!quiz_attempt_text) {
+    if (!quiz_id) {
       return res.status(400).json({
-        error: "quiz_attempt text are required",
+        error: "quiz_id text are required",
       });
     }
     const newQuizAttempt = await createQuizAttempt({
       quiz_id,
-      quiz_attempt_text,
-      quiz_attempt_type,
-      created_at,
-      correct_answer,
+      score,
+      duration_seconds,
+      started_at,
+      ended_at,
     });
     res.status(201).json(newQuizAttempt);
   } catch (err) {
@@ -78,20 +72,14 @@ export const addQuizAttempt = async (req, res) => {
 };
 export const updateQuizAttempt = async (req, res) => {
   const { id } = req.params;
-  const {
-    quiz_id,
-    quiz_attempt_text,
-    quiz_attempt_type,
-    created_at,
-    correct_answer,
-  } = req.body;
+  const { quiz_id, score, duration_seconds, started_at, ended_at } = req.body;
   try {
     const updated = await editQuizAttempt(id, {
       quiz_id,
-      quiz_attempt_text,
-      quiz_attempt_type,
-      created_at,
-      correct_answer,
+      score,
+      duration_seconds,
+      started_at,
+      ended_at,
     });
 
     if (!updated) {
