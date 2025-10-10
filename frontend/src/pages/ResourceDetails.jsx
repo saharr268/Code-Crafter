@@ -1,7 +1,7 @@
 import React from 'react'
 import ResourceSection from "../components/resource/ResourceSection";
 
-const ResourceDetail = () => {
+const ResourceDetails = () => {
   return (
     <div>
           <ResourceSection />
@@ -9,4 +9,4 @@ const ResourceDetail = () => {
   )
 }
 
-export default ResourceDetail
+export default ResourceDetails

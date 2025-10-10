@@ -3,7 +3,7 @@ import { FaCheck } from "react-icons/fa";
 
 const ResourceCard = ({ name, website, logo, rating, features, link }) => {
   return (
-    <div className="bg-white hover:bg-teal-50 shadow-md rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-6 transition-all duration-300">
+    <div className="bg-white hover:bg-teal-50 m-12 mb-6 shadow-md rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6 transition-all duration-300">
       
       {/* Left side: Website link + button */}
       <div className="flex flex-col justify-between h-full w-full md:w-1/4 text-center md:text-right">
@@ -11,18 +11,19 @@ const ResourceCard = ({ name, website, logo, rating, features, link }) => {
           href={website} 
           target="_blank" 
           rel="noopener noreferrer"
-          className="text-gray-500 text-sm mb-4 underline"
+          className="text-gray-500 hover:text-teal-500 text-sm w-20 mb-12 items-left hover:underline"
         >
           {website.replace("https://", "").replace("www.", "")}
         </a>
         <a
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-teal-500 hover:bg-teal-600 text-white rounded-lg py-2 px-4 text-sm transition-colors duration-300"
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-teal-500 hover:bg-teal-600 text-white rounded-lg py-2 px-3 w-32 mt-40 text-sm font-semibold text-center transition-colors duration-300"
         >
-          دانلود وی‌پی‌ان
-        </a>
+  دانلود وی‌پی‌ان
+</a>
+
       </div>
 
       {/* Middle: Text content */}
@@ -39,9 +40,11 @@ const ResourceCard = ({ name, website, logo, rating, features, link }) => {
 
       {/* Right side: Logo and rating */}
       <div className="flex flex-col items-center justify-center w-full md:w-1/4">
-        <img src={logo} alt={name} className="w-24 h-24 object-contain mb-2" />
-        <p className="text-gray-700 font-medium">{name}</p>
-        <p className="text-sm text-gray-500 mt-1">⭐ {rating}</p>
+        <img src={logo} alt={name} className="w-32 h-32 mt-6  object-contain" />
+        <p className="text-sm text-gray-700 mt-6 bg-gray-100 px-3 py-1 rounded-full inline-flex items-center gap-1 shadow-sm">
+        <span>⭐</span> {rating}
+        </p>
+        <p className="text-gray-700 font-medium mt-4 mb-4">{name}</p>
       </div>
     </div>
   );
