@@ -1,18 +1,11 @@
 import React from "react";
-
-import ResourcesPage from "../components/ResourcesPage";
 import MobileBanner from "../components/home/MobileBanner";
 import PopularTopics from "../components/home/PopularTopics";
 import Footer from "../components/common/Footer";
 import AboutSection from "../components/home/AboutSection";
 import BannerSection from "../components/home/BannerSection";
-
 import CardSection from "../components/home/CardSection";
 import Testimonials from "../components/home/Testimonials";
-import MostViewedSection from "../components/home/MostViewedSection";
-
-import Testimonials from "../components/home/Testimonials";
-import CardSection from "../components/home/CardSection";
 import HeroSection from "../components/home/HeroSection";
 import HeroBanner from "../components/home/HeroBanner";
 
@@ -24,12 +17,11 @@ const Home = () => {
       <HeroSection />
       <HeroBanner />
       <AboutSection />
-      <CardSection />
-      <Testimonials />
+      <CardSection/>
+      <Testimonials/>
       <BannerSection />
       <MobileBanner />
       <PopularTopics />
-      <ResourcesPage />
       <Footer />
     </div>
   );

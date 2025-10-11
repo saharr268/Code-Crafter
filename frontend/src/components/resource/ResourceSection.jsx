@@ -5,6 +5,7 @@ import nordvpnLogo from "../../assets/image/nordvpn.png";
 import clearvpnLogo from "../../assets/image/clearvpn.webp";
 import hotspotLogo from "../../assets/image/hotspot.webp";
 import protonLogo from "../../assets/image/protonvpn.png";
+import Navbar from '../common/Navbar';
 
 
 const resourceData = [
@@ -93,8 +94,11 @@ const resourceData = [
 
 const ResourceSection = () => {
   return (
-    <section className="bg-gray-50 py-16 px-4 sm:px-8">
-      <div className="max-w-6xl mx-auto text-right mb-10">
+    <section className="bg-gray-50 py-40 px-4 sm:px-8">
+      <div className="top-6 px-6 w-full z-50 fixed">
+        <Navbar/>
+      </div>
+      <div className="max-w-6xl mx-auto text-right mr-12 mb-10">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">
           وی‌پی‌ان برای انواع کامپیوتر و موبایل
         </h2>

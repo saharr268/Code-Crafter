@@ -1,8 +1,3 @@
- resourcedetail
-import React from 'react'
-// Testimonials / Feedback Section
-
-
 import { useState } from "react";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 
@@ -102,7 +97,6 @@ const Testimonials = () => {
             </div>
           ))}
         </div>
-resourcedetail
 
         {/* Right Arrow */}
         <button
@@ -119,18 +113,3 @@ resourcedetail
 
 export default Testimonials;
 
-
-        {/* Right Arrow */}
-        <button
-          onClick={handleNext}
-          disabled={startIndex + cardsPerPage >= testimonials.length}
-          className="w-12 h-12 flex items-center justify-center rounded-full bg-teal-50 text-teal-500 hover:bg-teal-100 transition disabled:opacity-40"
-        >
-          <GoArrowRight size={22} />
-        </button>
-      </div>
-    </section>
-  );
-};
-
-export default Testimonials;
