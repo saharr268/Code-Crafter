@@ -64,3 +64,20 @@ CREATE TABLE quizzes (
     question_count integer DEFAULT 0,
     created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE chatbot_faq (
+  id SERIAL PRIMARY KEY,
+  question TEXT NOT NULL,
+  answer TEXT NOT NULL,
+  keywords TEXT
+)
+
+CREATE TABLE uploads (
+    id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+    path text NOT NULL,
+    original_name text NOT NULL,
+    mime_type text NOT NULL,
+    size bigint NOT NULL,
+    folder_name text NOT NULL,
+    created_at TIMESTAMP DEFAULT now()
+);

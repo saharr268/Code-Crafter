@@ -3,13 +3,15 @@ import cors from "cors";
 import { fileURLToPath } from "url";
 import path, { dirname } from "path";
 
-import commentRoutes from "./routes/commentRoutes.js";
 import faqsRoutes from "./routes/faqsRoutes.js";
-import lessonsRoutes from "./routes/lessonsRoutes.js";
-import questionsRoutes from "./routes/questionsRoutes.js";
-import questionOptionsRoutes from "./routes/questionOptionsRoutes.js";
+import commentRoutes from "./routes/commentRoutes.js";
 import quizzesRoutes from "./routes/quizzesRoutes.js";
+import lessonsRoutes from "./routes/lessonsRoutes.js";
+import chatBotRoutes from "./routes/chatbotFaqRoute.js";
+import questionsRoutes from "./routes/questionsRoutes.js";
+import fileUploadRoutes from "./routes/fileUploadRoutes.js";
 import quizAttemptsRoutes from "./routes/quizAttemptsRoutes.js";
+import questionOptionsRoutes from "./routes/questionOptionsRoutes.js";
 
 const app = e();
 const PORT = process.env.PORT || 3000;
@@ -24,15 +26,15 @@ app.use(
   })
 );
 
-// app.use("/api", fileRoutes);
-app.use("/api/comments", commentRoutes);
 app.use("/api/faqs", faqsRoutes);
-app.use("/api/lessons", lessonsRoutes);
-app.use("/api/questions", questionsRoutes);
-app.use("/api/question-options", questionOptionsRoutes);
+app.use("/api/chatbot", chatBotRoutes);
 app.use("/api/quizzes", quizzesRoutes);
+app.use("/api/lessons", lessonsRoutes);
+app.use("/api/files", fileUploadRoutes);
+app.use("/api/comments", commentRoutes);
+app.use("/api/questions", questionsRoutes);
 app.use("/api/quiz-attempts", quizAttemptsRoutes);
-// app.use("/api/chat", );
+app.use("/api/question-options", questionOptionsRoutes);
 
 app.get("/", (req, res) => {
   res.send("Welcome to SEDA API");
