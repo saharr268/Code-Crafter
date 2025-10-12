@@ -1,39 +1,38 @@
-// src/components/HeroSection.jsx
 import Navbar from "../common/Navbar";
 
 export default function HeroSection() {
   return (
-    <section className="bg-[#F5F5F5] m-6 rounded-3xl min-h-screen">
-      <div className=" ">
-        {/* 🔹 Navbar inside Hero */}
-        <div className="mt-5 mb-10">
-          <Navbar />
+    <section className="flex items-center bg-[#F5F5F5] px-4 sm:px-20 md:px-12 m-4 md:mt-6 rounded-[40px] max-h-auto py-10">
+      {/* 🔹 Navbar */}
+      <div className="fixed w-full top-6 z-50">
+        <Navbar />
+      </div>
+
+      <div className="flex flex-col-reverse md:flex-row items-center mt-20 justify-between w-full p-0 md:py-10">
+        {/* ✅ تصویر (در دسکتاپ چپ، در موبایل پایین) */}
+        <div className="w-full md:w-1/2 flex justify-center md:justify-start mt-10 md:mt-10 sm:ml-10 md:mr-20">
+          <img
+            src="/images/bro.png"
+            alt="security illustration"
+            className="w-full sm:w-[350px] md:w-[450px] lg:w-[650px] xl:w-[600px]"
+          />
         </div>
 
-        {/* 🔹 Hero Content */}
-        <div className="flex justify-between m-0 px-16 py-16 grid-cols-1 md:grid-cols-2  ">
-          {/* Left Image */}
-          <div className=" mt-20 ">
-            <img
-              src="../.././../public/images/bro.png"
-              alt="security illustration"
-              className="max-w-full h-auto text-9xl"
-            />
-          </div>
+        {/* ✅ متن (در دسکتاپ راست، در موبایل بالا و وسط) */}
+        <div className="w-full md:w-1/2 text-center md:text-right md:pr-10">
+          <p className="text-gray-500 text-sm sm:text-base md:text-md mt-6 font-medium mb-4">
+            اولین حامی امنیت و آزادی زنان افغان در جهان تکنولوژی
+          </p>
 
-          {/* Right Content */}
-          <div className="text-right mt-40">
-            <p className="mb-10 text-gray-500 text-xl font-semibold m-0">
-              اولین حامی امنیت و آزادی زنان افغان در جهان تکنولوژی
-            </p>
-            <h1 className="text-3xl md:text-7xl font-bold leading-relaxed">
-              با <span className="text-[#03C0C1]">صدای</span>، ما
-              <br />! امنیت را جستجو کنید
-            </h1>
-            <button className="px-8 py-4 mt-20 bg-[#03C0C1] text-white rounded-xl shadow hover:text-[#03C0C1]">
-              مشاهده‌ی مطالب
-            </button>
-          </div>
+          <h1 className="text-2xl sm:text-4xl md:text-5xl mt-10 lg:text-6xl font-bold leading-relaxed text-gray-900">
+            با <span className="text-[#03C0C1]">صدا</span> ، ما
+            <br />
+           !امنیت را جستجو کنید
+          </h1>
+
+          <button className="mt-20 mb-10 bg-[#03C0C1] text-white text-sm sm:text-base font-medium px-6 sm:px-8 py-3 rounded-lg hover:bg-white hover:text-[#03C0C1] border-2 border-[#03C0C1] transition-all duration-300">
+            مشاهده‌ی مطالب
+          </button>
         </div>
       </div>
     </section>

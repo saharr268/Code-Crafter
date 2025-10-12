@@ -13,7 +13,7 @@ import HeroBanner from "../components/home/HeroBanner";
 
 const Home = () => {
   return (
-    <div>
+    <div className="overflow-hidden">
       <HeroSection />
       <HeroBanner />
       <AboutSection />
