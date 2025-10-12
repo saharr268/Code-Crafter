@@ -1,12 +1,16 @@
-import React from 'react'
-import BannerLearn from '../components/learn/BannerLearn'
-import CardLearn from '../components/learn/CardLearn'
+import Footer from "../components/common/Footer"
+import Navbar from "../components/common/Navbar"
+import AllPosts from "../components/learn/AllPosts"
+import MostVisitedPost from "../components/learn/MostVisitedPost"
+
 
 const LearnPage = () => {
   return (
     <div>
-          <BannerLearn />
-          <CardLearn/>
+      
+      <MostVisitedPost/>
+      <AllPosts />
+      <Footer/>
     </div>
   )
 }

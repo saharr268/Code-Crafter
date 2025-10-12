@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../common/Navbar";
 import { MdQuestionAnswer } from "react-icons/md";
 import { GiClockwork } from "react-icons/gi";
+import { Link } from "react-router-dom";
 import Footer from "../common/Footer";
 
 const quizzes = [
@@ -14,7 +15,7 @@ const quizzes = [
   { title: "حریم خصوصی در فضای مجازی", time: "20 دقیقه", questions: "10 سوال" },
   { title: "اجاز هویت دو مرحله‌ای", time: "20 دقیقه", questions: "10 سوال" },
   {
-    title: "فیشینگ و سواستفاده‌ی مالی",
+    title: "وی‌پی‌ان و بازدید با امنیت",
     time: "20 دقیقه",
     questions: "10 سوال",
   },
@@ -75,7 +76,7 @@ export default function Quizzes() {
             {/* Button */}
             <div className="flex mt-60">
               <button className="bg-[#03C0C1] hover:bg-teal-600 text-white ml-8 px-4 py-2 rounded-xl mb-auto">
-                شروع کن
+                <Link to="/resources">شروع کن</Link>
               </button>
             </div>
 

@@ -34,6 +34,7 @@ const services = [
 
 const CardSection = () => {
   return (
+    
     <section className="bg-[#F5F5F5] rounded-[60px] w-full py-24">
       <div className=" mx-auto px-4 sm:px-6 lg:px-8">
           {/* Title */}
@@ -77,4 +78,7 @@ const CardSection = () => {
   );
 };
 
+
 export default CardSection;
+
+

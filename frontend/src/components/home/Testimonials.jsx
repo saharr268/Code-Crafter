@@ -1,5 +1,3 @@
-// Testimonials / Feedback Section
-
 import { useState } from "react";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 
@@ -114,3 +112,4 @@ const Testimonials = () => {
 };
 
 export default Testimonials;
+
