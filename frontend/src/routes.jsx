@@ -7,6 +7,8 @@ import ResourcesPage from "./pages/ResourcesPage";
 import PracticePage from "./pages/PracticePage";
 import SupportPage from "./pages/SupportPage";
 import LearnPage from "./pages/LearnPage";
+import TopicPage from "./pages/TopicPage";
+import TopicDetail from "./components/TopicDetail";
 
 export const routes = [
   {
@@ -23,7 +25,8 @@ export const routes = [
       { path: "resources", element: <ResourcesPage /> },
       // جزئیات منبع با پارامتر id:
       { path: "resources/:id", element: <ResourceDetails /> },
-
+      { path: "components/:id", element: <TopicDetail /> },
+      { path: "topic", element: <TopicPage /> },
       { path: "support", element: <SupportPage /> },
       { path: "*", element: <NotFound /> },
 
