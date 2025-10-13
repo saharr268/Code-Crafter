@@ -36,7 +36,7 @@ export const getAllFaqs = async ({
   const offset = (pageNumber - 1) * pageSize;
   values.push(pageSize, offset);
 
-  query += ` ORDER BY id DESC LIMIT $${values.length - 1} OFFSET $${
+  query += ` ORDER BY id ASC LIMIT $${values.length - 1} OFFSET $${
     values.length
   }`;
   const dataResult = await db.query(query, values);
