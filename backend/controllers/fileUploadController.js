@@ -1,4 +1,4 @@
-import { saveFileUpload } from "../models/fileUploadModel.js";
+import { getUploadFiles, saveFileUpload } from "../models/fileUploadModel.js";
 
 export const uploadFileController = async (req, res) => {
   try {
@@ -34,5 +34,23 @@ export const uploadFileController = async (req, res) => {
   } catch (error) {
     console.error("Upload error:", error);
     res.status(500).json({ error: "Upload failed" });
+  }
+};
+
+export const getAllUploadedFiles = async (req, res) => {
+  try {
+    const data = await getUploadFiles();
+
+    res.status(200).json({
+      success: true,
+      count: data?.length,
+      data: data,
+    });
+  } catch (error) {
+    console.error("Error fetching faqs:", error);
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+    });
   }
 };

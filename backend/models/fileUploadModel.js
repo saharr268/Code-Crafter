@@ -11,3 +11,8 @@ export const saveFileUpload = async (fileData) => {
   );
   return result.rows[0];
 };
+
+export const getUploadFiles = async () => {
+  const result = await db.query("SELECT * FROM uploads");
+  return result.rows;
+};
