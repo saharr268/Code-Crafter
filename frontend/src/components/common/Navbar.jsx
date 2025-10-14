@@ -15,14 +15,14 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed left-6 right-6 z-50 transition-all duration-500 rounded-full sm:ml-5 sm:m-0
+      className={`fixed left-6 right-6 z-50 transition-all duration-500 rounded-full sm:ml-0 sm:m-0 md:gap-6
       ${
         scrolled
           ? "bg-gray-700/30 backdrop-blur-lg"
           : "bg-[#F5F5F5] backdrop-blur-lg"
       }`}
     >
-      <div className="max-w-screen mx-auto px-4 py-3 flex items-center justify-between">
+      <div className="max-w-screen mx-auto px-4 py-3 flex items-center justify-between sm:gap-2 sm:pr-0 sm:pl-0">
         {/* دکمه منوی موبایل */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
@@ -32,7 +32,7 @@ export default function Navbar() {
         </button>
 
         {/* دکمه تغییر زبان */}
-        <div className="hidden md:flex relative items-center gap-1">
+        <div className="hidden md:flex relative items-center gap-1 md:ml-0">
           <button className="absolute px-8 py-2 rounded-full text-lg bg-[#03C0C1] text-white">
             فارسی
           </button>
@@ -47,7 +47,7 @@ export default function Navbar() {
             menuOpen
               ? "flex flex-col absolute top-20 left-0 right-0 bg-black/90 py-5 shadow-lg md:hidden"
               : "hidden md:flex"
-          } md:flex-row items-center gap-6 md:gap-10 text-xl md:bg-white md:px-12 md:py-4 md:rounded-full transition`}
+          } md:flex-row items-center gap-6 text-xl sm:py-3 md:bg-white sm:px-8 sm:gap-4 md:px-12 md:py-4 md:rounded-full transition`}
         >
           <a href="support" className="hover:text-[#03C0C1]">
             پشتیبانی
@@ -79,7 +79,7 @@ export default function Navbar() {
 
         {/* لوگو */}
         <div
-          className={`flex items-center px-4 py-2 rounded-full md:mr-10 font-semibold text-sm transition bg-black text-white ${
+          className={`flex items-center px-3 py-2 rounded-full md:mr-10 sm:px-5 font-semibold text-sm transition bg-black text-white ${
             scrolled ? "bg-black text-white" : ""
           }`}
         >

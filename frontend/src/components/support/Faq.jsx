@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
-import Navbar from "../components/common/Navbar";
-import { useFaqData } from "../services/hooks/faqs";
-import { PAGE_SIZE } from "./constant/statics";
+import Navbar from "../../components/common/Navbar";
+import { useFaqData } from "../../services/hooks/faqs";
+import { PAGE_SIZE } from "../../../src/helpers/constant/statics";
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);
