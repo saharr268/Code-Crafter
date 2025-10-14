@@ -1,4 +1,5 @@
 import Navbar from "../common/Navbar";
+import heroImage from "../../assets/images/bro.png"
 
 export default function HeroSection() {
   return (
@@ -12,7 +13,7 @@ export default function HeroSection() {
         {/* ✅ تصویر (در دسکتاپ چپ، در موبایل پایین) */}
         <div className="w-full md:w-1/2 flex justify-center md:justify-start mt-10 md:mt-10 sm:ml-10 md:mr-20">
           <img
-            src="/images/bro.png"
+            src={heroImage}
             alt="security illustration"
             className="w-full sm:w-[350px] md:w-[450px] lg:w-[650px] xl:w-[600px]"
           />

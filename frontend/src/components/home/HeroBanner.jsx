@@ -2,6 +2,7 @@ import { MdSecurity } from "react-icons/md";
 import { FaUser } from "react-icons/fa6";
 import { CiMobile3 } from "react-icons/ci";
 import { LuLockKeyhole } from "react-icons/lu";
+import Girl from "../../assets/images/girl.png"
 export default function HeroBanner() {
   return (
     <div className="bg-white min-h-screen mt-14">
@@ -23,7 +24,7 @@ export default function HeroBanner() {
           {/* تصویر یا محتوای اصلی */}
           <div className="relative z-10 flex flex-col items-center">
             <img
-              src="../../../public/images/girl.png" // جایگزین با تصویر واقعی
+              src={Girl}
               alt="User with phone"
               className="w-[500px] h-auto top-0 rounded-lg"
             />

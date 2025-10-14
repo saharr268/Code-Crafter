@@ -4,6 +4,7 @@ import { MdQuestionAnswer } from "react-icons/md";
 import { GiClockwork } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import Footer from "../common/Footer";
+import Practice from "../../assets/images/practice.png"
 
 const quizzes = [
   {
@@ -82,7 +83,7 @@ export default function Quizzes() {
 
             {/* Background decoration */}
             <img
-              src="../../../public/images/practice.png"
+              src={Practice}
               alt="decoration"
               className="absolute bottom-1 right-5 w-70 h-60 opacity-60 pointer-events-none select-none"
             />

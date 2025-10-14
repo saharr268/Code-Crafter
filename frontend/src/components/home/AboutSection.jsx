@@ -1,4 +1,5 @@
 import React from "react";
+import aboutImage from "../../assets/images/about.png"
 
 export default function AboutUs() {
   return (
@@ -6,7 +7,7 @@ export default function AboutUs() {
       {/* تصویر سمت چپ */}
       <div className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0">
         <img
-          src="../../../public/images/about.png" // تصویرت را اینجا بگذار (پوشه public)
+          src={aboutImage}
           alt="about illustration"
           className="max-w-sm md:max-w-md"
         />

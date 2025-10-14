@@ -3,7 +3,6 @@ import MobileBanner from "../components/home/MobileBanner";
 import PopularTopics from "../components/home/PopularTopics";
 import Footer from "../components/common/Footer";
 import AboutSection from "../components/home/AboutSection";
-import BannerSection from "../components/home/BannerSection";
 import CardSection from "../components/home/CardSection";
 import Testimonials from "../components/home/Testimonials";
 import HeroSection from "../components/home/HeroSection";
@@ -19,7 +18,6 @@ const Home = () => {
       <AboutSection />
       <CardSection/>
       <Testimonials/>
-      <BannerSection />
       <MobileBanner />
       <PopularTopics />
       <Footer />
