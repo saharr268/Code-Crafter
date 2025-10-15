@@ -56,6 +56,7 @@ export const addLesson = async (req, res) => {
     file_url,
     created_at,
     updated_at,
+    title,
     short_description,
   } = req.body;
 
@@ -74,6 +75,7 @@ export const addLesson = async (req, res) => {
       file_url,
       created_at,
       updated_at,
+      title,
     });
     res.status(201).json(newLesson);
   } catch (err) {
@@ -91,6 +93,7 @@ export const updateLesson = async (req, res) => {
     pdf_url,
     file_url,
     created_at,
+    title,
     updated_at,
   } = req.body;
   try {
@@ -103,6 +106,7 @@ export const updateLesson = async (req, res) => {
       file_url,
       created_at,
       updated_at,
+      title,
     });
 
     if (!updated) {

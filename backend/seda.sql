@@ -18,9 +18,10 @@ CREATE TABLE faqs (
 
 CREATE TABLE lessons (
     id integer NOT NULL,
+    title text,
     content text,
     short_description text,
-    thumbnail_url character varying(500),
+    thumbnail_url character varying(500), 
     video_url character varying(500),
     pdf_url character varying(500),
     file_url character varying(500),

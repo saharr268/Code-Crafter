@@ -61,9 +61,10 @@ export const createLesson = async ({
   pdf_url,
   file_url,
   updated_at,
+  title,
 }) => {
   const result = await db.query(
-    "INSERT INTO lessons (content,short_description,thumbnail_url,video_url,pdf_url,file_url,updated_at) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *",
+    "INSERT INTO lessons (content,short_description,thumbnail_url,video_url,pdf_url,file_url,updated_at,title) VALUES ($1,$2,$3,$4,$5,$6,$7,8) RETURNING *",
     [
       content,
       short_description,
@@ -72,6 +73,7 @@ export const createLesson = async ({
       pdf_url,
       file_url,
       updated_at,
+      title,
     ]
   );
   return result.rows[0];
@@ -79,10 +81,18 @@ export const createLesson = async ({
 
 export const editLesson = async (
   id,
-  { content, short_description, thumbnail_url, video_url, pdf_url, file_url }
+  {
+    content,
+    short_description,
+    thumbnail_url,
+    video_url,
+    pdf_url,
+    file_url,
+    title,
+  }
 ) => {
   const result = await db.query(
-    "UPDATE lessons SET content = $1, short_description = $2,thumbnail_url = $3, video_url = $4, pdf_url = $5, file_url = $6, updated_at = NOW() WHERE id = $7 RETURNING *",
+    "UPDATE lessons SET content = $1, short_description = $2,thumbnail_url = $3, video_url = $4, pdf_url = $5, file_url = $6, title = $7, updated_at = NOW() WHERE id = $8 RETURNING *",
     [
       content,
       short_description,
@@ -90,6 +100,7 @@ export const editLesson = async (
       video_url,
       pdf_url,
       file_url,
+      title,
       id,
     ]
   );
