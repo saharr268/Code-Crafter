@@ -9,7 +9,7 @@ const MobileBanner = () => {
   return (
     <section className="w-full bg-white py-12 px-4">
       <div
-        className="max-w-[70rem] mx-auto flex flex-col md:flex-row items-center justify-between rounded-3xl bg-cover bg-center p-8 md:p-12"
+        className="mx-auto flex flex-col md:flex-row items-center justify-between rounded-3xl bg-cover bg-center p-8 md:p-12"
         style={{ backgroundImage: `url(${bannerBg})` }}
       >
         {/* Left side: Mobile image */}

@@ -10,28 +10,26 @@ export default function HeroSection() {
       </div>
 
       <div className="flex flex-col-reverse md:flex-row items-center mt-20 justify-between w-full p-0 md:py-10">
-        {/* ✅ تصویر (در دسکتاپ چپ، در موبایل پایین) */}
-        <div className="w-full md:w-1/2 flex justify-center md:justify-start mt-10 md:mt-10 sm:ml-10 md:mr-20">
+        <div className="w-full md:w-1/2 flex justify-center md:justify-start mt-10 md:mt-0 sm:ml-10 md:mr-20">
           <img
             src={heroImage}
             alt="security illustration"
-            className="w-full sm:w-[350px] md:w-[450px] lg:w-[650px] xl:w-[600px]"
+            className="sm:w-[650px] md:h-auto lg:w-[650px] xl:w-[600px]"
           />
         </div>
 
-        {/* ✅ متن (در دسکتاپ راست، در موبایل بالا و وسط) */}
-        <div className="w-full md:w-1/2 text-center md:text-right md:pr-10">
+        <div className="w-full md:w-1/2 text-right mr-5 sm:mr-0 md:text-right">
           <p className="text-gray-500 text-sm sm:text-base md:text-md mt-6 font-medium mb-4">
             اولین حامی امنیت و آزادی زنان افغان در جهان تکنولوژی
           </p>
 
-          <h1 className="text-2xl sm:text-4xl md:text-5xl mt-10 lg:text-6xl font-bold leading-relaxed text-gray-900">
+          <h1 className="text-3xl sm:text-4xl md:text-4xl mt-6 lg:text-6xl font-bold leading-relaxed text-gray-900">
             با <span className="text-[#03C0C1]">صدا</span> ، ما
             <br />
            !امنیت را جستجو کنید
           </h1>
 
-          <button className="mt-20 mb-10 bg-[#03C0C1] text-white text-sm sm:text-base font-medium px-6 sm:px-8 py-3 rounded-lg hover:bg-white hover:text-[#03C0C1] border-2 border-[#03C0C1] transition-all duration-300">
+          <button className="mt-10 mb-6 sm:mb-10 sm:mt-10 md:mt-20 bg-[#03C0C1] text-white text-sm sm:text-base font-medium px-6 sm:px-8 py-3 rounded-lg hover:bg-white hover:text-[#03C0C1] border-2 border-[#03C0C1] transition-all duration-300">
             مشاهده‌ی مطالب
           </button>
         </div>
