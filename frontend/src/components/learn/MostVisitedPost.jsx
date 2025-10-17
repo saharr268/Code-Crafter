@@ -1,8 +1,11 @@
 import React from "react";
-import image from "../../assets/images/digital-safety.png";
 import Navbar from "../common/Navbar";
+import { useNavigate } from "react-router-dom";
+import { urlImageHandler } from "../../helpers/utils/images";
 
-const MostVisitedPost = () => {
+const MostVisitedPost = ({ data }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="flex flex-col items-center justify-center mt-6 ">
       <div className="w-full max-w-7xl ">
@@ -18,7 +21,7 @@ const MostVisitedPost = () => {
         {/* Left Side: Image */}
         <div className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0">
           <img
-            src={image}
+            src={urlImageHandler(data?.thumbnail_url)}
             alt="امنیت دیجیتال"
             // className="w-64 md:w-82 lg:w-96 h-auto object-contain"
             className="w-[320px] md:w-[300px] lg:w-[300px] h-auto object-contain"
@@ -28,16 +31,17 @@ const MostVisitedPost = () => {
         {/* Right Side: Text */}
         <div className="w-full md:w-1/2 text-right md:pr-10">
           <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-6">
-            اهمیت امنیت در دنیای دیجیتال
+            {data?.title}
           </h3>
           <p className="text-gray-700 text-sm md:text-base leading-7 mb-16 line-clamp-3">
-            اهمیت امنیت در دنیای دیجیتال در حفاظت از اطلاعات ارزشمند، حفظ حریم
-            خصوصی افراد و سازمان‌ها، جلوگیری از سرقت هویت و خسارات مالی، حفظ
-            اعتبار و اطمینان از عملکرد صحیح سیستم‌ها و شبکه‌ها نهفته است.
+            {data?.short_description}
           </p>
 
           {/* Button */}
-          <button className="bg-teal-500 hover:bg-teal-400 text-white font-medium px-4 py-2 rounded-md transition-colors duration-200">
+          <button
+            onClick={() => navigate(`lesson/${data?.id}`)}
+            className="bg-teal-500 hover:bg-teal-400 text-white font-medium px-4 py-2 rounded-md transition-colors duration-200"
+          >
             بیشتر بخوانید
           </button>
         </div>

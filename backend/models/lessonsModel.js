@@ -64,7 +64,7 @@ export const createLesson = async ({
   title,
 }) => {
   const result = await db.query(
-    "INSERT INTO lessons (content,short_description,thumbnail_url,video_url,pdf_url,file_url,updated_at,title) VALUES ($1,$2,$3,$4,$5,$6,$7,8) RETURNING *",
+    "INSERT INTO lessons (content,short_description,thumbnail_url,video_url,pdf_url,file_url,updated_at,title) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *",
     [
       content,
       short_description,

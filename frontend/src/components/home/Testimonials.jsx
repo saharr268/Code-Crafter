@@ -1,40 +1,13 @@
 import { useState } from "react";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
+import { PAGE_SIZE } from "../../helpers/constant/statics";
 
-const Testimonials = () => {
-  const testimonials = [
-    {
-      text: "مطالب صدا واقعاً کاربردی بود. یاد گرفتم چطور از اطلاعات شخصی‌ام محافظت کنم و جلوی مزاحمت‌های آنلاین را بگیرم. تجربه‌ای ارزشمند برای هر کاربر اینترنتی.",
-      stars: 5,
-      time: "چهار ماه قبل",
-    },
-    {
-      text: "قبل از آشنایی باصدا همیشه نگران حریم خصوصی‌ام بودم. حالا با مهارت‌هایی که یاد گرفتم، مطمئن‌تر و با اعتماد‌به‌نفس بیشتری در فضای مجازی حضور دارم.",
-      stars: 5,
-      time: "سه هفته قبل",
-    },
-    {
-      text: "صدا به من یاد داد چطور از حساب‌های کاربری‌ام در شبکه‌های اجتماعی بهتر محافظت کنم. حالا با آرامش بیشتری در اینترنت فعالیت و احساس امنیت دارم.",
-      stars: 4,
-      time: "دو ماه قبل",
-    },
-    {
-      text: "به لطف آموزش‌های صدا، امنیت دیجیتال برایم خیلی روشن‌تر شد و حالا می‌توانم با خیال راحت‌تری آنلاین باشم.",
-      stars: 5,
-      time: "یک ماه قبل",
-    },
-    {
-      text: "آموزش‌های صدا برای من مثل راهنمای کامل امنیت اینترنت بود. هر کسی باید این مطالب رو یاد بگیره.",
-      stars: 5,
-      time: "دو هفته قبل",
-    },
-  ];
-
+const Testimonials = ({ data }) => {
   const [startIndex, setStartIndex] = useState(0);
   const cardsPerPage = 3; // show 3 cards at a time
 
   const handleNext = () => {
-    if (startIndex + cardsPerPage < testimonials.length) {
+    if (startIndex + cardsPerPage < data.length) {
       setStartIndex(startIndex + 1);
     }
   };
@@ -45,10 +18,7 @@ const Testimonials = () => {
     }
   };
 
-  const visibleTestimonials = testimonials.slice(
-    startIndex,
-    startIndex + cardsPerPage
-  );
+  const visibleTestimonials = data.slice(startIndex, startIndex + cardsPerPage);
 
   return (
     <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -77,23 +47,25 @@ const Testimonials = () => {
               {/* Stars */}
               <div className="flex mb-6 mt-2 ml-52">
                 {Array.from({ length: t.stars }).map((_, i) => (
-                  <span key={i} className="text-yellow-400 text-xl">★</span>
+                  <span key={i} className="text-yellow-400 text-xl">
+                    ★
+                  </span>
                 ))}
-                {t.stars < 5 &&
-                  Array.from({ length: 5 - t.stars }).map((_, i) => (
-                    <span key={i} className="text-gray-300 text-xl">★</span>
+                {t.rate < 5 &&
+                  Array.from({ length: 5 - t.rate }).map((_, i) => (
+                    <span key={i} className="text-gray-300 text-xl">
+                      ★
+                    </span>
                   ))}
               </div>
-
               {/* Text */}
               <p className="text-gray-700 text-right leading-relaxed mb-6">
-                {t.text}
+                {t.comment_text}
               </p>
-
               {/* Time */}
               <p className="text-teal-500 text-sm font-medium text-right mb-6">
-                {t.time}
-              </p>
+                {t.created_at} {/* //! CREATE THE DATE HANDLER FOR THIS */}
+              </p>{" "}
             </div>
           ))}
         </div>
@@ -101,7 +73,7 @@ const Testimonials = () => {
         {/* Right Arrow */}
         <button
           onClick={handleNext}
-          disabled={startIndex + cardsPerPage >= testimonials.length}
+          disabled={startIndex + cardsPerPage >= data.length}
           className="w-12 h-12 flex items-center justify-center rounded-full bg-teal-50 text-teal-500 hover:bg-teal-100 transition disabled:opacity-40"
         >
           <GoArrowRight size={22} />
@@ -112,4 +84,3 @@ const Testimonials = () => {
 };
 
 export default Testimonials;
-

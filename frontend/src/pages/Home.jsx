@@ -7,19 +7,30 @@ import CardSection from "../components/home/CardSection";
 import Testimonials from "../components/home/Testimonials";
 import HeroSection from "../components/home/HeroSection";
 import HeroBanner from "../components/home/HeroBanner";
+import { useLessonData } from "../services/hooks/lessons";
+import { PAGE_SIZE } from "../helpers/constant/statics";
 
-
+import { slice } from "lodash";
+import { useCommentData } from "../services/hooks/comments";
 
 const Home = () => {
+  const { data: lessonSearch } = useLessonData(1, PAGE_SIZE, undefined);
+
+  const lessonData = slice(lessonSearch?.data, 0, 3);
+
+  const { data: commentSearch } = useCommentData(1, PAGE_SIZE, undefined);
+
+  const commentData = commentSearch?.data ?? [];
+
   return (
     <div className="overflow-hidden">
       <HeroSection />
       <HeroBanner />
       <AboutSection />
-      <CardSection/>
-      <Testimonials/>
+      <CardSection />
+      <Testimonials data={commentData} />
       <MobileBanner />
-      <PopularTopics />
+      <PopularTopics data={lessonData} />
       <Footer />
     </div>
   );

@@ -1,16 +1,7 @@
 import { FaThumbsUp } from "react-icons/fa";
+import { urlImageHandler } from "../../helpers/utils/images";
 
-import digitalSafety from "../../assets/images/digital-safety.png";
-import privacy from "../../assets/images/privacy.png";
-import phishing from "../../assets/images/phishing.png";
-
-const topics = [
-  { id: 1, title: "اهمیت امنیت در دنیای دیجیتال", image: digitalSafety, likes: 345 },
-  { id: 2, title: "حریم خصوصی در فضای مجازی", image: privacy, likes: 345 },
-  { id: 3, title: "فیشینگ و سواستفاده‌ی مالی", image: phishing, likes: 345 },
-];
-
-export default function PopularTopics() {
+export default function PopularTopics({ data }) {
   return (
     <section className="w-full flex flex-col items-center py-10 px-4">
       {/* Section Title */}
@@ -20,7 +11,6 @@ export default function PopularTopics() {
 
       {/* Container with arrows and cards */}
       <div className="flex flex-col md:flex-row items-center gap-8 w-full justify-center">
-        
         {/* Left arrow */}
         <button className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-200 shadow text-gray-600">
           ←
@@ -28,7 +18,7 @@ export default function PopularTopics() {
 
         {/* Cards wrapper */}
         <div className="flex flex-wrap justify-center gap-8">
-          {topics.map((topic) => (
+          {data?.map((topic) => (
             <div
               key={topic.id}
               className="flex flex-col items-start w-full sm:w-72 md:w-80"
@@ -36,14 +26,14 @@ export default function PopularTopics() {
               {/* Card */}
               <div className="relative bg-gray-100 rounded-2xl p-6 w-full h-80 flex items-center justify-center">
                 {/* Like badge */}
-                <div className="absolute top-4 left-4 bg-gray-200 px-2 py-0.5 rounded-full flex items-center gap-1 text-gray-800 text-xs shadow">
+                {/* <div className="absolute top-4 left-4 bg-gray-200 px-2 py-0.5 rounded-full flex items-center gap-1 text-gray-800 text-xs shadow">
                   <FaThumbsUp className="text-[10px]" />
                   <span>{topic.likes}</span>
-                </div>
+                </div> */}
 
                 {/* Image */}
                 <img
-                  src={topic.image}
+                  src={urlImageHandler(topic.thumbnail_url)}
                   alt={topic.title}
                   className="w-[240px] h-[240px] object-contain"
                 />
