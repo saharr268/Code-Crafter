@@ -1,11 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import { urlImageHandler } from "../../helpers/utils/images";
 
 export default function PopularTopics({ data }) {
+  const navigate = useNavigate();
   return (
     <section className="w-full bg-white py-16 px-4 lg:px-12">
       {/* Section Title */}
       <h2 className="text-2xl md:text-3xl font-bold text-text-heading mb-10 text-center">
-        مطالب پر بازدید
+        پیشنهاد صدا برای شما{" "}
       </h2>
 
       {/* Container with arrows and cards */}
@@ -20,11 +22,11 @@ export default function PopularTopics({ data }) {
           {data.map((topic) => (
             <div
               key={topic.id}
+              onClick={() => navigate(`learn/lesson/${topic.id}`)}
               className="flex flex-col items-start w-full sm:w-64 md:w-72 lg:w-[30%]"
             >
               {/* Card */}
               <div className="relative bg-background-card rounded-2xl p-6 w-full h-80 flex items-center justify-center hover:shadow-md transition">
-
                 {/* Image */}
                 <img
                   src={urlImageHandler(topic.thumbnail_url)}
