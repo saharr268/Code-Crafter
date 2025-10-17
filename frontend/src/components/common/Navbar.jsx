@@ -37,10 +37,10 @@ export default function Navbar() {
 
         {/* دکمه تغییر زبان */}
         <div className="hidden md:flex relative items-center gap-1">
-          <button className="absolute px-6 py-2 rounded-full text-lg bg-[#03C0C1] text-white">
+          <button className="absolute px-6 py-2 rounded-full text-lg bg-background-dark text-white">
             فارسی
           </button>
-          <button className="px-10 py-2 ml-20 rounded-full text-lg bg-gray-50 text-black">
+          <button className="px-8 py-2 ml-20 rounded-full text-lg bg-white text-black">
             پشتو
           </button>
         </div>
@@ -49,21 +49,21 @@ export default function Navbar() {
         <nav
           className={`${
             menuOpen
-              ? "flex flex-col absolute top-20 left-0 right-0 bg-black/90 py-5 shadow-lg md:hidden"
+              ? "flex flex-col absolute top-20 left-0 right-0 bg-background-dark/90 py-5 shadow-lg md:hidden"
               : "hidden md:flex"
           } md:flex-row items-center gap-6 text-xl sm:py-1 sm:px-4 sm:gap-4 md:px-6 sm:ml-0 md:rounded-full transition
     ${isHome && !scrolled ? "bg-white shadow-md" : "bg-transparent"}`}
         >
           {[
-            { href: "/", text: "خانه" },
-            { href: "/learn", text: "آموزش" },
-            { href: "/practice", text: "تمرین" },
             { href: "/support", text: "پشتیبانی" },
+            { href: "/practice", text: "تمرین" },
+            { href: "/learn", text: "آموزش" },
+            { href: "/", text: "خانه" },
           ].map((link, i) => (
             <a
               key={i}
               href={link.href}
-              className="px-4 py-2 rounded-full transition-all duration-300 text-black hover:text-[#03C0C1]"
+              className="px-4 py-2 rounded-full transition-all duration-300 text-text-heading hover:text-primary-dark"
             >
               {link.text}
             </a>
@@ -71,12 +71,12 @@ export default function Navbar() {
         </nav>
 
         {/* آیکن کره زمین در موبایل */}
-        <button className="md:hidden p-2 rounded-lg bg-white ml-32 text-black shadow">
+        <button className="md:hidden p-2 rounded-lg bg-primary-muted ml-32 text-text-heading shadow">
           <Globe size={20} />
         </button>
 
         {/* لوگو */}
-        <div className="flex items-center px-3 py-2 rounded-full sm:mr-10 sm:px-5 font-semibold text-sm bg-black text-white">
+        <div className="flex items-center px-3 py-2 rounded-full sm:mr-10 sm:px-5 font-semibold text-sm bg-background-dark text-white">
           لوگوی صدا
         </div>
       </div>

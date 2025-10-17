@@ -2,24 +2,24 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white py-10">
+    <footer className="bg-background-dark text-white py-10">
       <div className="max-w-6xl mx-auto text-center px-4">
         {/* لوگو */}
         <div className="flex justify-center">
-          <div className="bg-white text-black px-6 py-2 rounded-full font-semibold">
+          <div className="bg-background-card text-background-dark px-6 py-2 rounded-full font-semibold">
             لوگو
           </div>
         </div>
 
         {/* متن توضیحی */}
-        <p className="text-gray-400 mt-6 leading-relaxed max-w-2xl mx-auto">
+        <p className="text-white mt-6 leading-relaxed max-w-2xl mx-auto">
           ما زنان افغان را با مهارت‌های امنیت دیجیتال توانمند می‌سازیم. صدا نه
           تنها یک آموزش‌دهنده، بلکه یک حامی برای امنیت و آزادی زنان افغان در
           دنیای دیجیتال به شمار می‌رود.
         </p>
 
         {/* منو */}
-        <div className="flex justify-center gap-10 mt-6 text-gray-300">
+        <div className="flex justify-center gap-10 mt-6 text-white">
           <a href="#">پشتیبانی</a>
           <a href="#">منابع</a>
           <a href="#">تمرین</a>
@@ -28,7 +28,7 @@ export default function Footer() {
         </div>
 
         {/* ایمیل */}
-        <div className="flex justify-center items-center gap-2 mt-6 text-gray-400">
+        <div className="flex justify-center items-center gap-2 mt-6 text-white">
           <span className="material-icons">email</span>
           <a href="mailto:codecrafter@seda.org">codecrafter@seda.org</a>
         </div>

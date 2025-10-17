@@ -3,7 +3,7 @@ import heroImage from "../../assets/images/bro.png"
 
 export default function HeroSection() {
   return (
-    <section className="flex items-center bg-[#F5F5F5] px-4 sm:px-20 md:px-12 m-4 md:mt-6 rounded-[40px] max-h-auto py-10">
+    <section className="flex items-center bg-background-card px-4 sm:px-20 md:px-12 m-4 md:mt-6 rounded-[40px] max-h-auto py-10">
       {/* 🔹 Navbar */}
       <div className="fixed w-full top-6 z-50">
         <Navbar />
@@ -18,18 +18,18 @@ export default function HeroSection() {
           />
         </div>
 
-        <div className="w-full md:w-1/2 text-right mr-5 sm:mr-0 md:text-right">
-          <p className="text-gray-500 text-sm sm:text-base md:text-md mt-6 font-medium mb-4">
+        <div className="w-full md:w-1/2 text-right mr-5 sm:mr-0 md:text-right md:mr-10">
+          <p className="text-text-body text-sm sm:text-base md:text-md mt-6 font-medium mb-4">
             اولین حامی امنیت و آزادی زنان افغان در جهان تکنولوژی
           </p>
 
-          <h1 className="text-3xl sm:text-4xl md:text-4xl mt-6 lg:text-6xl font-bold leading-relaxed text-gray-900">
-            با <span className="text-[#03C0C1]">صدا</span> ، ما
+          <h1 className="text-3xl sm:text-4xl md:text-4xl mt-6 lg:text-6xl font-bold leading-relaxed text-text-heading">
+            با <span className="text-primary-dark">صدا</span> ، ما
             <br />
            !امنیت را جستجو کنید
           </h1>
 
-          <button className="mt-10 mb-6 sm:mb-10 sm:mt-10 md:mt-20 bg-[#03C0C1] text-white text-sm sm:text-base font-medium px-6 sm:px-8 py-3 rounded-lg hover:bg-white hover:text-[#03C0C1] border-2 border-[#03C0C1] transition-all duration-300">
+          <button className="mt-10 mb-6 sm:mb-10 sm:mt-10 md:mt-20 bg-primary-dark text-white text-sm sm:text-base font-medium px-6 sm:px-8 py-3 rounded-lg hover:bg-white hover:text-primary-dark border-2 border-primary-dark duration-300">
             مشاهده‌ی مطالب
           </button>
         </div>
