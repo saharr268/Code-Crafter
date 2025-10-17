@@ -1,8 +1,5 @@
 import { FaThumbsUp } from "react-icons/fa";
 
-import digitalSafety from "../../assets/images/digital-safety.png";
-import privacy from "../../assets/images/privacy.png";
-import phishing from "../../assets/images/phishing.png";
 import { urlImageHandler } from "../../helpers/utils/images";
 
 export default function PopularTopics({ data }) {

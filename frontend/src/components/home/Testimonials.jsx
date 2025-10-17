@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
-import { PAGE_SIZE } from "../../helpers/constant/statics";
 
-const Testimonials = ({data}) => {
-
+const Testimonials = ({ data }) => {
   const [startIndex, setStartIndex] = useState(0);
-  
-const [cardsPerPage, setCardsPerPage] = useState(3);
+
+  const [cardsPerPage, setCardsPerPage] = useState(3);
 
   useEffect(() => {
     const updateCardsPerPage = () => {
@@ -23,8 +21,8 @@ const [cardsPerPage, setCardsPerPage] = useState(3);
   const handleNext = () => {
     if (startIndex + cardsPerPage < data.length) {
       setStartIndex(startIndex + 1);
+    }
   };
-
   const handlePrev = () => {
     if (startIndex > 0) setStartIndex(startIndex - 1);
   };
@@ -57,7 +55,7 @@ const [cardsPerPage, setCardsPerPage] = useState(3);
               className="bg-gray-50 p-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow w-1/3 max-w-sm"
             >
               {/* Stars */}
-             <div className="flex justify-end mb-6">
+              <div className="flex justify-end mb-6">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <span
                     key={i}
@@ -69,13 +67,9 @@ const [cardsPerPage, setCardsPerPage] = useState(3);
                   </span>
                 ))}
               </div>
-
-              {/* Text */}
               <p className="text-gray-700 text-right leading-relaxed mb-6">
                 {t.comment_text}
               </p>
-
-              {/* Time */}
               <p className="text-teal-500 text-sm font-medium text-right">
                 {t.created_at} {/* //! CREATE THE DATE HANDLER FOR THIS */}
               </p>
@@ -86,7 +80,7 @@ const [cardsPerPage, setCardsPerPage] = useState(3);
         {/* فلش راست */}
         <button
           onClick={handleNext}
-          disabled={startIndex + cardsPerPage >= testimonials.length}
+          disabled={startIndex + cardsPerPage >= data.length}
           className="absolute right-4 xl:right-12 w-12 h-12 flex items-center justify-center rounded-full bg-teal-50 text-teal-500 hover:bg-teal-100 transition disabled:opacity-40 shadow"
         >
           <GoArrowRight size={24} />
@@ -115,7 +109,7 @@ const [cardsPerPage, setCardsPerPage] = useState(3);
               </div>
 
               <p className="text-gray-700 text-right leading-relaxed mb-6">
-                {t.text}
+                {t.comment_text}
               </p>
 
               <p className="text-teal-500 text-sm font-medium text-right">
@@ -136,7 +130,7 @@ const [cardsPerPage, setCardsPerPage] = useState(3);
           </button>
           <button
             onClick={handleNext}
-            disabled={startIndex + cardsPerPage >= testimonials.length}
+            disabled={startIndex + cardsPerPage >= data.length}
             className="w-10 h-10 flex items-center justify-center rounded-full bg-teal-50 text-teal-500 hover:bg-teal-100 transition disabled:opacity-40"
           >
             <GoArrowRight size={20} />
@@ -146,5 +140,4 @@ const [cardsPerPage, setCardsPerPage] = useState(3);
     </section>
   );
 };
-
 export default Testimonials;
