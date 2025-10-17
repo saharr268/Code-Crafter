@@ -8,7 +8,7 @@ import {
 const router = express.Router();
 
 router.get("/", getAllUploadedFiles);
-router.post("/single", upload.single("file"), uploadFileController);
+router.post("/single", upload.single("image"), uploadFileController);
 router.post("/multiple", upload.array("files", 10), uploadFileController);
 
 export default router;

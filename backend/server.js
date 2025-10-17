@@ -19,6 +19,8 @@ const PORT = process.env.PORT || 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+app.use("/uploads", e.static(path.join(__dirname, "uploads")));
+
 app.use(e.json());
 app.use(
   cors({
