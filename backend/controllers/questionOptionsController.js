@@ -8,12 +8,10 @@ import {
 
 export const getQuestionOptions = async (req, res) => {
   try {
-    const { pageNumber, pageSize, keyword } = req.query;
+    const { keyword } = req.query;
 
     const { question_optionData, totalCount, totalPages } =
       await getAllQuestionOptions({
-        pageNumber: parseInt(pageNumber) || 1,
-        pageSize: parseInt(pageSize) || 5,
         keyword,
       });
 

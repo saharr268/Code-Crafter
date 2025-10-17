@@ -12,7 +12,7 @@ export const getQuizzes = async (req, res) => {
 
     const { quizData, totalCount, totalPages } = await getAllQuizzes({
       pageNumber: parseInt(pageNumber) || 1,
-      pageSize: parseInt(pageSize) || 5,
+      pageSize: parseInt(pageSize) || 20,
       keyword,
     });
 
@@ -58,9 +58,9 @@ export const addQuiz = async (req, res) => {
   } = req.body;
 
   try {
-    if (!title || !lesson_id || !description || !time_limit) {
+    if (!title || !lesson_id) {
       return res.status(400).json({
-        error: "title, lesson_id, description, time_limit are required",
+        error: "title, lesson_id are required",
       });
     }
     const newQuiz = await createQuiz({
