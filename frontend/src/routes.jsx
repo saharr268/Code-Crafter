@@ -3,6 +3,8 @@ import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
 import ResourceDetails from "./pages/ResourceDetails";
 import ResourcesPage from "./pages/ResourcesPage";
+import Quiz from "./pages/Quiz";
+import QuizResult from "./components/quiz/QuizResult";
 
 import PracticePage from "./pages/quiz/PracticePage";
 import SupportPage from "./pages/SupportPage";
@@ -26,18 +28,19 @@ export const routes = [
         path: "practice",
         children: [
           { index: true, element: <PracticePage /> },
-          { path: "1uiz/:id", element: <TopicPage /> },
+          { path: "quiz/:id", element: <TopicPage /> },
         ],
       },
 
       { path: "support", element: <SupportPage /> },
+      { path: "quiz", element: <Quiz /> },
+      { path: "quiz/result", element: <QuizResult /> },
 
       // Resources به‌عنوان مسیر جدا:
       { path: "resources", element: <ResourcesPage /> },
       // جزئیات منبع با پارامتر id:
       { path: "resources/:id", element: <ResourceDetails /> },
       // { path: "components/:id", element: <TopicDetail /> },
-      { path: "support", element: <SupportPage /> },
       { path: "*", element: <NotFound /> },
 
       // other routes
