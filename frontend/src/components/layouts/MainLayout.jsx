@@ -10,7 +10,7 @@ const MainLayout = () => {
   return (
     <div>
       <QueryClientProvider client={queryClient}>
-        <MainContextProvider>{content}</MainContextProvider>;
+        <MainContextProvider>{content}</MainContextProvider>
       </QueryClientProvider>
     </div>
   );
