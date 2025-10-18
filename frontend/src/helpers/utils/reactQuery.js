@@ -1,9 +1,6 @@
 import { QueryClient } from "@tanstack/react-query";
 
-import {
-  CASH_TIME,
-  STALE_TIME,
-} from "../../frontend/src/helpers/constant/statics";
+import { CASH_TIME, STALE_TIME } from "../constant/statics";
 
 export const queryClient = new QueryClient({
   defaultOptions: {

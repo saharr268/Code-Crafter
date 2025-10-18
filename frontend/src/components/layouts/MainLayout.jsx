@@ -3,7 +3,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 
 import { routes } from "../../routes";
 import { MainContextProvider } from "../context/MainContext";
-import { queryClient } from "../../../../backend/utils/reactQuery";
+import { queryClient } from "../../helpers/utils/reactQuery";
 
 const MainLayout = () => {
   const content = useRoutes(routes);
