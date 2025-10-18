@@ -14,7 +14,7 @@ const resourceData = [
     name: "Whatsapp",
     website: "https://www.whatsapp.com/",
     logo: whatsappLogo,
-    rating: "9.8",
+    rating: "4.7",
     features: [
       "ارسال پیام‌های متنی، صوتی، تصویری، و فایل‌های چندرسانه‌ای مانند عکس و ویدئ",
     "برقراری تماس صوتی و تصویری با دیگر کاربران",
@@ -28,7 +28,7 @@ const resourceData = [
     name: "Telegram",
     website: "https://www.telegram.org/",
     logo: telegramLogo,
-    rating: "9.8",
+    rating: "4.7",
     features: [
       "ارسال و دریافت انواع پیام‌ها، عکس، ویدئو",
       "برقراری تماس صوتی و تصویری امن و باکیفیت",
@@ -45,7 +45,7 @@ const resourceData = [
     name: "Wechat",
     website: "https://www.wechat.com/",
     logo: wechatLogo,
-    rating: "9.8",
+    rating: "4.0",
     features: [
       " ارسال پیام‌های متنی، صوتی و تصویری در چت‌های فردی و گروهی",
       " برقراری تماس‌های صوتی و تصویری با کیفیت بالا، هم به‌صورت فردی و هم گروهی",
@@ -62,7 +62,7 @@ const resourceData = [
     name: "Facebook Messenger",
     website: "https://www.messenger.com/",
     logo: messengerLogo,
-    rating: "9.8",
+    rating: "4.5",
     features: [
       "امکان ارسال پیام‌های متنی به دوستان فیس‌بوک و مخاطبین تلفن",
       "ارسال و دریافت عکس‌ها و ویدیوهای باکیفیت",
@@ -79,7 +79,7 @@ const resourceData = [
     name: "Signal",
     website: "https://www.signal.org/",
     logo: signalLogo,
-    rating: "9.8",
+    rating: "4.6",
     features: [
       "ارسال پیام‌های متنی، صوتی، عکس، ویدئو، گیف و فایل با رمزگذاری سرتاسری انجام می‌شود",
       "امکان برقراری تماس‌های صوتی و تصویری فردی و گروهی امن با پشتیبانی تا ۴۰ نفر وجود دارد.",
@@ -96,7 +96,7 @@ const resourceData = [
     name: "Discord",
     website: "https://www.discord.com/",
     logo: discordLogo,
-    rating: "9.8",
+    rating: "4.5",
     features: [
       "امکان چت متنی، تماس صوتی و تصویری",
       "ایجاد و پیوستن به فضاهای آنلاین با نام «سرور» برای گروه‌های مختلف",

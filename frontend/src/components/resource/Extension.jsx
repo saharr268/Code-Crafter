@@ -13,7 +13,7 @@ const resourceData = [
     name: "Google Translate",
     website: "https://translate.google.com",
     logo: googletranslateLogo,
-    rating: "9.8",
+    rating: "4.2",
     features: [
       "افزونه به طور خودکار زبان صفحه‌ای که در حال بازدید آن هستید را تشخیص می‌دهد و اگر با زبان مرورگر شما متفاوت باشد، آن را ترجمه می‌کند",
       "می‌توانید با انتخاب یک جمله یا پاراگراف، ترجمه آن را در یک پنجره پاپ‌آپ مشاهده کنید",
@@ -27,7 +27,7 @@ const resourceData = [
     name: "LastPass",
     website: "https://www.lastpass.com",
     logo: lastpassLogo,
-    rating: "9.8",
+    rating: "4.3",
     features: [
       "ایجاد رمزهای عبور قوی و منحصر به فرد برای هر حساب و ذخیره‌سازی متمرکز آن‌ها",
       "پر کردن خودکار اطلاعات ورود به وب‌سایت‌ها و فرم‌های شخصی",
@@ -43,7 +43,7 @@ const resourceData = [
     name: "AdBlock Plus",
     website: "https://www.adblockplus.org",
     logo: adblockLogo,
-    rating: "9.8",
+    rating: "4.4",
     features: [
     "تبلیغات مزاحم در صفحات وب، از جمله بنرها، پنجره‌های پاپ‌آپ و تبلیغات ویدیویی را مسدود می‌کند",
     "ردیابی کاربران در وب‌سایت‌ها را مسدود می‌کند و از جمع‌آوری اطلاعات توسط شرکت‌های تبلیغاتی جلوگیری می‌کند",
@@ -58,7 +58,7 @@ const resourceData = [
     name: "Google Keep",
     website: "https://keep.google.com",
     logo: googlekeepLogo,
-    rating: "9.8",
+    rating: "4.0",
     features: [
       "یادداشت‌های شما به‌طور خودکار در تمام دستگاه‌هایتان همگام‌سازی می‌شوند",
       "صدا ضبط کنید و کیپ آن را به متن تبدیل می‌کند تا بعداً بتوانید آن را پیدا کنید",
@@ -74,7 +74,7 @@ const resourceData = [
     name: "UBlock Origin",
     website: "https://www.ublockorigin.com",
     logo: ublockLogo,
-    rating: "9.8",
+    rating: "4.8",
     features: [
       "به طور موثر تبلیغات را حذف کرده و از باز شدن سایت‌های مزاحم جلوگیری می‌کند",
       "با مسدود کردن عناصر اضافی، به صرفه‌جویی در مصرف اینترنت کمک می‌کند",

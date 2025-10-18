@@ -12,7 +12,7 @@ const resourceData = [
     name: "Avast",
     website: "https://www.avast.com",
     logo: avastLogo,
-    rating: "9.8",
+    rating: "4.7",
     features: [
     "محافظت پیوسته از سیستم در برابر تهدیداتی مانند ویروس‌ها، جاسوس‌افزارها و روت‌کیت‌ها",
     "شناسایی برنامه‌های ناخواسته و تهدیدات از طریق موتور اسکن هوشمند",
@@ -28,7 +28,7 @@ const resourceData = [
     name: "Avira",
     website: "https://www.avira.com",
     logo: aviraLogo,
-    rating: "9.8",
+    rating: "4.5",
     features: [
       "شناسایی و مسدودسازی تهدیدات به محض ورود به سیستم",
       "محافظت در برابر وب‌سایت‌های مخرب و امن کردن فعالیت‌های آنلاین مانند خرید و بانکداری اینترنتی",
@@ -44,7 +44,7 @@ const resourceData = [
     name: "Bitdefender",
     website: "https://www.bitdefender.com",
     logo: bitdefenderLogo,
-    rating: "9.8",
+    rating: "4.8",
     features: [
       "شامل حفاظت پیشرفته در برابر باج‌افزار، ویروس‌ها، جاسوس‌افزارها و تهدیدات آنلاین",
       "شامل مرورگر امن برای تراکنش‌های بانکی و خرید آنلاین، محافظت در برابر لینک‌های مخرب و فیشینگ",
@@ -61,7 +61,7 @@ const resourceData = [
     name: "Microsoft Defender",
     website: "https://www.microsoft.com/",
     logo: msdefenderLogo,
-    rating: "9.8",
+    rating: "4.4",
     features: [
       "به‌طور مداوم فعالیت‌های سیستم را برای شناسایی تهدیدات بدافزارها، ویروس‌ها و تروجان‌ها نظارت می‌کند",
       "امکان اسکن سریع، کامل، و زمان‌بندی‌شده را برای اطمینان از پاک‌سازی سیستم فراهم می‌کند",
