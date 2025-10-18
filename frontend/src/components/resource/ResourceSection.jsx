@@ -13,7 +13,7 @@ const resourceData = [
     name: "ExpressVPN",
     website: "https://www.expressvpn.com",
     logo: expressvpnLogo,
-    rating: "9.8",
+    rating: "4.7",
     features: [
       "راه‌اندازی فوری و استفاده بسیار آسان",
       "سازگار با Netflix، Amazon Prime Video، Hulu، HBO",
@@ -29,7 +29,7 @@ const resourceData = [
     name: "NordVPN",
     website: "https://www.nordvpn.com",
     logo: nordvpnLogo,
-    rating: "9.8",
+    rating: "4.6",
     features: [
       "اتصالات Multihop و Tor",
       "شبکه‌ی سرور گسترده",
@@ -45,7 +45,7 @@ const resourceData = [
     name: "ClearVPN",
     website: "https://www.clearvpn.com",
     logo: clearvpnLogo,
-    rating: "9.8",
+    rating: "4.3",
     features: [
       "راه‌اندازی آسان برای کاربران جدید",
       "رابط کاربری ساده و جذاب",
@@ -62,7 +62,7 @@ const resourceData = [
     name: "Hotspot Shield",
     website: "https://www.hotspotshield.com",
     logo: hotspotLogo,
-    rating: "9.8",
+    rating: "4.5",
     features: [
       "اتصالات سریع و پایدار",
       "توانایی پنهان کردن کاربران از وب سایت‌های برجسته با کمک فناوری تونل مجازی",
@@ -78,7 +78,7 @@ const resourceData = [
     name: "ProtonVPN",
     website: "https://www.protonvpn.com",
     logo: protonLogo,
-    rating: "9.8",
+    rating: "4.6",
     features: [
       "سرورهای پیشرفته",
       "صد درصد رایگان، حفاظت از حریم خصوصی",
