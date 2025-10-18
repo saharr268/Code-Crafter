@@ -21,7 +21,7 @@ const ResourceCard = ({ name, website, logo, rating, features, link }) => {
         rel="noopener noreferrer"
         className="bg-teal-500 hover:bg-teal-600 text-white rounded-lg py-2 px-3 w-32 mt-40 text-sm font-semibold text-center transition-colors duration-300"
         >
-  دانلود وی‌پی‌ان
+        دانلود کنید
 </a>
 
       </div>
