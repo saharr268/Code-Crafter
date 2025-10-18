@@ -7,6 +7,7 @@ import CommentsSection from "../components/home/CommentsSection";
 import MostViewedSection from "../components/home/MostViewedSection";
 import HeroSection from "../components/home/HeroSection";
 import HeroBanner from "../components/home/HeroBanner";
+import QuizList from "../components/home/Quizlist";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
       <CommentsSection />
       <BannerSection />
       <MostViewedSection />
+       <QuizList />
       <Footer />
     </div>
   );
