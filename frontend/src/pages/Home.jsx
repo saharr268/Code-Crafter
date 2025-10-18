@@ -12,6 +12,7 @@ import { PAGE_SIZE } from "../helpers/constant/statics";
 
 import { slice } from "lodash";
 import { useCommentData } from "../services/hooks/comments";
+import QuizList from "../components/home/Quizlist";
 
 const Home = () => {
   const { data: lessonSearch } = useLessonData(1, PAGE_SIZE, undefined);
@@ -31,6 +32,10 @@ const Home = () => {
       <Testimonials data={commentData} />
       <MobileBanner />
       <PopularTopics data={lessonData} />
+      <CommentsSection />
+      <BannerSection />
+      <MostViewedSection />
+      <QuizList />
       <Footer />
     </div>
   );
