@@ -1,23 +1,21 @@
-import { useQuery } from "@tanstack/react-query";
-import { getChatbotById, getChatbotData } from "../configs/apiEndPoint";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { askChatBot, getChatBotData } from "../configs/apiEndPoint";
 
-export const useChatbotData = (pageNumber, pageSize, keyword) => {
+export const useChatbotData = () => {
   return useQuery({
-    queryKey: ["chatbot-data", pageNumber, pageSize, keyword],
-    queryFn: () =>
-      getChatbotData({
-        pageNumber,
-        pageSize,
-        keyword,
-      }),
+    queryKey: ["chatbot-data"],
+    queryFn: () => getChatBotData(),
   });
 };
 
-// Get chatbot by id
-export const useGetChatbotById = (id) => {
-  return useQuery({
-    queryKey: ["chatbot-get-by-id", id],
-    queryFn: async () => (id ? await getChatbotById(id) : {}),
-    enabled: !!id,
+export const useAskChatbot = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (data) => askChatBot(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["ask-chatbot"],
+      });
+    },
   });
 };

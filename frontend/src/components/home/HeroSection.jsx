@@ -1,7 +1,13 @@
-import Navbar from "../common/Navbar";
-import heroImage from "../../assets/images/bro.png"
+import { useState } from "react";
 
-export default function HeroSection() {
+import Navbar from "../common/Navbar";
+import ChatWindow from "../common/ChatbotWindow";
+import { ChatbotButton } from "../common/ChatbotButton";
+
+import heroImage from "../../assets/images/bro.png";
+
+const HeroSection = () => {
+  const [openChatbot, setOpenChatbot] = useState();
   return (
     <section className="flex items-center bg-background-card px-4 sm:px-20 md:px-12 m-4 md:mt-6 rounded-[40px] max-h-auto py-10">
       {/* 🔹 Navbar */}
@@ -26,7 +32,7 @@ export default function HeroSection() {
           <h1 className="text-3xl sm:text-4xl md:text-4xl mt-6 lg:text-6xl font-bold leading-relaxed text-text-heading">
             با <span className="text-primary-dark">صدا</span> ، ما
             <br />
-           !امنیت را جستجو کنید
+            !امنیت را جستجو کنید
           </h1>
 
           <button className="mt-10 mb-6 sm:mb-10 sm:mt-10 md:mt-20 bg-primary-dark text-white text-sm sm:text-base font-medium px-6 sm:px-8 py-3 rounded-lg hover:bg-white hover:text-primary-dark border-2 border-primary-dark duration-300">
@@ -34,6 +40,20 @@ export default function HeroSection() {
           </button>
         </div>
       </div>
+      <div>
+        <ChatbotButton
+          onClick={() => {
+            // e.stopPropagination();
+            setOpenChatbot(true);
+          }}
+        />
+        <ChatWindow
+          isOpen={openChatbot}
+          onClose={() => setOpenChatbot(false)}
+        />
+      </div>
     </section>
   );
-}
+};
+
+export default HeroSection;

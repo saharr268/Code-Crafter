@@ -1,4 +1,8 @@
-import { addChatbotQA, findAnswer } from "../models/chatbotFaqModel.js";
+import {
+  addChatbotQA,
+  findAnswer,
+  getChatbotQA,
+} from "../models/chatbotFaqModel.js";
 
 export const askChatBot = async (req, res) => {
   try {
@@ -24,5 +28,23 @@ export const addChatbotFaq = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Failed to add Q&A" });
+  }
+};
+
+export const getAllChatbotFaq = async (req, res) => {
+  try {
+    const data = await getChatbotQA();
+
+    res.status(200).json({
+      success: true,
+      count: data?.length,
+      data: data,
+    });
+  } catch (error) {
+    console.error("Error fetching chatbot:", error);
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+    });
   }
 };

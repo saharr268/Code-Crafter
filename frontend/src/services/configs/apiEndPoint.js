@@ -27,13 +27,7 @@ export const getLessonById = async (id) => await apiClient.get(`lessons/${id}`);
 export const getChatBotData = async (params) =>
   await apiClient.get("/chatbot", { params: params }).then((res) => res.data);
 
-export const getChatBotById = async (id) =>
-  await apiClient.get(`chatbot/${id}`);
-
-// export const createChatBot = (data) => apiClient.post("/chatbot", data);
-
-// export const updateChatBot = (id, data) =>
-//   apiClient.put(`/chatbot/${id}`, data);
+export const askChatBot = (data) => apiClient.post("/chatbot/ask", data);
 
 // export const deleteChatBot = (id) => apiClient.delete(`/chatbot/${id}`);
 
