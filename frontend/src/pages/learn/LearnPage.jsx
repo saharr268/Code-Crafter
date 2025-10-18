@@ -9,6 +9,7 @@ const LearnPage = () => {
   const { data: getLessonData } = useLessonData(1, PAGE_SIZE, undefined);
 
   const data = getLessonData?.data ?? [];
+  console.log("🚀 ~ LearnPage ~ data:", data);
 
   const recommendedLesson = data[2]; //! RECHECK HERE
 

@@ -4,6 +4,8 @@ import Navbar from "../../components/common/Navbar";
 import Footer from "../../components/common/Footer";
 import { useQuizData } from "../../services/hooks/quizzes";
 import { PAGE_SIZE } from "../../helpers/constant/statics";
+import { Link } from "react-router-dom";
+import { urlImageHandler } from "../../helpers/utils/images";
 
 const PracticePage = () => {
   const { data: getLessonData } = useQuizData(1, PAGE_SIZE, undefined);
@@ -48,13 +50,13 @@ const PracticePage = () => {
                   <div className="bg-white px-4 py-2">
                     <span className="flex items-center gap-1 text-[#03C0C1]">
                       {time}
-                      <GiClockwork className="text-lg" />
+                      {/* <GiClockwork className="text-lg" /> */}
                     </span>
                   </div>
                   <div className="bg-white px-4 py-2">
                     <span className="flex items-center gap-1 text-[#03C0C1]">
                       {question_count}
-                      <MdQuestionAnswer className="text-lg" />
+                      {/* <MdQuestionAnswer className="text-lg" /> */}
                     </span>
                   </div>
                 </div>
@@ -68,7 +70,7 @@ const PracticePage = () => {
 
                 {/* Background decoration */}
                 <img
-                  src={thumbnail_url}
+                  src={urlImageHandler(thumbnail_url)}
                   alt="decoration"
                   className="absolute bottom-1 right-5 w-70 h-60 opacity-60 pointer-events-none select-none"
                 />

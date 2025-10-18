@@ -1,10 +1,6 @@
 import db from "../configs/db.js";
 
-export const getAllQuestions = async ({
-  pageNumber = 1,
-  pageSize = 10,
-  keyword,
-}) => {
+export const getAllQuestions = async ({ keyword }) => {
   let query = `
     SELECT * 
     FROM questions
@@ -32,19 +28,11 @@ export const getAllQuestions = async ({
 
   const countResult = await db.query(countQuery, countValues);
   const totalCount = parseInt(countResult.rows[0].total, 10);
-
-  const offset = (pageNumber - 1) * pageSize;
-  values.push(pageSize, offset);
-
-  query += ` ORDER BY id DESC LIMIT $${values.length - 1} OFFSET $${
-    values.length
-  }`;
   const dataResult = await db.query(query, values);
 
   return {
     questionData: dataResult.rows,
     totalCount,
-    totalPages: Math.ceil(totalCount / pageSize),
   };
 };
 

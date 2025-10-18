@@ -42,7 +42,7 @@ const Testimonials = ({ data }) => {
         <button
           onClick={handlePrev}
           disabled={startIndex === 0}
-          className="absolute left-4 xl:left-12 w-12 h-12 flex items-center justify-center rounded-full bg-teal-50 text-teal-500 hover:bg-teal-100 transition disabled:opacity-40 shadow"
+          className="absolute left-4 xl:left-12 w-12 h-12 flex items-center justify-center rounded-full bg-background-card text-primary-deep hover:bg-teal-100 transition disabled:opacity-40 shadow"
         >
           <GoArrowLeft size={24} />
         </button>
@@ -52,7 +52,7 @@ const Testimonials = ({ data }) => {
           {visibleTestimonials.map((t, index) => (
             <div
               key={index}
-              className="bg-gray-50 p-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow w-1/3 max-w-sm"
+              className="bg-background-card p-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow w-1/3 max-w-sm"
             >
               {/* Stars */}
               <div className="flex justify-end mb-6">
@@ -60,28 +60,27 @@ const Testimonials = ({ data }) => {
                   <span
                     key={i}
                     className={`text-xl ${
-                      i < t.rate ? "text-yellow-400" : "text-gray-300"
+                      i < t.rate ? "text-[#FFCF0F]" : "text-gray-300"
                     }`}
                   >
                     ★
                   </span>
                 ))}
               </div>
-              <p className="text-gray-700 text-right leading-relaxed mb-6">
+              <p className="text-text-body text-right leading-relaxed mb-6">
                 {t.comment_text}
               </p>
-              <p className="text-teal-500 text-sm font-medium text-right">
+              <p className="text-primary-deep text-sm font-medium text-right">
                 {t.created_at} {/* //! CREATE THE DATE HANDLER FOR THIS */}
               </p>
             </div>
           ))}
         </div>
 
-        {/* فلش راست */}
         <button
           onClick={handleNext}
           disabled={startIndex + cardsPerPage >= data.length}
-          className="absolute right-4 xl:right-12 w-12 h-12 flex items-center justify-center rounded-full bg-teal-50 text-teal-500 hover:bg-teal-100 transition disabled:opacity-40 shadow"
+          className="absolute right-4 xl:right-12 w-12 h-12 flex items-center justify-center rounded-full bg-background-card text-p hover:bg-teal-100 transition disabled:opacity-40 shadow"
         >
           <GoArrowRight size={24} />
         </button>
@@ -93,7 +92,7 @@ const Testimonials = ({ data }) => {
           {visibleTestimonials.map((t, index) => (
             <div
               key={index}
-              className="bg-gray-50 p-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow"
+              className="bg-background-card p-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow"
             >
               <div className="flex justify-end mb-6">
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -108,11 +107,11 @@ const Testimonials = ({ data }) => {
                 ))}
               </div>
 
-              <p className="text-gray-700 text-right leading-relaxed mb-6">
+              <p className="text-text-body text-right leading-relaxed mb-6">
                 {t.comment_text}
               </p>
 
-              <p className="text-teal-500 text-sm font-medium text-right">
+              <p className="text-primary-deep text-sm font-medium text-right">
                 {t.time}
               </p>
             </div>
@@ -124,14 +123,14 @@ const Testimonials = ({ data }) => {
           <button
             onClick={handlePrev}
             disabled={startIndex === 0}
-            className="w-10 h-10 flex items-center justify-center rounded-full bg-teal-50 text-teal-500 hover:bg-teal-100 transition disabled:opacity-40"
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-background-card text-primary-deep hover:bg-teal-100 transition disabled:opacity-40"
           >
             <GoArrowLeft size={20} />
           </button>
           <button
             onClick={handleNext}
             disabled={startIndex + cardsPerPage >= data.length}
-            className="w-10 h-10 flex items-center justify-center rounded-full bg-teal-50 text-teal-500 hover:bg-teal-100 transition disabled:opacity-40"
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-background-card text-primary-deep hover:bg-teal-100 transition disabled:opacity-40"
           >
             <GoArrowRight size={20} />
           </button>
