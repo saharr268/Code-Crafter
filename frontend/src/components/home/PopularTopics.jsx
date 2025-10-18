@@ -1,7 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { urlImageHandler } from "../../helpers/utils/images";
+import { CustomImage } from "../controllers/CustomImage";
+import { map } from "lodash";
+import { CustomShimmer } from "../controllers/CustomShimmer";
 
-export default function PopularTopics({ data }) {
+export default function PopularTopics({ data, isLoading }) {
   const navigate = useNavigate();
   return (
     <section className="w-full bg-white py-16 px-4 lg:px-12">
@@ -19,28 +22,33 @@ export default function PopularTopics({ data }) {
 
         {/* Cards wrapper */}
         <div className="flex flex-wrap justify-center lg:justify-between gap-8 flex-1">
-          {data.map((topic) => (
-            <div
-              key={topic.id}
-              onClick={() => navigate(`learn/lesson/${topic.id}`)}
-              className="flex flex-col items-start w-full sm:w-64 md:w-72 lg:w-[30%]"
-            >
-              {/* Card */}
-              <div className="relative bg-background-card rounded-2xl p-6 w-full h-80 flex items-center justify-center hover:shadow-md transition">
-                {/* Image */}
-                <img
-                  src={urlImageHandler(topic.thumbnail_url)}
-                  alt={topic.title}
-                  className="w-[240px] h-[240px] object-contain"
-                />
-              </div>
+          {!isLoading
+            ? data &&
+              data.map((topic) => (
+                <div
+                  key={topic.id}
+                  onClick={() => navigate(`learn/lesson/${topic.id}`)}
+                  className="flex flex-col items-start w-full sm:w-64 md:w-72 lg:w-[30%]"
+                >
+                  {/* Card */}
+                  <div className="relative bg-background-card rounded-2xl p-6 w-full h-80 flex items-center justify-center hover:shadow-md transition">
+                    {/* Image */}
+                    <CustomImage
+                      src={urlImageHandler(topic.thumbnail_url)}
+                      alt={topic.title}
+                      className="w-[240px] h-[240px] object-contain"
+                    />
+                  </div>
 
-              {/* Title under card */}
-              <p className="mt-4 w-full text-right text-base font-medium text-text-body">
-                {topic.title}
-              </p>
-            </div>
-          ))}
+                  {/* Title under card */}
+                  <p className="mt-4 w-full text-right text-base font-medium text-text-body">
+                    {topic.title}
+                  </p>
+                </div>
+              ))
+            : map([1, 2, 3], () => (
+                <CustomShimmer className={"w-[380px] h-[360px]"} />
+              ))}
         </div>
 
         {/* Right Arrow */}

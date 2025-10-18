@@ -6,7 +6,11 @@ import { PAGE_SIZE } from "../../helpers/constant/statics";
 import { useLessonData } from "../../services/hooks/lessons";
 
 const LearnPage = () => {
-  const { data: getLessonData } = useLessonData(1, PAGE_SIZE, undefined);
+  const { data: getLessonData, isPending } = useLessonData(
+    1,
+    PAGE_SIZE,
+    undefined
+  );
 
   const data = getLessonData?.data ?? [];
   console.log("🚀 ~ LearnPage ~ data:", data);
@@ -15,8 +19,8 @@ const LearnPage = () => {
 
   return (
     <div>
-      <MostVisitedPost data={recommendedLesson} />
-      <AllPosts data={data} />
+      <MostVisitedPost data={recommendedLesson} isLoading={isPending} />
+      <AllPosts data={data} isLoading={isPending} />
       <Footer />
     </div>
   );

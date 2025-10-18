@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
+import { CustomShimmer } from "../controllers/CustomShimmer";
+import { map } from "lodash";
 
-const Testimonials = ({ data }) => {
+const Testimonials = ({ data, isLoading }) => {
   const [startIndex, setStartIndex] = useState(0);
 
   const [cardsPerPage, setCardsPerPage] = useState(3);
@@ -49,32 +51,36 @@ const Testimonials = ({ data }) => {
 
         {/* کارت‌ها */}
         <div className="flex justify-center gap-8 w-full px-20">
-          {visibleTestimonials.map((t, index) => (
-            <div
-              key={index}
-              className="bg-background-card p-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow w-1/3 max-w-sm"
-            >
-              {/* Stars */}
-              <div className="flex justify-end mb-6">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <span
-                    key={i}
-                    className={`text-xl ${
-                      i < t.rate ? "text-[#FFCF0F]" : "text-gray-300"
-                    }`}
-                  >
-                    ★
-                  </span>
-                ))}
-              </div>
-              <p className="text-text-body text-right leading-relaxed mb-6">
-                {t.comment_text}
-              </p>
-              <p className="text-primary-deep text-sm font-medium text-right">
-                {t.created_at} {/* //! CREATE THE DATE HANDLER FOR THIS */}
-              </p>
-            </div>
-          ))}
+          {!isLoading
+            ? visibleTestimonials?.map((t, index) => (
+                <div
+                  key={index}
+                  className="bg-background-card p-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow w-1/3 max-w-sm"
+                >
+                  {/* Stars */}
+                  <div className="flex justify-end mb-6">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <span
+                        key={i}
+                        className={`text-xl ${
+                          i < t.rate ? "text-[#FFCF0F]" : "text-gray-300"
+                        }`}
+                      >
+                        ★
+                      </span>
+                    ))}
+                  </div>
+                  <p className="text-text-body text-right leading-relaxed mb-6">
+                    {t.comment_text}
+                  </p>
+                  <p className="text-primary-deep text-sm font-medium text-right">
+                    {t.created_at} {/* //! CREATE THE DATE HANDLER FOR THIS */}
+                  </p>
+                </div>
+              ))
+            : map([1, 2, 3], () => (
+                <CustomShimmer className={"w-[380px] h-[220px]"} />
+              ))}
         </div>
 
         <button

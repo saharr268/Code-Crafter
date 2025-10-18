@@ -14,11 +14,19 @@ import { slice } from "lodash";
 import { useCommentData } from "../services/hooks/comments";
 
 const Home = () => {
-  const { data: lessonSearch } = useLessonData(1, PAGE_SIZE, undefined);
+  const { data: lessonSearch, isPending: isPendingLesson } = useLessonData(
+    1,
+    PAGE_SIZE,
+    undefined
+  );
 
   const lessonData = slice(lessonSearch?.data, 0, 3);
 
-  const { data: commentSearch } = useCommentData(1, PAGE_SIZE, undefined);
+  const { data: commentSearch, isPending: isPendingComment } = useCommentData(
+    1,
+    PAGE_SIZE,
+    undefined
+  );
 
   const commentData = commentSearch?.data ?? [];
 
@@ -28,9 +36,9 @@ const Home = () => {
       <HeroBanner />
       <AboutSection />
       <CardSection />
-      <Testimonials data={commentData} />
+      <Testimonials data={commentData} isLoading={isPendingComment} />
       <MobileBanner />
-      <PopularTopics data={lessonData} />
+      <PopularTopics data={lessonData} isLoading={isPendingLesson} />
       <Footer />
     </div>
   );
