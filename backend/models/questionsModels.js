@@ -41,6 +41,13 @@ export const questionById = async (id) => {
   return result.rows[0];
 };
 
+export const questionByQuizId = async (id) => {
+  const result = await db.query("SELECT * FROM questions WHERE quiz_id = $1", [
+    id,
+  ]);
+  return result.rows;
+};
+
 export const createQuestion = async ({
   quiz_id,
   question_text,

@@ -36,12 +36,19 @@ export const getAllQuestionOptions = async ({ keyword }) => {
   };
 };
 
-export const question_optionById = async (id) => {
+export const questionOptionById = async (id) => {
   const result = await db.query(
     "SELECT * FROM question_options WHERE id = $1",
     [id]
   );
   return result.rows[0];
+};
+export const questionOptionByQuestionId = async (id) => {
+  const result = await db.query(
+    "SELECT * FROM question_options WHERE question_id = $1",
+    [id]
+  );
+  return result.rows;
 };
 
 export const createQuestionOption = async ({

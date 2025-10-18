@@ -6,13 +6,13 @@ import ResourcesPage from "./pages/ResourcesPage";
 import MessagingApp from "./pages/MessagingApp";
 import BrowserExtension from "./pages/BrowserExtension";
 import AntiViruses from "./pages/AntiViruses";
-import Quiz from "./pages/Quiz";
-import QuizResult from "./components/quiz/QuizResult";
-
+import Quiz from "./pages/quiz/Quiz";
+import QuizResult from "./pages/quiz/QuizResult";
 import PracticePage from "./pages/quiz/PracticePage";
 import SupportPage from "./pages/SupportPage";
 import LearnPage from "./pages/learn/LearnPage";
 import TopicPage from "./pages/learn/TopicPage";
+import QuizAnswers from "./pages/quiz/QuizAnswers";
 
 export const routes = [
   {
@@ -31,14 +31,13 @@ export const routes = [
         path: "practice",
         children: [
           { index: true, element: <PracticePage /> },
-          { path: "quiz/:id", element: <TopicPage /> },
+          { path: "quiz/:id", element: <Quiz /> },
+          { path: "result/:id", element: <QuizResult /> },
+          { path: "answers/:id", element: <QuizAnswers /> },
         ],
       },
 
       { path: "support", element: <SupportPage /> },
-      { path: "quiz", element: <Quiz /> },
-      { path: "quiz/result", element: <QuizResult /> },
-
       // Resources به‌عنوان مسیر جدا:
       { path: "resources", element: <ResourcesPage /> },
       // جزئیات منبع با پارامتر id:

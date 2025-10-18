@@ -1,9 +1,10 @@
 import {
   editQuestionOption,
-  question_optionById,
+  questionOptionById,
   createQuestionOption,
   getAllQuestionOptions,
   removeQuestionOption,
+  questionOptionByQuestionId,
 } from "../models/questionOptionsModels.js";
 
 export const getQuestionOptions = async (req, res) => {
@@ -35,7 +36,22 @@ export const getQuestionOptionById = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const question_option = await question_optionById(id);
+    const question_option = await questionOptionById(id);
+    if (!question_option) {
+      return res.status(404).json({ error: "QuestionOption not found" });
+    }
+    res.json(question_option);
+  } catch (err) {
+    console.log("Error fetching question_option by id: ", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+export const getOuestionOptionByQuestionId = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const question_option = await questionOptionByQuestionId(id);
     if (!question_option) {
       return res.status(404).json({ error: "QuestionOption not found" });
     }

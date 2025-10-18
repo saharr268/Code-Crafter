@@ -4,6 +4,7 @@ import {
   createQuizAttempt,
   getAllQuizAttempts,
   removeQuizAttempt,
+  quizAttemptByQuizId,
 } from "../models/quizAttemptsModels.js";
 
 export const getQuizAttempts = async (req, res) => {
@@ -38,6 +39,21 @@ export const getQuizAttemptById = async (req, res) => {
 
   try {
     const quiz_attempt = await quizAttemptById(id);
+    if (!quiz_attempt) {
+      return res.status(404).json({ error: "QuizAttempt not found" });
+    }
+    res.json(quiz_attempt);
+  } catch (err) {
+    console.log("Error fetching quiz_attempt by id: ", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+export const getQuizAttemptByQuizId = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const quiz_attempt = await quizAttemptByQuizId(id);
     if (!quiz_attempt) {
       return res.status(404).json({ error: "QuizAttempt not found" });
     }

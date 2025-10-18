@@ -4,6 +4,7 @@ import {
   createQuestion,
   getAllQuestions,
   removeQuestion,
+  questionByQuizId,
 } from "../models/questionsModels.js";
 
 export const getQuestions = async (req, res) => {
@@ -41,6 +42,21 @@ export const getQuestionById = async (req, res) => {
     res.json(question);
   } catch (err) {
     console.log("Error fetching question by id: ", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+export const getQuestionByQuizId = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const question = await questionByQuizId(id);
+    if (!question) {
+      return res.status(404).json({ error: "Question not found" });
+    }
+    res.json(question);
+  } catch (err) {
+    console.log("Error fetching question by quiz id: ", err);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };

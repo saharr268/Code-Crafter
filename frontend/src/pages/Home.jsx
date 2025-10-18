@@ -12,7 +12,6 @@ import { PAGE_SIZE } from "../helpers/constant/statics";
 
 import { slice } from "lodash";
 import { useCommentData } from "../services/hooks/comments";
-import QuizList from "../components/home/Quizlist";
 
 const Home = () => {
   const { data: lessonSearch, isPending: isPendingLesson } = useLessonData(
@@ -40,10 +39,9 @@ const Home = () => {
       <Testimonials data={commentData} isLoading={isPendingComment} />
       <MobileBanner />
       <PopularTopics data={lessonData} isLoading={isPendingLesson} />
-      <CommentsSection />
-      <BannerSection />
-      <MostViewedSection />
-      <QuizList />
+      {/* <CommentsSection /> */}
+      {/* <BannerSection /> */}
+      {/* <MostViewedSection /> */}
       <Footer />
     </div>
   );
