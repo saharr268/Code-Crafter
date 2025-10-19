@@ -1,20 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { GoArrowLeft } from "react-icons/go";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   useGetOuestionOptionByQuestionId,
   useGetQuestionByQuizId,
 } from "../../services/hooks/questions";
-import { useCreateQuizAttempt } from "../../services/hooks/quizzes";
-import { tryCatchHandler } from "../../helpers/utils/handlers";
+import Footer from "../../components/common/Footer";
 
 const Quiz = () => {
   const [current, setCurrent] = useState(0);
+  const [answers, setAnswers] = useState([]);
   const [score, setScore] = useState(0);
   const [selected, setSelected] = useState(null);
   const navigate = useNavigate();
-
-  const [startTime, setStartTime] = useState(null);
 
   const { id: currentQuizId } = useParams();
 
@@ -25,53 +23,49 @@ const Quiz = () => {
   const { data: questionOptionsById, isPending } =
     useGetOuestionOptionByQuestionId(questions[current]?.id);
 
-  const { mutateAsync: createQuizAttempt } = useCreateQuizAttempt();
-
   const questionOptions = questionOptionsById?.data ?? [];
 
   const handleNext = () => {
-    if (selected === questions[current].correct_answer) {
-      setScore(score + 1);
-    }
+    const isCorrect = selected === questions[current].correct_answer;
 
+    // save this question’s result in state
+    setAnswers((prev) => [
+      ...prev,
+      {
+        questionId: questions[current].id,
+        questionText: questions[current].question_text,
+        selected,
+        correctAnswer: questions[current].correct_answer,
+        isCorrect,
+      },
+    ]);
+
+    // update score
+    if (isCorrect) setScore((prev) => prev + 1);
+
+    // go next or finish
     if (current < questions.length - 1) {
       setCurrent(current + 1);
       setSelected(null);
     } else {
-      tryCatchHandler({
-        handler: async () => {
-          const endTime = Date.now();
-          const durationSeconds = Math.floor((endTime - startTime) / 1000);
-
-          const finalValues = {
-            quiz_id: currentQuizId,
-            score,
-            duration_seconds: durationSeconds,
-            started_at: new Date(startTime).toISOString(),
-            ended_at: new Date(endTime).toISOString(),
-          };
-
-          await createQuizAttempt(finalValues);
-          navigate(`/practice/result/${currentQuizId}`, {
-            state: { total: questions?.length },
-          });
+      // done! navigate to result page
+      navigate(`/practice/result/${currentQuizId}`, {
+        state: {
+          total: questions.length,
+          score: score + (isCorrect ? 1 : 0),
+          answers,
         },
       });
     }
   };
-
   const handleBack = () => {
     if (current > 0) setCurrent(current - 1);
   };
 
   const progress = ((current + 1) / questions.length) * 100;
 
-  useEffect(() => {
-    setStartTime(Date.now());
-  }, []);
-
   return (
-    <div dir="rtl" className="w-full min-h-screen flex flex-col  bg-white">
+    <div dir="rtl" className="w-full flex flex-col  bg-white">
       {/* Header Section */}
       <header className="bg-black text-white p-6 flex items-center justify-between">
         <div className="flex items-center">
@@ -86,7 +80,7 @@ const Quiz = () => {
         </div>
       </header>
 
-      <main className="w-full h-full px-[100px] flex flex-col mt-12 gap-4">
+      <main className="w-full h-full px-[100px] flex flex-col mt-8 mb-24 gap-4">
         <div className="w-full flex justify-end">
           <div className="w-fit">
             <p className="text-base mb-2 text-right">
@@ -112,9 +106,9 @@ const Quiz = () => {
             {questionOptions?.map(({ id, option_text }) => (
               <button
                 key={id}
-                onClick={() => setSelected(id)}
+                onClick={() => setSelected(option_text)}
                 className={`py-4 px-6 rounded-xl border transition-colors text-black text-start text-xl ${
-                  selected === id
+                  selected === option_text
                     ? "border-purple-500 text-purple-600 bg-purple-50"
                     : "bg-gray-100 hover:bg-gray-200 text-gray-700"
                 }`}
@@ -142,20 +136,7 @@ const Quiz = () => {
           </div>
         </div>
       </main>
-
-      {/* <footer className="bg-black text-white text-center py-6 ">
-        <div className="flex justify-center gap-6 mt-6 mb-6 text-sm">
-          <a className="hover:text-teal-500" href="#">
-            خانه
-          </a>
-          <a className="hover:text-teal-500" href="#">
-            پشتیبانی
-          </a>
-        </div>
-        <p className="text-xs mb-6">
-          © 2025 Code Crafter, All Rights Reserved.
-        </p>
-      </footer> */}
+      <Footer />
     </div>
   );
 };

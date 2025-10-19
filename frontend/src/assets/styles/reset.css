@@ -109,8 +109,9 @@ section {
   display: block;
 }
 body {
+
   line-height: 1;
-  background-color: #FAFAFB;
+  background-color: white;
 }
 
 

@@ -1,18 +1,14 @@
 import React from "react";
 import { GoArrowLeft } from "react-icons/go";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { useGetQuizAttemptByQuizId } from "../../services/hooks/quizzes";
+import Footer from "../../components/common/Footer";
 
 const QuizResult = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { id: currentQuizId } = useParams();
-  const { total } = location.state || { total: 0 };
-
-  const { data: quizAttemptByQuiz } = useGetQuizAttemptByQuizId(currentQuizId);
-
-  const quizResult = quizAttemptByQuiz?.data ?? {};
-  console.log("🚀 ~ QuizResult ~ quizResult:", quizResult);
+  const { total, score, answers } = location.state || { total: 0, score: 0 };
+  console.log("🚀 ~ QuizResult ~ score:", score);
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
@@ -47,19 +43,21 @@ const QuizResult = () => {
             </p>
           </div>
 
-          <p className="text-6xl font-extrabold text-purple-700">
-            {quizResult?.score}
-          </p>
+          <p className="text-6xl font-extrabold text-purple-700">{score}</p>
 
           <div className="flex gap-4">
             <button
-              onClick={() => navigate(`/practice/answers/${currentQuizId}`)}
+              onClick={() =>
+                navigate(`/practice/answers/${currentQuizId}`, {
+                  state: { answers },
+                })
+              }
               className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg"
             >
               مشاهده‌ی جواب‌ها
             </button>
             <button
-              onClick={() => navigate("/quiz")}
+              onClick={() => navigate(`/practice/quiz/${currentQuizId}`)}
               className="bg-purple-100 hover:bg-purple-200 text-purple-700 px-12 py-3 text-lg rounded-lg"
             >
               تلاش دوباره
@@ -68,19 +66,7 @@ const QuizResult = () => {
         </div>
       </main>
 
-      {/* <footer className="bg-black text-white text-center py-6 mt-8">
-        <div dir="rtl" className="flex justify-center gap-6 mt-6 mb-6 text-sm">
-          <a className="hover:text-teal-500" href="#">
-            خانه
-          </a>
-          <a className="hover:text-teal-500" href="#">
-            پشتیبانی
-          </a>
-        </div>
-        <p className="text-xs mb-6">
-          © 2025 Code Crafter, All Rights Reserved.
-        </p>
-      </footer> */}
+      <Footer />
     </div>
   );
 };
