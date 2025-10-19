@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        yekan: ["BYekan", "sans-serif"],
+      },
       colors: {
         primary: {
           dark: "#009C9D",

@@ -12,7 +12,7 @@ export const askChatBot = async (req, res) => {
     if (result) {
       res.json({ answer: result.answer });
     } else {
-      res.json({ answer: "Hmm, I don't know that one yet!" });
+      res.json({ answer: "اینو هنوز نمیدونم!" });
     }
   } catch (error) {
     console.error(error);

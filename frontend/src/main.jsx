@@ -6,6 +6,7 @@ import MainLayout from "./components/layouts/MainLayout.jsx";
 
 import "./assets/styles/global.css";
 import "./assets/styles/reset.css";
+import "./assets/styles/styleSheet.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
