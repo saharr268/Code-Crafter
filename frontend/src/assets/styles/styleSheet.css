@@ -1,12 +1,55 @@
 @font-face {
-  font-family: 'BYekan';
-  src: url('../../assets/fonts/BYekan+ Bold.ttf') format('truetype');
-  font-weight: bold;
+  font-family: "BYekan";
+  src: url("../fonts/YekanBakh/YekanBakhFaNum-Thin.ttf");
+  font-weight: 100;
   font-style: normal;
+  font-display: swap;
 }
+
 @font-face {
-  font-family: 'BYekan';
-  src: url('../../assets/fonts/BYekan+.ttf') format('truetype');
+  font-family: "BYekan";
+  src: url("../fonts/YekanBakh/YekanBakhFaNum-Light.ttf");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BYekan";
+  src: url("../fonts/YekanBakh/YekanBakhFaNum-Regular.ttf");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BYekan";
+  src: url("../fonts/YekanBakh/YekanBakhFaNum-Bold.ttf");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BYekan";
+  src: url("../fonts/YekanBakh/YekanBakhFaNum-ExtraBold.ttf");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BYekan";
+  src: url("../fonts/YekanBakh/YekanBakhFaNum-Black.ttf");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BYekan";
+  src: url("../fonts/YekanBakh/YekanBakhFaNum-ExtraBlack.ttf");
+  font-weight: 950;
+  font-style: normal;
+  font-display: swap;
 }

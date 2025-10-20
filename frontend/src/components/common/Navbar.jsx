@@ -20,11 +20,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed left-6 right-6 z-50 transition-all duration-500 rounded-full sm:m-0
-        ${
-          scrolled
-            ? "bg-gray-700/30 backdrop-blur-lg"
-            : "bg-[#F5F5F5] backdrop-blur-lg"
-        }`}
+        ${scrolled ? "bg-[#101312]" : "bg-[#F5F5F5] backdrop-blur-lg"}`}
     >
       <div className="max-w-screen mx-auto px-4 py-3 flex items-center justify-between">
         {/* دکمه منوی موبایل */}
@@ -51,9 +47,10 @@ export default function Navbar() {
               ? "flex flex-col absolute top-20 left-0 right-0 bg-background-dark/90 py-5 shadow-lg md:hidden"
               : "hidden md:flex"
           } md:flex-row items-center gap-6 text-xl sm:py-1 sm:px-4 sm:gap-4 md:px-6 sm:ml-0 md:rounded-full transition
-    ${isHome && !scrolled ? "bg-white shadow-md" : "bg-transparent"}`}
+    ${isHome && !scrolled ? "bg-white shadow-md " : "bg-transparent "}`}
         >
           {[
+            { href: "/resources", text: "منابع" },
             { href: "/support", text: "پشتیبانی" },
             { href: "/practice", text: "تمرین" },
             { href: "/learn", text: "آموزش" },
@@ -62,7 +59,9 @@ export default function Navbar() {
             <a
               key={i}
               href={link.href}
-              className="px-4 py-2 rounded-full transition-all duration-300 text-text-heading hover:text-primary-dark"
+              className={`px-4 py-2 rounded-full transition-all duration-300 ${
+                scrolled ? "text-white" : "text-text-heading"
+              }  hover:text-primary-dark`}
             >
               {link.text}
             </a>
