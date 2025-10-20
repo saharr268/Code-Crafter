@@ -3,7 +3,7 @@ export default function OfflineTips() {
     <section className="bg-white flex justify-center items-center py-12">
       <div
         dir="rtl"
-        className="bg-teal-600 pr-40 text-white w-full rounded-[55px] shadow-lg p-10 leading-8"
+        className="bg-accent-deep text-md sm:pr-40 text-white w-full rounded-[55px] shadow-lg p-10 leading-8"
       >
         {/* عنوان */}
         <h2 className="text-2xl font-bold mb-6">نکات دسترسی آفلاین</h2>

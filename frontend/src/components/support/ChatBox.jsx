@@ -6,6 +6,7 @@ import { CommentValidation } from "../../helpers/utils/validations";
 
 export default function MessageBox() {
   const { mutateAsync: createComment } = useCreateComment();
+
   const formIK = useFormik({
     initialValues: { comment_text: "", rate: "", is_accepted: "" },
     enableReinitialize: true,
@@ -21,7 +22,6 @@ export default function MessageBox() {
             is_accepted: true,
           };
           const res = await createComment(finalValues);
-
           return res;
         },
         successMessage: "دیدگاهتان فرستاده شد!",
@@ -31,15 +31,15 @@ export default function MessageBox() {
   });
 
   return (
-    <section className="w-full flex justify-center items-center py-12 px-4 pr-96 bg-white">
+    <section className="w-full flex justify-center items-center py-12 px-4 sm:px-8 bg-white">
       <div
         dir="rtl"
         className="w-full max-w-3xl bg-slate-50 rounded-lg shadow-sm p-8"
       >
-        <h2 className="text-xl font-bold mb-3 text-gray-900">
-          صندوق ارسال پیام
+        <h2 className="text-2xl font-bold mb-3 text-text-heading">
+          صندوق ارسال دیدگاه
         </h2>
-        <p className="text-gray-600 text-sm leading-6 mb-6">
+        <p className="text-text-body text-md leading-6 mb-6">
           دوست عزیز! اگر جوابی برای سوالی که داری در بخش سوالات متداول وجود
           نداشت، می‌توانی به‌صورت ناشناس برای ما پیام ارسال کنی. تیم مدیریت در
           بخش پاسخ پیام‌های شما به آن جواب خواهد داد.
@@ -49,28 +49,39 @@ export default function MessageBox() {
         <form onSubmit={formIK.handleSubmit} className="space-y-4">
           <div className="relative">
             <textarea
+              id="comment_text"
+              name="comment_text"
               value={formIK.values.comment_text}
               onChange={formIK.handleChange}
               placeholder="پیام خود را بنویسید..."
-              className="w-full min-h-[300px] p-4 rounded-lg border  bg-gray-200 border-gray-300 focus:ring-2 focus:ring-teal-500 focus:outline-none text-gray-800 resize-none"
+              className="w-full min-h-[300px] p-4 rounded-lg border bg-gray-200 border-gray-300 focus:ring-2 focus:ring-primary-deep focus:outline-none text-text-heading resize-none"
             ></textarea>
-            {formIK.errors.comment_text && <p>{formIK.errors.comment_text}</p>}
 
-            {/*  Uplode image ico*/}
-            <button
-              type="button"
-              className="absolute bottom-4 left-[670px]  text-gray-500 hover:text-teal-600"
-            >
-              <FaRegImage size={20} />
-            </button>
+            {formIK.errors.comment_text && (
+              <p className="text-red-500 text-sm mt-1">
+                {formIK.errors.comment_text}
+              </p>
+            )}
 
-            {/* send button */}
-            <button
-              type="submit"
-              className="px-6 py-2 bg-teal-600 absolute right-[560px] bottom-6 text-white rounded-md hover:bg-teal-700 transition"
-            >
-              ارسال پیام
-            </button>
+            {/* Action buttons (upload + send) */}
+            <div className="flex justify-between items-center mt-4">
+              {/* Upload image icon */}
+              <button
+                type="button"
+                className="flex items-center gap-2 text-gray-600 hover:text-primary-dark transition"
+              >
+                <FaRegImage size={20} />
+                <span className="hidden sm:inline">افزودن تصویر</span>
+              </button>
+
+              {/* Send button */}
+              <button
+                type="submit"
+                className="px-6 py-2 bg-primary-deep text-white rounded-md hover:bg-primary-dark transition"
+              >
+                ارسال پیام
+              </button>
+            </div>
           </div>
         </form>
       </div>

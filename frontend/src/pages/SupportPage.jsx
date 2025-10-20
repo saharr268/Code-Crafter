@@ -6,12 +6,12 @@ import MessageBox from '../components/support/ChatBox'
 
 const SupportPage = () => {
   return (
-    <div>
+    <div className="overflow-hidden">
       <Faq />
       <OfflineTips />
-      <MessageBox/>
-      <AnswerQuestions/>
-      <Footer/>
+      <MessageBox />
+      {/* <AnswerQuestions/> */}
+      <Footer />
     </div>
   );
 }

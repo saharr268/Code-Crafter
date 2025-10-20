@@ -15,14 +15,14 @@ export default function FAQSection() {
   console.log("🚀 ~ FAQSection ~ faqsSearch:", faqsSearch);
 
   return (
-    <section className="bg-white min-h-screen">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-44 justify-center items-center">
-        <div className="absolute top-0 left-0 w-full mt-6">
-          <Navbar />
-        </div>
+    <section className="bg-white">
+      <div className="mt-6 py-3 px-4">
+        <Navbar />
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-3 mt-32  gap-10 justify-center items-center">
         {/* Left side - FAQs */}
         <div className="md:col-span-2 pl-16">
-          <h2 className="text-2xl font-bold mb-8 text-right">سوالات مکرر</h2>
+          <h2 className="text-2xl font-bold text-right sm:mr-6">سوالات مکرر</h2>
           <div className="space-y-4">
             {faqsSearch?.data?.map(({ title, descriptoin }, index) => (
               <div
@@ -51,7 +51,7 @@ export default function FAQSection() {
         </div>
 
         {/* Right side - Box */}
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-32">
           <div className="bg-black text-white w-[300px] h-[340px] rounded-2xl p-6 text-right">
             <h3 className="text-teal-400 px-2 py-4">سوالات مکرر</h3>
             <ul className="space-y-2 text-sm ">

@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom"; // 👈 مسیر فعلی
+import { useLocation } from "react-router-dom";
 import { Menu, Globe } from "lucide-react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const location = useLocation(); // مسیر فعلی صفحه
+  const location = useLocation();
   const pathname = location.pathname;
-  const isHome = pathname === "/"; // بررسی اینکه در صفحه Home هستیم یا نه
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,7 +35,6 @@ export default function Navbar() {
           <Menu size={24} />
         </button>
 
-        {/* دکمه تغییر زبان */}
         <div className="hidden md:flex relative items-center gap-1">
           <button className="absolute px-6 py-2 rounded-full text-lg bg-background-dark text-white">
             فارسی
@@ -45,7 +44,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* منو */}
+        {/* menu */}
         <nav
           className={`${
             menuOpen
@@ -70,12 +69,11 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* آیکن کره زمین در موبایل */}
+      
         <button className="md:hidden p-2 rounded-lg bg-primary-muted ml-32 text-text-heading shadow">
           <Globe size={20} />
         </button>
 
-        {/* لوگو */}
         <div className="flex items-center px-3 py-2 rounded-full sm:mr-10 sm:px-5 font-semibold text-sm bg-background-dark text-white">
           لوگوی صدا
         </div>
