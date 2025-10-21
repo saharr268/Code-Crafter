@@ -8,6 +8,10 @@ export default function Faq() {
   const [openIndex, setOpenIndex] = useState(null);
   const { data: faqsSearch } = useFaqData(1, PAGE_SIZE, undefined);
 
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
     <section className="bg-white">
       <div className="mt-6 py-3 px-4">
@@ -25,7 +29,7 @@ export default function Faq() {
                 dir="rtl"
               >
                 <button
-                  onClick={() => setOpenIndex(idx)}
+                  onClick={() => toggleFAQ(idx)}
                   className="w-full flex items-center justify-between px-4 py-3 text-right"
                   aria-expanded={openIndex === idx}
                 >
