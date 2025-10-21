@@ -86,7 +86,7 @@ const Testimonials = ({ data, isLoading }) => {
                   </div>
                 ))
               : map([1, 2, 3], () => (
-                  <CustomShimmer className={"w-[380px] h-[220px]"} />
+                  <CustomShimmer className={"w-[380px] h-[256px]"} />
                 ))}
           </div>
 

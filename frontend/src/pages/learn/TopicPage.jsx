@@ -9,6 +9,7 @@ import { filter, map } from "lodash";
 import { useGetQuizByLessonId } from "../../services/hooks/quizzes";
 import { CustomShimmer } from "../../components/controllers/CustomShimmer";
 import { AnimationSlideIn } from "../../components/common/Animations";
+import Footer from "../../components/common/Footer";
 
 const TopicPage = () => {
   const { id: currentId } = useParams();
@@ -20,7 +21,7 @@ const TopicPage = () => {
   const { data: lessons, isPending } = useLessonData(1, PAGE_SIZE, undefined);
 
   const lessonData = filter(
-    [lessons?.data[11], lessons?.data[8]],
+    [lessons?.data[11], lessons?.data[8], lessons?.data[4], lessons?.data[2]],
     (lesson) => lesson !== undefined
   );
 
@@ -42,7 +43,7 @@ const TopicPage = () => {
           style={{ direction: "ltr" }}
         >
           <aside
-            className="bg-[#F5F5F5] rounded-2xl p-6 order-1 lg:order-1 h-fit lg:sticky top-32 self-start"
+            className="bg-[#F5F5F5] rounded-2xl p-6 order-1 lg:order-1 h-fit lg:sticky top-20 self-start"
             style={{ direction: "rtl" }}
           >
             <h3 className="text-2xl font-bold mb-4 text-gray-800">
@@ -50,7 +51,9 @@ const TopicPage = () => {
             </h3>
             <div className="flex flex-col gap-5 mt-6 ">
               {isPending
-                ? map([1, 2], () => <CustomShimmer className="w-full h-24" />)
+                ? map([1, 2, 3, 4], () => (
+                    <CustomShimmer className="w-full h-24" />
+                  ))
                 : lessonData?.map(({ id, thumbnail_url, title }) => (
                     <div
                       key={id}
@@ -59,7 +62,7 @@ const TopicPage = () => {
                       <img
                         src={urlImageHandler(thumbnail_url)}
                         alt={title}
-                        className="w-48 h-24 rounded-xl object-contain bg-accent-deep"
+                        className="w-48 h-24 rounded-xl object-contain bg-gray-200"
                       />
                       <h3 className="text-gray-800 font-medium text-base text-right w-1/2 leading-relaxed">
                         {title}
@@ -154,6 +157,7 @@ const TopicPage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </AnimationSlideIn>
   );
 };

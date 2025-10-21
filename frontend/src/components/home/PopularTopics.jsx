@@ -24,7 +24,7 @@ export default function PopularTopics({ data, isLoading }) {
                   <div
                     key={topic.id}
                     onClick={() => navigate(`learn/lesson/${topic.id}`)}
-                    className="flex flex-col items-start w-full sm:w-64 md:w-96 lg:w-50"
+                    className="flex flex-col items-start w-full sm:w-64 md:w-96 lg:w-50 cursor-pointer"
                   >
                     {/* Card */}
                     <div className="relative bg-background-card rounded-2xl py-20 p-12 w-full h-100 flex items-center justify-center hover:shadow-md transition">

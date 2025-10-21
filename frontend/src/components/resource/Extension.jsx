@@ -1,12 +1,12 @@
 // frontend/src/components/ResourceSection.jsx
-import ResourceCard from './ResourceCard';
+import ResourceCard from "./ResourceCard";
 import googletranslateLogo from "../../assets/images/google-translate.png";
 import lastpassLogo from "../../assets/images/lastpass.webp";
 import adblockLogo from "../../assets/images/adblock.png";
 import googlekeepLogo from "../../assets/images/googlekeep.png";
 import ublockLogo from "../../assets/images/ublock.png";
-import Navbar from '../common/Navbar';
-
+import Navbar from "../common/Navbar";
+import { AnimationSlideIn } from "../common/Animations";
 
 const resourceData = [
   {
@@ -45,12 +45,11 @@ const resourceData = [
     logo: adblockLogo,
     rating: "4.4",
     features: [
-    "تبلیغات مزاحم در صفحات وب، از جمله بنرها، پنجره‌های پاپ‌آپ و تبلیغات ویدیویی را مسدود می‌کند",
-    "ردیابی کاربران در وب‌سایت‌ها را مسدود می‌کند و از جمع‌آوری اطلاعات توسط شرکت‌های تبلیغاتی جلوگیری می‌کند",
-    "از دسترسی به وب‌سایت‌هایی که حاوی بدافزار یا تبلیغات مخرب هستند، جلوگیری می‌کند",
-    "کاربران می‌توانند لیست‌های سفارشی خود را برای فیلتر کردن محتوا ایجاد کنند و سایت‌های مورد نظرشان را به لیست سفید اضافه نمایند",
-    "با مسدود کردن تبلیغات، مصرف پهنای باند اینترنت را کاهش می‌دهد و سرعت بارگذاری صفحات را بهبود می‌بخشد",
-
+      "تبلیغات مزاحم در صفحات وب، از جمله بنرها، پنجره‌های پاپ‌آپ و تبلیغات ویدیویی را مسدود می‌کند",
+      "ردیابی کاربران در وب‌سایت‌ها را مسدود می‌کند و از جمع‌آوری اطلاعات توسط شرکت‌های تبلیغاتی جلوگیری می‌کند",
+      "از دسترسی به وب‌سایت‌هایی که حاوی بدافزار یا تبلیغات مخرب هستند، جلوگیری می‌کند",
+      "کاربران می‌توانند لیست‌های سفارشی خود را برای فیلتر کردن محتوا ایجاد کنند و سایت‌های مورد نظرشان را به لیست سفید اضافه نمایند",
+      "با مسدود کردن تبلیغات، مصرف پهنای باند اینترنت را کاهش می‌دهد و سرعت بارگذاری صفحات را بهبود می‌بخشد",
     ],
     link: "https://chromewebstore.google.com/detail/adblock-plus-free-ad-bloc/cfhdojbkjhnklbpkdaibdccddilifddb",
   },
@@ -82,32 +81,33 @@ const resourceData = [
       "پشتیبانی از بیش از ۵۰ زبان مختلف",
       "قابلیت فعال و غیرفعال کردن لیست‌های فیلترهای مختلف را فراهم می‌کند",
       "می‌توانید اسکریپت‌ها را به صورت موقت یا دائم مسدود کنید",
-      "یوبلاک اوریجین داده‌های کاربران را نمی‌فروشد و در برنامه‌های لیست سفید تبلیغات شرکت نمی‌کند"
-      
+      "یوبلاک اوریجین داده‌های کاربران را نمی‌فروشد و در برنامه‌های لیست سفید تبلیغات شرکت نمی‌کند",
     ],
     link: "https://chromewebstore.google.com/detail/ublock/epcnnfbjfcgphgdmggkamkmgojdagdnn?hl=en",
   },
-
 ];
 
 const ResourceSection = () => {
   return (
     <section className="bg-gray-50 py-40 px-4 sm:px-8">
       <div className="top-6 px-6 w-full z-50 fixed">
-        <Navbar/>
+        <Navbar />
       </div>
       <div className="max-w-6xl mx-auto text-right mr-12 mb-10">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">
           Browser Extensions
         </h2>
         <p className="text-gray-600 text-sm md:text-base">
-          مجموعه‌ای از مفیدترین و مطمئن‌ترین اکستنشن‌ها برای مرورگرهای شما جهت استفاده‌ای ایمن و آسان جمع‌آوری گردیده است
+          مجموعه‌ای از مفیدترین و مطمئن‌ترین اکستنشن‌ها برای مرورگرهای شما جهت
+          استفاده‌ای ایمن و آسان جمع‌آوری گردیده است
         </p>
       </div>
 
       <div className="space-y-6">
         {resourceData.map((vpn, index) => (
-          <ResourceCard key={index} {...vpn} />
+          <AnimationSlideIn direction="left">
+            <ResourceCard key={index} {...vpn} />
+          </AnimationSlideIn>
         ))}
       </div>
     </section>

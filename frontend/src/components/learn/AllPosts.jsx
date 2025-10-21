@@ -24,7 +24,7 @@ const AllPosts = ({ data, isLoading }) => {
                 <div
                   key={id}
                   onClick={() => nagivate(`lesson/${id}`)}
-                  className="flex flex-col items-center text-right"
+                  className="flex flex-col items-center text-right cursor-pointer"
                 >
                   {/* Card */}
                   <div className="bg-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 w-80 h-80 flex justify-center items-center p-8">

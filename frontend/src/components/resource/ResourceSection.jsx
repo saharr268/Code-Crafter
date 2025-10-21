@@ -1,12 +1,12 @@
 // frontend/src/components/ResourceSection.jsx
-import ResourceCard from './ResourceCard';
+import ResourceCard from "./ResourceCard";
 import expressvpnLogo from "../../assets/images/expressvpn.png";
 import nordvpnLogo from "../../assets/images/nordvpn.png";
 import clearvpnLogo from "../../assets/images/clearvpn.webp";
 import hotspotLogo from "../../assets/images/hotspot.webp";
 import protonLogo from "../../assets/images/protonvpn.png";
-import Navbar from '../common/Navbar';
-
+import Navbar from "../common/Navbar";
+import { AnimationSlideIn } from "../common/Animations";
 
 const resourceData = [
   {
@@ -53,8 +53,6 @@ const resourceData = [
       "پشتیبانی عالی از کاربران",
       "محافظت از حریم خصوصی، قابلیت تغییر موقعیت جغرافیایی",
       "این برنامه از تورنت پشتیبانی می‌کند پس می‌توانید به راحتی هر محتوایی را دانلود کنید",
-
-
     ],
     link: "https://www.clearvpn.com",
   },
@@ -96,20 +94,24 @@ const ResourceSection = () => {
   return (
     <section className="bg-gray-50 py-40 px-4 sm:px-8">
       <div className="top-6 px-6 w-full z-50 fixed">
-        <Navbar/>
+        <Navbar />
       </div>
       <div className="max-w-6xl mx-auto text-right mr-12 mb-10">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">
           وی‌پی‌ان برای انواع کامپیوتر و موبایل
         </h2>
         <p className="text-gray-600 text-sm md:text-base">
-          مجموعه‌ای از سریع‌ترین و مطمئن‌ترین وی‌پی‌ان‌های موجود جهت استفاده‌ای ایمن و آسان برای شما جمع‌آوری گردیده است
+          مجموعه‌ای از سریع‌ترین و مطمئن‌ترین وی‌پی‌ان‌های موجود جهت استفاده‌ای
+          ایمن و آسان برای شما جمع‌آوری گردیده است
         </p>
       </div>
 
       <div className="space-y-6">
         {resourceData.map((vpn, index) => (
-          <ResourceCard key={index} {...vpn} />
+          <AnimationSlideIn direction="left">
+            {" "}
+            <ResourceCard key={index} {...vpn} />
+          </AnimationSlideIn>
         ))}
       </div>
     </section>

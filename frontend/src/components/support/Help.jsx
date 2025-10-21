@@ -12,6 +12,7 @@ import { CommentValidation } from "../../helpers/utils/validations";
 import { PAGE_SIZE } from "../../helpers/constant/statics";
 import { map } from "lodash";
 import { CustomShimmer } from "../controllers/CustomShimmer";
+import { CustomRate } from "../controllers/CustomRate";
 
 const Help = () => {
   const faqRef = useRef(null);
@@ -31,7 +32,8 @@ const Help = () => {
     undefined
   );
 
-  const { mutateAsync: createComment } = useCreateComment();
+  const { mutateAsync: createComment, isPending: isLoading } =
+    useCreateComment();
   const formIK = useFormik({
     initialValues: { comment_text: "", rate: "", is_accepted: "" },
     enableReinitialize: true,
@@ -199,13 +201,13 @@ const Help = () => {
                 </p>
 
                 <form onSubmit={formIK.handleSubmit} className="space-y-2">
-                  <div className="relative">
+                  <div className="relative bg-background-card py-8 rounded-3xl">
                     <textarea
                       value={formIK.values.comment_text}
                       onChange={formIK.handleChange}
                       name="comment_text"
                       placeholder="پیام خود را بنویسید..."
-                      className="w-full min-h-[350px] p-8 rounded-lg bg-background-card border-gray-300 focus:ring-2 focus:ring-teal-500 focus:outline-none text-gray-800 resize-none"
+                      className="w-full min-h-[320px] px-8 rounded-lg bg-transparent border-gray-300 focus:ring-teal-500 focus:ring-0 focus:outline-none focus-visible:ring-0 text-gray-800 resize-none "
                     ></textarea>
                     {formIK.errors.comment_text && (
                       <p className="text-red-500 text-sm mt-1">
@@ -213,26 +215,19 @@ const Help = () => {
                       </p>
                     )}
 
-                    {/* Rating Stars */}
-                    <button
-                      type="button"
-                      className="absolute bottom-6 left-6 text-gray-500 hover:text-teal-600"
-                    >
-                      <div className="flex space-x-1 text-gray-300 text-2xl">
-                        <span className="hover:text-yellow-300">★</span>
-                        <span className="hover:text-yellow-300">★</span>
-                        <span className="hover:text-yellow-300">★</span>
-                        <span className="hover:text-yellow-300">★</span>
-                        <span className="hover:text-yellow-300">★</span>
-                      </div>
-                    </button>
-
-                    <button
-                      type="submit"
-                      className="absolute bottom-8 right-8 px-6 py-2 bg-teal-600 text-white rounded-md hover:bg-teal-700 transition"
-                    >
-                      ارسال پیام
-                    </button>
+                    <div className="flex px-8 justify-between items-center pt-8 border-solid border-[#DDDDDD] border-t-2">
+                      <CustomRate
+                        onChange={formIK.handleChange}
+                        value={formIK.values.rate}
+                        name="rate"
+                      />
+                      <button
+                        type="submit"
+                        className="px-8 py-4 bg-primary-deep text-white rounded-2xl hover:bg-primary-dark transition"
+                      >
+                        {isLoading ? "درحال بارگذازی..." : " ارسال پیام"}
+                      </button>
+                    </div>
                   </div>
                 </form>
               </div>

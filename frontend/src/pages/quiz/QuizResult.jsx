@@ -2,6 +2,7 @@ import React from "react";
 import { GoArrowLeft } from "react-icons/go";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Footer from "../../components/common/Footer";
+import logo from "../../assets/images/logo-s.png";
 
 const QuizResult = () => {
   const location = useLocation();
@@ -24,7 +25,7 @@ const QuizResult = () => {
             <GoArrowLeft size={24} />
           </button>
 
-          <img src="logo.png" alt="لوگو" className="h-10 object-contain" />
+          <img src={logo} alt="لوگو" className="h-10 object-contain" />
         </div>
       </header>
 

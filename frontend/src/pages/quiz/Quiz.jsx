@@ -7,6 +7,7 @@ import {
 } from "../../services/hooks/questions";
 import Footer from "../../components/common/Footer";
 import { CustomShimmer } from "../../components/controllers/CustomShimmer";
+import logo from "../../assets/images/logo-s.png";
 
 const Quiz = () => {
   const [current, setCurrent] = useState(0);
@@ -78,7 +79,7 @@ const Quiz = () => {
             <GoArrowLeft size={24} />
           </button>
 
-          <img src="logo.png" alt="لوگو" className="h-10 object-contain" />
+          <img src={logo} alt="لوگو" className="h-10 object-contain" />
         </div>
       </header>
 

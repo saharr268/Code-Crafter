@@ -42,7 +42,7 @@ const PracticePage = () => {
 
         {/* Grid cards */}
         <AnimationSlideIn direction="left">
-          <div className="flex flex-wrap justify-between px-[100px] gap-y-10 mt-11">
+          <div className="flex flex-wrap justify-between px-[134px] gap-y-7 mt-11">
             {!isPending
               ? data &&
                 data?.map(
