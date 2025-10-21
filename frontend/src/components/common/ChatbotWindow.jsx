@@ -9,6 +9,7 @@ import { chatbot2ICON, closeICON, sendICON } from "../others/SvgComponent";
 
 const ChatWindow = ({ isOpen, onClose }) => {
   const messagesEndRef = useRef(null);
+  const messageRef = useRef(null);
 
   const [messages, setMessages] = useState([
     { from: "bot", text: "چگونه می‌توانم کمکت کنم؟" },
@@ -44,28 +45,11 @@ const ChatWindow = ({ isOpen, onClose }) => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (
-        messagesEndRef.current &&
-        !messagesEndRef.current.contains(event.target)
-      ) {
-        onClose(); // closes chatbot
-      }
-    }
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isOpen, onClose]);
-
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
+          ref={messageRef}
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
@@ -92,33 +76,34 @@ const ChatWindow = ({ isOpen, onClose }) => {
           <div className="flex overflow-hidden flex-col justify-between h-full">
             {/* Messages */}
             <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-white over">
-              {messages.map((msg, i) => (
-                <div
-                  key={i}
-                  className={`p-3 space-y-2 flex ${
-                    msg.from === "bot" ? "justify-end" : "justify-start"
-                  }`}
-                >
+              {messages &&
+                messages.map((msg, i) => (
                   <div
                     key={i}
-                    className={`w-fit text-base  px-6 py-4 ${
-                      msg.from === "bot"
-                        ? "rounded-tr-[16px] rounded-br-[16px] rounded-bl-[16px] bg-gray-200 self-start"
-                        : "bg-purple-600 text-white rounded-tl-[16px] rounded-bl-[16px] rounded-br-[16px] self-start"
+                    className={`p-3 space-y-2 flex ${
+                      msg.from === "bot" ? "justify-end" : "justify-start"
                     }`}
                   >
-                    {msg.text === "..." ? (
-                      <div className="flex gap-1">
-                        <span className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></span>
-                        <span className="w-2 h-2 bg-gray-500 rounded-full animate-bounce delay-150"></span>
-                        <span className="w-2 h-2 bg-gray-500 rounded-full animate-bounce delay-300"></span>
-                      </div>
-                    ) : (
-                      msg.text
-                    )}
+                    <div
+                      key={i}
+                      className={`w-fit text-base  px-6 py-4 ${
+                        msg.from === "bot"
+                          ? "rounded-tr-[16px] rounded-br-[16px] rounded-bl-[16px] bg-gray-200 self-start"
+                          : "bg-purple-600 text-white rounded-tl-[16px] rounded-bl-[16px] rounded-br-[16px] self-start"
+                      }`}
+                    >
+                      {msg.text === "..." ? (
+                        <div className="flex gap-1">
+                          <span className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></span>
+                          <span className="w-2 h-2 bg-gray-500 rounded-full animate-bounce delay-150"></span>
+                          <span className="w-2 h-2 bg-gray-500 rounded-full animate-bounce delay-300"></span>
+                        </div>
+                      ) : (
+                        msg.text
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
               <div ref={messagesEndRef}></div>
             </div>
 
