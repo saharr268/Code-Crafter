@@ -4,13 +4,14 @@ import Navbar from "../../components/common/Navbar";
 import Footer from "../../components/common/Footer";
 import { useQuizData } from "../../services/hooks/quizzes";
 import { PAGE_SIZE } from "../../helpers/constant/statics";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { urlImageHandler } from "../../helpers/utils/images";
 import { map } from "lodash";
 import { CustomShimmer } from "../../components/controllers/CustomShimmer";
 import { questionICON, timeICON } from "../../components/others/SvgComponent";
 
 const PracticePage = () => {
+  const navigate = useNavigate();
   const { data: getLessonData, isPending } = useQuizData(
     1,
     PAGE_SIZE,
@@ -73,8 +74,11 @@ const PracticePage = () => {
 
                     <div className="flex justify-between items-end">
                       <div className="">
-                        <button className="bg-[#03C0C1] hover:bg-purple-600 transition text-white text-lg  px-5 py-3 rounded-xl">
-                          <Link to={`quiz/${id}`}>شروع کن</Link>
+                        <button
+                          onClick={() => navigate(`quiz/${id}`)}
+                          className="bg-[#03C0C1] hover:bg-purple-600 transition text-white text-lg  px-5 py-3 rounded-xl"
+                        >
+                          <Link>شروع کن</Link>
                         </button>
                       </div>
 

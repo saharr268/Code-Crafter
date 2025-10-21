@@ -6,6 +6,7 @@ import {
   useGetQuestionByQuizId,
 } from "../../services/hooks/questions";
 import Footer from "../../components/common/Footer";
+import { CustomShimmer } from "../../components/controllers/CustomShimmer";
 
 const Quiz = () => {
   const [current, setCurrent] = useState(0);
@@ -16,7 +17,8 @@ const Quiz = () => {
 
   const { id: currentQuizId } = useParams();
 
-  const { data: questionsByQuiz } = useGetQuestionByQuizId(currentQuizId);
+  const { data: questionsByQuiz, isPending: isPendingQuestion } =
+    useGetQuestionByQuizId(currentQuizId);
 
   const questions = questionsByQuiz?.data ?? [];
 
@@ -99,23 +101,34 @@ const Quiz = () => {
           <div className="flex flex-col gap-8">
             <p className="text-3xl text-purple-600 font-bold">سوال اول </p>
             <h2 dir="rtl" className="text-lg font-semibold text-gray-700">
-              {questions[current]?.question_text}
+              {isPendingQuestion ? (
+                <CustomShimmer className="h-[28px] w-44" />
+              ) : (
+                questions[current]?.question_text
+              )}
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {questionOptions?.map(({ id, option_text }) => (
-              <button
-                key={id}
-                onClick={() => setSelected(option_text)}
-                className={`py-4 px-6 rounded-xl border transition-colors text-black text-start text-xl ${
-                  selected === option_text
-                    ? "border-purple-500 text-purple-600 bg-purple-50"
-                    : "bg-gray-100 hover:bg-gray-200 text-gray-700"
-                }`}
-              >
-                <p>{option_text}</p>
-              </button>
-            ))}
+            {isPending ? (
+              <>
+                <CustomShimmer className={"w-full h-[130px]"} />
+                <CustomShimmer className={"w-full h-[130px]"} />
+              </>
+            ) : (
+              questionOptions?.map(({ id, option_text }) => (
+                <button
+                  key={id}
+                  onClick={() => setSelected(option_text)}
+                  className={`py-4 px-6 rounded-xl border transition-colors text-black text-start text-xl ${
+                    selected === option_text
+                      ? "border-purple-500 text-purple-600 bg-purple-50"
+                      : "bg-gray-100 hover:bg-gray-200 text-gray-700"
+                  }`}
+                >
+                  <p>{option_text}</p>
+                </button>
+              ))
+            )}
           </div>
 
           <div className="flex justify-center gap-4">
