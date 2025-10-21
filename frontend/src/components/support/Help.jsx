@@ -13,6 +13,8 @@ import { PAGE_SIZE } from "../../helpers/constant/statics";
 import { map } from "lodash";
 import { CustomShimmer } from "../controllers/CustomShimmer";
 import { CustomRate } from "../controllers/CustomRate";
+// eslint-disable-next-line no-unused-vars
+import { motion, AnimatePresence } from "framer-motion";
 
 const Help = () => {
   const faqRef = useRef(null);
@@ -40,7 +42,7 @@ const Help = () => {
     validateOnChange: false,
     validateOnBlur: false,
     validationSchema: CommentValidation,
-    onSubmit: ({ comment_text, rate }) => {
+    onSubmit: ({ comment_text, rate }, { resetForm }) => {
       tryCatchHandler({
         handler: async () => {
           const finalValues = {
@@ -49,6 +51,7 @@ const Help = () => {
             is_accepted: true,
           };
           const res = await createComment(finalValues);
+          resetForm();
           return res;
         },
         successMessage: "دیدگاهتان فرستاده شد!",
@@ -59,16 +62,13 @@ const Help = () => {
 
   return (
     <div className="relative bg-white text-right">
-      <div className="sticky top-32 z-50 bg-white">
-        <Navbar />
-      </div>
-
+      <Navbar className={"top-6"} />
       {/* Main Content Container */}
       <div dir="rtl" className="pt-32">
         {/* Main Content */}
         <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-3">
           {/* Sticky Sidebar */}
-          <aside className="sticky top-32 right-0 bg-black text-white rounded-2xl p-10 h-fit w-[300px] z-50 float-right mr-8">
+          <aside className="sticky top-32 right-0  bg-black text-white rounded-2xl p-10 h-fit w-[300px] z-30 float-right mr-8">
             {/* <h3 className="text-teal-400 mb-4">پشتیبانی صدا</h3> */}
             <ul className="space-y-8 text-m">
               <li
@@ -106,13 +106,13 @@ const Help = () => {
                 <div className="space-y-4">
                   {isLoadingFaq
                     ? map([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], () => (
-                        <CustomShimmer className="w- h-[40px]" />
+                        <div className="w-full h-[40px] bg-gray-100 rounded-lg animate-pulse" />
                       ))
                     : faqsSearch?.data?.map(({ title, descriptoin }, index) => (
                         <div
-                          dir="rtl"
+                          dir="ltr"
                           key={index}
-                          className="border rounded-lg shadow-sm bg-background-card transition"
+                          className="border rounded-lg shadow-sm bg-background-card transition overflow-hidden"
                         >
                           <button
                             onClick={() => toggleFAQ(index)}
@@ -127,11 +127,35 @@ const Help = () => {
                               {title}
                             </span>
                           </button>
-                          {openIndex === index && (
-                            <div className="px-4 pb-4 text-gray-600 text-sm leading-relaxed">
-                              {descriptoin}
-                            </div>
-                          )}
+
+                          {/* Animated Section */}
+                          <AnimatePresence initial={false}>
+                            {openIndex === index && (
+                              <motion.div
+                                key="content"
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: "auto", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{
+                                  duration: 0.3,
+                                  type: "spring",
+                                  stiffness: 200,
+                                  damping: 25,
+                                }}
+                                className="overflow-hidden"
+                              >
+                                <motion.div
+                                  initial={{ y: -5 }}
+                                  animate={{ y: 0 }}
+                                  exit={{ y: -5 }}
+                                  transition={{ duration: 0.25 }}
+                                  className="px-4 pb-4 text-gray-600 text-sm leading-relaxed"
+                                >
+                                  {descriptoin}
+                                </motion.div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
                         </div>
                       ))}
                 </div>
@@ -235,7 +259,6 @@ const Help = () => {
           </main>
         </div>
       </div>
-
       <Footer />
     </div>
   );

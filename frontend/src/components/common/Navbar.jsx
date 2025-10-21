@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Menu, Globe } from "lucide-react";
-import { AnimationFadeIn, AnimationSlideIn } from "./Animations";
+import { AnimationFadeIn } from "./Animations";
 import Logo from "../../assets/images/logo-s.png";
+import { LanguageToggle } from "./LanguageToggle";
 
-export default function Navbar() {
+export default function Navbar({ className }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
@@ -23,7 +24,9 @@ export default function Navbar() {
     <AnimationFadeIn>
       <header
         className={`fixed left-6 right-6 z-50 transition-all duration-500 rounded-full sm:m-0
-        ${scrolled ? "bg-[#101312]" : "bg-[#F5F5F5] backdrop-blur-lg"}`}
+        ${
+          scrolled ? "bg-[#101312]" : "bg-[#F5F5F5] backdrop-blur-lg"
+        } ${className}`}
       >
         <div className="max-w-screen mx-auto px-4 py-3 flex items-center justify-between">
           {/* دکمه منوی موبایل */}
@@ -34,14 +37,7 @@ export default function Navbar() {
             <Menu size={24} />
           </button>
 
-          <div className="hidden md:flex relative items-center gap-1">
-            <button className="absolute px-8 py-2 rounded-full text-xl bg-primary-dark text-white">
-              فارسی
-            </button>
-            <button className="px-9 py-2 ml-20 rounded-full text-xl bg-white text-black">
-              پشتو
-            </button>
-          </div>
+          <LanguageToggle />
 
           {/* menu */}
           <nav
