@@ -5,7 +5,7 @@ import { useFaqData } from "../../services/hooks/faqs";
 import { PAGE_SIZE } from "../../../src/helpers/constant/statics";
 import { map } from "lodash";
 import { CustomShimmer } from "../controllers/CustomShimmer";
-import { nanoid } from "nanoid"; // برای تولید ID یکتا
+import { nanoid } from "nanoid";
 
 export default function Faq() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -88,9 +88,6 @@ export default function Faq() {
                 </li>
                 <li className="hover:text-teal-400 cursor-pointer px-2 py-2 sm:py-3 text-right">
                   صندوق ارسال پیام
-                </li>
-                <li className="hover:text-teal-400 cursor-pointer px-2 py-2 sm:py-3 text-right">
-                  پاسخ پرسش‌های شما
                 </li>
               </ul>
             </div>

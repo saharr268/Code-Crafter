@@ -45,8 +45,12 @@ export default function Navbar({ className }) {
               menuOpen
                 ? "flex flex-col absolute top-20 left-0 right-0 bg-background-dark/90 py-5 shadow-lg md:hidden"
                 : "hidden md:flex"
-            } md:flex-row items-center gap-6 text-xl sm:py-1 sm:px-4 sm:gap-4 md:px-6 sm:ml-0 md:rounded-full transition
-    ${isHome && !scrolled ? "bg-white shadow-sm " : "bg-transparent "}`}
+            } md:flex-row items-start gap-3 text-xl sm:py-1 sm:px-4 sm:gap-4 md:px-6 sm:ml-0 md:rounded-full transition
+    ${
+      isHome && !scrolled
+        ? "bg-white shadow-sm "
+        : "bg-transparent sm:text-black "
+    }`}
           >
             {[
               { href: "/resources", text: "منابع" },
@@ -67,7 +71,7 @@ export default function Navbar({ className }) {
             ))}
           </nav>
 
-          <button className="md:hidden p-2 rounded-lg bg-primary-muted ml-32 text-text-heading shadow">
+          <button className="md:hidden p-2 rounded-lg bg-primary-muted ml-32 text-text-heading shadow-2xl">
             <Globe size={20} />
           </button>
 

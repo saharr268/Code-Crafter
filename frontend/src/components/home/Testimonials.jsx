@@ -40,10 +40,7 @@ const Testimonials = ({ data, isLoading }) => {
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
           نظرات شما
         </h2>
-
-        {/* دسکتاپ */}
         <div className="hidden lg:flex items-center justify-center  w-full">
-          {/* فلش چپ */}
           <button
             onClick={handlePrev}
             disabled={startIndex === 0}
@@ -98,8 +95,6 @@ const Testimonials = ({ data, isLoading }) => {
             <GoArrowRight size={24} />
           </button>
         </div>
-
-        {/* موبایل و تبلت */}
         <div className="flex flex-col items-center gap-6 lg:hidden">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
             {visibleTestimonials.map((t, index) => (
@@ -130,8 +125,6 @@ const Testimonials = ({ data, isLoading }) => {
               </div>
             ))}
           </div>
-
-          {/* فلش‌ها پایین */}
           <div className="flex items-center justify-center gap-4 mt-4">
             <button
               onClick={handlePrev}

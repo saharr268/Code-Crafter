@@ -10,7 +10,7 @@ export default function AboutUs() {
       <section className="flex flex-col md:flex-row-reverse items-center justify-between px-12 md:px-20 py-12 bg-white">
         <div
           dir="rtl"
-          className="px-10 md:w-1/2 text-right justify-end mr-16 md:mb-0"
+          className="md:w-1/2 text-right justify-end sm:mr-10 md:mb-0"
         >
           <h2 className="text-2xl md:text-3xl mb-4 text-text-heading">
             درباره‌ی ما

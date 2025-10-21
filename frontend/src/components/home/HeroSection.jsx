@@ -34,8 +34,8 @@ const HeroSection = () => {
             <p
               dir="rtl"
               className="text-5xl mt-6 mb-12 leading-tight text-text-body"
-            >با
-              <span className="text-primary"> صدا </span>
+            >
+              <span className="text-primary-dark"> صدا </span>
               برای محافظت و توانمندسازی توست
             </p>
 
