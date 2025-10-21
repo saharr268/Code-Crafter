@@ -18,7 +18,6 @@ const PracticePage = () => {
   );
 
   const data = getLessonData?.data;
-  console.log("🚀 ~ PracticePage ~ data:", data);
 
   return (
     <div>

@@ -45,8 +45,6 @@ dl,
 dt,
 dd,
 ol,
-ul,
-li,
 fieldset,
 form,
 label,
@@ -82,8 +80,6 @@ video {
   margin: 0;
   padding: 0;
   border: 0;
-  /* font-size    : 100%; */
-  /* font         : inherit; */
   vertical-align: baseline;
 }
 
@@ -139,4 +135,89 @@ a {
 
 .chatbot {
   direction:rtl;
+}
+
+.markdown h1 {
+  font-size:32px;
+}
+
+.markdown h2 {
+  font-size:26px;
+  
+}
+
+.markdown h3 {
+  font-size:24px;margin-bottom:12px;
+}
+
+.markdown h4 {
+  font-size:22px;
+}
+
+.markdown h5 {
+  font-size:20px;
+}
+
+.markdown h6 {
+  font-size:22px;
+  margin-bottom:12px;
+}
+
+
+.markdown a {
+  color:#00B6B8
+}
+
+.markdown table {
+width: 100%; 
+    border-collapse: collapse;
+    padding: 20px; 
+    font-size: 16px;
+    text-align: left;
+}
+
+.markdown th {
+    background-color: #009C9D; 
+    color: white; 
+    padding: 12px;
+}
+
+.markdown td {
+    border: 1px solid #dddddd;
+    padding: 10px;
+}
+
+.markdown tr:hover {
+    background-color: #f1f1f1;
+}
+
+.markdown tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+
+.markdown ul,ol {
+    list-style-type: none;
+    padding: 0; 
+    margin: 20px 0;
+}
+
+/* List item styling */
+.markdown li {
+    position: relative; 
+    padding-right: 25px;
+      line-height:36px;margin-bottom:2px;
+
+}
+
+.markdown li::before {
+    content: ''; 
+    position: absolute; 
+    right: 0;
+    top: 22px;
+    transform: translateY(-50%);
+    width: 10px; 
+    height: 10px;
+    background-color: #8C58D9; 
+    border-radius: 50%;
 }

@@ -4,34 +4,39 @@ import { HiArchiveBoxArrowDown } from "react-icons/hi2";
 import { TbMessageChatbotFilled } from "react-icons/tb";
 import { MdQuiz } from "react-icons/md";
 import { GoArrowUpRight } from "react-icons/go";
+import { useNavigate } from "react-router-dom";
 
-const services = [
-  {
-    icon: <TbMessageChatbotFilled className="w-12 h-12" />,
-    title: "چت‌بات مجهز به تکنولوژی هوش مصنوعی",
-    description:
-      "معرفی بهترین منابع موجود در دنیای تکنولوژی جهت بالا بردن سطح امنیت شما.",
-  },
-  {
-    icon: <HiArchiveBoxArrowDown className="w-12 h-12" />,
-    title: "منابع قابل اطمینان برای استفاده ایمن",
-    description:
-      "معرفی بهترین منابع موجود در دنیای تکنولوژی جهت بالا بردن سطح امنیت شما.",
-  },
-  {
-    icon: <MdQuiz className="w-12 h-12" />,
-    title: "کوئیزهای مرتبط با مطالب و تست‌های کمکی",
-    description: "سوالات جذاب و آموزنده، جهت محک زدن یادگیری و سطح اطلاعات.",
-  },
-  {
-    icon: <FaBookOpenReader className="w-12 h-12" />,
-    title: "آموزش مطالب صحیح و کاربردی",
-    description:
-      "مجموعه‌ی جامع و مفید از ضروری‌ترین مطالب امنیت در فضای دیجیتال و تکنولوژی.",
-  },
-];
-
-const CardSection = () => {
+const CardSection = ({ setOpenChatbot }) => {
+  const navigate = useNavigate();
+  const services = [
+    {
+      icon: <TbMessageChatbotFilled className="w-12 h-12" />,
+      title: "چت‌بات مجهز به تکنولوژی هوش مصنوعی",
+      description:
+        "معرفی بهترین منابع موجود در دنیای تکنولوژی جهت بالا بردن سطح امنیت شما.",
+      onClick: () => setOpenChatbot(true),
+    },
+    {
+      icon: <HiArchiveBoxArrowDown className="w-12 h-12" />,
+      title: "منابع قابل اطمینان برای استفاده ایمن",
+      description:
+        "معرفی بهترین منابع موجود در دنیای تکنولوژی جهت بالا بردن سطح امنیت شما.",
+      onClick: () => navigate("/resources"),
+    },
+    {
+      icon: <MdQuiz className="w-12 h-12" />,
+      title: "کوئیزهای مرتبط با مطالب و تست‌های کمکی",
+      description: "سوالات جذاب و آموزنده، جهت محک زدن یادگیری و سطح اطلاعات.",
+      onClick: () => navigate("/practice"),
+    },
+    {
+      icon: <FaBookOpenReader className="w-12 h-12" />,
+      title: "آموزش مطالب صحیح و کاربردی",
+      description:
+        "مجموعه‌ی جامع و مفید از ضروری‌ترین مطالب امنیت در فضای دیجیتال و تکنولوژی.",
+      onClick: () => navigate("/learn"),
+    },
+  ];
   return (
     <section className="bg-background-card rounded-[60px] w-full py-24">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,6 +53,7 @@ const CardSection = () => {
             return (
               <div
                 key={index}
+                onClick={service?.onClick}
                 className="group bg-white rounded-2xl shadow p-6 relative transition-all duration-300 hover:bg-primary-deep hover:shadow-lg"
               >
                 {/* Header: Arrow (left) and Icon (right) */}

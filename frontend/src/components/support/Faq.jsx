@@ -12,7 +12,6 @@ export default function FAQSection() {
   };
 
   const { data: faqsSearch } = useFaqData(1, PAGE_SIZE, undefined);
-  console.log("🚀 ~ FAQSection ~ faqsSearch:", faqsSearch);
 
   return (
     <section className="bg-white">

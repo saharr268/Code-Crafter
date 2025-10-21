@@ -4,6 +4,7 @@ import {
   getAllQuizzes,
   removeQuiz,
   quizById,
+  quizByLessonId,
 } from "../models/quizzesModels.js";
 
 export const getQuizzes = async (req, res) => {
@@ -37,6 +38,20 @@ export const getQuizById = async (req, res) => {
 
   try {
     const quiz = await quizById(id);
+    if (!quiz) {
+      return res.status(404).json({ error: "Quiz not found" });
+    }
+    res.json(quiz);
+  } catch (err) {
+    console.log("Error fetching quiz by id: ", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+export const getQuizByLessonId = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const quiz = await quizByLessonId(id);
     if (!quiz) {
       return res.status(404).json({ error: "Quiz not found" });
     }

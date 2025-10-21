@@ -44,6 +44,24 @@ const ChatWindow = ({ isOpen, onClose }) => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        messagesEndRef.current &&
+        !messagesEndRef.current.contains(event.target)
+      ) {
+        onClose(); // closes chatbot
+      }
+    }
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen, onClose]);
+
   return (
     <AnimatePresence>
       {isOpen && (

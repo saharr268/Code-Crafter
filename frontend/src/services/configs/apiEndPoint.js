@@ -27,6 +27,9 @@ export const getQuizData = async (params) =>
 
 export const getQuizById = async (id) => await apiClient.get(`quizzes/${id}`);
 
+export const getQuizByLessonId = async (id) =>
+  await apiClient.get(`quizzes/lesson-id/${id}`);
+
 // Comments
 
 export const getCommentData = async (params) =>

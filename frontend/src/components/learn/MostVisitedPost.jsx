@@ -1,4 +1,3 @@
-import React from "react";
 import Navbar from "../common/Navbar";
 import { useNavigate } from "react-router-dom";
 import { urlImageHandler } from "../../helpers/utils/images";
@@ -19,9 +18,9 @@ const MostVisitedPost = ({ data, isLoading }) => {
 
       {/* Card */}
       {isLoading ? (
-        <CustomShimmer className="h-[368px] max-w-6xl w-full mx-auto" />
+        <CustomShimmer className="h-[368px] max-w-[1280px] w-full mx-auto" />
       ) : (
-        <div className="flex flex-col md:flex-row items-center justify-between bg-gray-100 rounded-3xl shadow-sm p-8 md:p-10 w-full max-w-6xl mx-auto">
+        <div className="flex flex-col md:flex-row items-center justify-between bg-gray-100 rounded-3xl shadow-sm p-8 md:p-10 w-full max-w-[1274px] mx-auto">
           {/* Left Side: Image */}
           <div className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0">
             <img

@@ -1,8 +1,9 @@
 import { useFormik } from "formik";
-import { FaRegImage } from "react-icons/fa";
+import { FaRegImage, FaStar } from "react-icons/fa";
 import { tryCatchHandler } from "../../helpers/utils/handlers";
 import { useCreateComment } from "../../services/hooks/comments";
 import { CommentValidation } from "../../helpers/utils/validations";
+import { CustomRate } from "../controllers/CustomRate";
 
 export default function MessageBox() {
   const { mutateAsync: createComment } = useCreateComment();
@@ -13,7 +14,7 @@ export default function MessageBox() {
     validateOnChange: false,
     validateOnBlur: false,
     validationSchema: CommentValidation,
-    onSubmit: ({ comment_text, rate }) => {
+    onSubmit: ({ comment_text, rate }, { resetForm }) => {
       tryCatchHandler({
         handler: async () => {
           const finalValues = {
@@ -22,6 +23,7 @@ export default function MessageBox() {
             is_accepted: true,
           };
           const res = await createComment(finalValues);
+          resetForm();
           return res;
         },
         successMessage: "دیدگاهتان فرستاده شد!",
@@ -63,18 +65,12 @@ export default function MessageBox() {
               </p>
             )}
 
-            {/* Action buttons (upload + send) */}
             <div className="flex justify-between items-center mt-4">
-              {/* Upload image icon */}
-              <button
-                type="button"
-                className="flex items-center gap-2 text-gray-600 hover:text-primary-dark transition"
-              >
-                <FaRegImage size={20} />
-                <span className="hidden sm:inline">افزودن تصویر</span>
-              </button>
-
-              {/* Send button */}
+              <CustomRate
+                onChange={formIK.handleChange}
+                value={formIK.values.rate}
+                name="rate"
+              />
               <button
                 type="submit"
                 className="px-6 py-2 bg-primary-deep text-white rounded-md hover:bg-primary-dark transition"

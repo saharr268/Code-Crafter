@@ -53,6 +53,13 @@ export const quizById = async (id) => {
   return result.rows[0];
 };
 
+export const quizByLessonId = async (id) => {
+  const result = await db.query("SELECT * FROM quizzes WHERE lesson_id = $1", [
+    id,
+  ]);
+  return result.rows[0];
+};
+
 export const createQuiz = async ({
   lesson_id,
   title,

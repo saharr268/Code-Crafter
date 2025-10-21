@@ -13,7 +13,6 @@ const LearnPage = () => {
   );
 
   const data = getLessonData?.data ?? [];
-  console.log("🚀 ~ LearnPage ~ data:", data);
 
   const recommendedLesson = data[2]; //! RECHECK HERE
 

@@ -3,6 +3,7 @@ import {
   createQuizAttempt,
   getQuizAttemptByQuizId,
   getQuizById,
+  getQuizByLessonId,
   getQuizData,
 } from "../configs/apiEndPoint";
 
@@ -23,6 +24,14 @@ export const useGetQuizById = (id) => {
   return useQuery({
     queryKey: ["quiz-get-by-id", id],
     queryFn: async () => (id ? await getQuizById(id) : {}),
+    enabled: !!id,
+  });
+};
+
+export const useGetQuizByLessonId = (id) => {
+  return useQuery({
+    queryKey: ["quiz-get-by-id", id],
+    queryFn: async () => (id ? await getQuizByLessonId(id) : {}),
     enabled: !!id,
   });
 };

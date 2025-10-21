@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { CustomShimmer } from "../controllers/CustomShimmer";
 import { map } from "lodash";
+import { timeAgoFa } from "../../helpers/utils/date";
 
 const Testimonials = ({ data, isLoading }) => {
   const [startIndex, setStartIndex] = useState(0);
@@ -73,8 +74,12 @@ const Testimonials = ({ data, isLoading }) => {
                   <p className="text-text-body text-right leading-relaxed mb-6">
                     {t.comment_text}
                   </p>
-                  <p className="text-primary-deep text-sm font-medium text-right">
-                    {t.created_at} {/* //! CREATE THE DATE HANDLER FOR THIS */}
+                  <p
+                    style={{ direction: "rtl" }}
+                    className="text-primary-deep text-sm font-medium text-right"
+                  >
+                    {timeAgoFa(t.created_at)}{" "}
+                    {/* //! CREATE THE DATE HANDLER FOR THIS */}
                   </p>
                 </div>
               ))

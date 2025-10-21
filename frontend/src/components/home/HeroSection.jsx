@@ -1,13 +1,10 @@
-import { useState } from "react";
-
 import Navbar from "../common/Navbar";
 import ChatWindow from "../common/ChatbotWindow";
 import { ChatbotButton } from "../common/ChatbotButton";
 
 import heroImage from "../../assets/images/bro.png";
 
-const HeroSection = () => {
-  const [openChatbot, setOpenChatbot] = useState();
+const HeroSection = ({ openChatbot, setOpenChatbot }) => {
   return (
     <section className="flex items-center bg-background-card px-4 sm:px-20 md:px-12 m-4 md:mt-6 rounded-[40px] max-h-auto py-10">
       {/* 🔹 Navbar */}

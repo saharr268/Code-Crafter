@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import MobileBanner from "../components/home/MobileBanner";
 import PopularTopics from "../components/home/PopularTopics";
 import Footer from "../components/common/Footer";
@@ -14,6 +14,8 @@ import { slice } from "lodash";
 import { useCommentData } from "../services/hooks/comments";
 
 const Home = () => {
+  const [openChatbot, setOpenChatbot] = useState();
+
   const { data: lessonSearch, isPending: isPendingLesson } = useLessonData(
     1,
     PAGE_SIZE,
@@ -32,10 +34,10 @@ const Home = () => {
 
   return (
     <div className="overflow-hidden">
-      <HeroSection />
+      <HeroSection openChatbot={openChatbot} setOpenChatbot={setOpenChatbot} />
       <HeroBanner />
       <AboutSection />
-      <CardSection />
+      <CardSection setOpenChatbot={setOpenChatbot} />
       <Testimonials data={commentData} isLoading={isPendingComment} />
       <MobileBanner />
       <PopularTopics data={lessonData} isLoading={isPendingLesson} />
