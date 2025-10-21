@@ -27,21 +27,21 @@ const HeroSection = () => {
             dir="rtl"
             className="w-full md:w-1/2 text-right mr-5 sm:mr-0 md:text-right md:mr-10"
           >
-            {/* <p dir="rtl" className="text-text-body text-sm sm:text-base md:text-md mt-6 font-medium mb-4">
+            <p dir="rtl" className="text-text-body text-sm sm:text-base md:text-md mt-6 font-medium mb-6">
             اولین حامی امنیت و آزادی زنان افغان در جهان تکنولوژی
-          </p> */}
+          </p>
 
             <p
               dir="rtl"
               className="text-5xl mt-6 mb-12 leading-tight text-text-body"
-            >
+            >با
               <span className="text-primary"> صدا </span>
               برای محافظت و توانمندسازی توست
             </p>
 
             <button
               onClick={() => navigate("/learn")}
-              className="bg-primary text-white px-6 py-4 mb-10 rounded-xl hover:bg-primary-dark"
+              className="bg-primary text-white px-6 py-4 mb-16 rounded-xl hover:bg-primary-dark"
             >
               مشاهده‌ی مطالب
             </button>

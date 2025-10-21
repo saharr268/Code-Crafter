@@ -35,10 +35,10 @@ export default function Navbar() {
           </button>
 
           <div className="hidden md:flex relative items-center gap-1">
-            <button className="absolute px-6 py-2 rounded-full text-lg bg-background-dark text-white">
+            <button className="absolute px-8 py-2 rounded-full text-xl bg-primary-dark text-white">
               فارسی
             </button>
-            <button className="px-8 py-2 ml-20 rounded-full text-lg bg-white text-black">
+            <button className="px-9 py-2 ml-20 rounded-full text-xl bg-white text-black">
               پشتو
             </button>
           </div>
@@ -50,7 +50,7 @@ export default function Navbar() {
                 ? "flex flex-col absolute top-20 left-0 right-0 bg-background-dark/90 py-5 shadow-lg md:hidden"
                 : "hidden md:flex"
             } md:flex-row items-center gap-6 text-xl sm:py-1 sm:px-4 sm:gap-4 md:px-6 sm:ml-0 md:rounded-full transition
-    ${isHome && !scrolled ? "bg-white shadow-md " : "bg-transparent "}`}
+    ${isHome && !scrolled ? "bg-white shadow-sm " : "bg-transparent "}`}
           >
             {[
               { href: "/resources", text: "منابع" },
@@ -75,7 +75,7 @@ export default function Navbar() {
             <Globe size={20} />
           </button>
 
-          <div className="flex items-center w-40 sm:mr-2 sm:px-5">
+          <div className="flex items-center w-20 md:w-40 sm:mr-2 sm:px-5">
             <img src={Logo} alt="Seda Logo" />
           </div>
         </div>
