@@ -10,6 +10,8 @@ import { useCreateComment } from "../../services/hooks/comments";
 import { tryCatchHandler } from "../../helpers/utils/handlers";
 import { CommentValidation } from "../../helpers/utils/validations";
 import { PAGE_SIZE } from "../../helpers/constant/statics";
+import { map } from "lodash";
+import { CustomShimmer } from "../controllers/CustomShimmer";
 
 const Help = () => {
   const faqRef = useRef(null);
@@ -23,7 +25,11 @@ const Help = () => {
 
   const [openIndex, setOpenIndex] = useState(null);
   const toggleFAQ = (index) => setOpenIndex(openIndex === index ? null : index);
-  const { data: faqsSearch } = useFaqData(1, PAGE_SIZE, undefined);
+  const { data: faqsSearch, isPending: isLoadingFaq } = useFaqData(
+    1,
+    PAGE_SIZE,
+    undefined
+  );
 
   const { mutateAsync: createComment } = useCreateComment();
   const formIK = useFormik({
@@ -90,170 +96,185 @@ const Help = () => {
             </ul>
           </aside>
 
-    <main className="w-full pl-12 lg:col-span-2 order-2 ml-12 lg:order-2">
-      {/* --- FAQ Section --- */}
-          <section ref={faqRef} className="bg-white pb-20">
-            <div className="max-w-full px-8">
-              <h2 className="text-2xl font-bold mb-8">سوالات مکرر</h2>
-              <div className="space-y-4">
-                {faqsSearch?.data?.map(({ title, descriptoin }, index) => (
-                  <div
-                   dir="rtl"
-                    key={index}
-                    className="border rounded-lg shadow-sm bg-background-card transition"
-                  >
-                    <button
-                      onClick={() => toggleFAQ(index)}
-                      className="w-full flex items-center justify-between px-4 py-3"
-                    >
-                      <FiChevronDown
-                        className={`text-gray-500 transition-transform duration-300 ${
-                          openIndex === index ? "rotate-180" : ""
-                        }`}
-                      />
-                      <span className="text-gray-700 font-medium">{title}</span>
-                    </button>
-                    {openIndex === index && (
-                      <div className="px-4 pb-4 text-gray-600 text-sm leading-relaxed">
-                        {descriptoin}
-                      </div>
-                    )}
-                  </div>
-                ))}
+          <main className="w-full pl-12 lg:col-span-2 order-2 ml-12 lg:order-2">
+            {/* --- FAQ Section --- */}
+            <section ref={faqRef} className="bg-white pb-20">
+              <div className="max-w-full px-8">
+                <h2 className="text-2xl font-bold mb-8">سوالات مکرر</h2>
+                <div className="space-y-4">
+                  {isLoadingFaq
+                    ? map([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], () => (
+                        <CustomShimmer className="w- h-[40px]" />
+                      ))
+                    : faqsSearch?.data?.map(({ title, descriptoin }, index) => (
+                        <div
+                          dir="rtl"
+                          key={index}
+                          className="border rounded-lg shadow-sm bg-background-card transition"
+                        >
+                          <button
+                            onClick={() => toggleFAQ(index)}
+                            className="w-full flex items-center justify-between px-4 py-3"
+                          >
+                            <FiChevronDown
+                              className={`text-gray-500 transition-transform duration-300 ${
+                                openIndex === index ? "rotate-180" : ""
+                              }`}
+                            />
+                            <span className="text-gray-700 font-medium">
+                              {title}
+                            </span>
+                          </button>
+                          {openIndex === index && (
+                            <div className="px-4 pb-4 text-gray-600 text-sm leading-relaxed">
+                              {descriptoin}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
 
-          {/* --- Offline Tips Section --- */}
-          <section
-          dir="rtl"
-            ref={tipsRef}
-            className="bg-[#8C58D9] text-white py-20 px-8 rounded-3xl"
-          >
-            <div className="max-w-5xl mx-auto leading-8">
-              <h2 className="text-2xl mb-6">نکات دسترسی آفلاین</h2>
-              <p>تقریباً تمامی مرورگرها در پلتفرم‌های مختلف، گزینه‌ای برای دانلود کامل صفحات وب در اختیار کاربران می‌گذارند. این گزینه در مرورگرهایی مانند کروم و فایرفاکس تحت عنوان Save webpage as در دسترس است و امکان دانلود یک صفحه‌ی وب کامل شامل تصاویر و قالب‌بندی آن را فراهم می‌کند که بعدا می‌توان آن‌ها را در مرورگر باز و مطالعه کرد.
-در دستگاه‌های اپل، می‌توان از گزینه‌ی Reading List مرورگر سافاری برای ذخیره و استفاده‌ی آفلاین صفحات وب استفاده کرد.</p>
-              <p className="mb-6">
-                تقریبا تمامی مرورگرها در پلتفرم‌های مختلف گزینه‌ای برای دانلود کامل
-                صفحات وب دارند. در مرورگرهای مختلف با عناوینی مانند{" "}
-                <span className="font-semibold">Save webpage</span> یا{" "}
-                <span className="font-semibold">Save page</span> شناخته می‌شوند و
-                امکان مرور آفلاین را فراهم می‌کنند.
-              </p>
-              <h3 className="font-semibold text-lg mb-2">
-                ذخیره وب سایت در Google Chrome
-              </h3>
-              <ol className="list-decimal list-inside space-y-1 mb-6">
-                <li>در گوشه بالا سمت راست، منوی مرورگر را باز کنید.</li>
-                <li>روی گزینه Save page as کلیک کنید.</li>
-                <li>می‌توانید Cast، Save و Share را انتخاب کنید.</li>
-              </ol>
-              <p className="mt-8">
-                همچنین می‌توانید با کلیدهای{" "}
-                <span className="font-semibold">Ctrl + S</span> در ویندوز یا{" "}
-                <span className="font-semibold">Command + S</span> در مک نیز این
-                کار را انجام دهید.
-              </p>
-              <p>
-                نکته: می‌توانید به‌جای مراحل گفته شده، برای دسترسی به پنجره‌ی ذخیره‌سازی صفحه‌وب، در ویندوز از Ctrl + S و در مک از Command + S استفاده کنید. در پنجره‌ی باز شده، مطمئن شوید که Save as type روی Webpage,Complete تنظیم شده است.
-              </p>
-            </div>
-          </section>
-
-          {/* --- Message Box Section --- */}
-          <section
-            ref={messageRef}
-            className="w-full flex justify-center items-center py-20 px-4 bg-white"
-          >
-            <div
+            {/* --- Offline Tips Section --- */}
+            <section
               dir="rtl"
-              className="w-full max-w-3xl"
+              ref={tipsRef}
+              className="bg-[#8C58D9] text-white py-20 px-8 rounded-3xl"
             >
-              <h2 className="text-xl font-bold mb-3 text-gray-900">
-                صندوق ارسال دیدگاه
-              </h2>
-              <p className="text-gray-600 text-sm leading-6 mb-6">
-                دوست عزیز! با تشکر از اینکه ما را برای همراهی انتخاب کردید؛ لطفا تجربه‌ی خود را درباره‌ی وبسایت صدا با به اشتراک بگذارید. 
-              </p>
+              <div className="max-w-5xl mx-auto leading-8">
+                <h2 className="text-2xl mb-6">نکات دسترسی آفلاین</h2>
+                <p>
+                  تقریباً تمامی مرورگرها در پلتفرم‌های مختلف، گزینه‌ای برای
+                  دانلود کامل صفحات وب در اختیار کاربران می‌گذارند. این گزینه در
+                  مرورگرهایی مانند کروم و فایرفاکس تحت عنوان Save webpage as در
+                  دسترس است و امکان دانلود یک صفحه‌ی وب کامل شامل تصاویر و
+                  قالب‌بندی آن را فراهم می‌کند که بعدا می‌توان آن‌ها را در
+                  مرورگر باز و مطالعه کرد. در دستگاه‌های اپل، می‌توان از گزینه‌ی
+                  Reading List مرورگر سافاری برای ذخیره و استفاده‌ی آفلاین صفحات
+                  وب استفاده کرد.
+                </p>
+                <p className="mb-6">
+                  تقریبا تمامی مرورگرها در پلتفرم‌های مختلف گزینه‌ای برای دانلود
+                  کامل صفحات وب دارند. در مرورگرهای مختلف با عناوینی مانند{" "}
+                  <span className="font-semibold">Save webpage</span> یا{" "}
+                  <span className="font-semibold">Save page</span> شناخته
+                  می‌شوند و امکان مرور آفلاین را فراهم می‌کنند.
+                </p>
+                <h3 className="font-semibold text-lg mb-2">
+                  ذخیره وب سایت در Google Chrome
+                </h3>
+                <ol className="list-decimal list-inside space-y-1 mb-6">
+                  <li>در گوشه بالا سمت راست، منوی مرورگر را باز کنید.</li>
+                  <li>روی گزینه Save page as کلیک کنید.</li>
+                  <li>می‌توانید Cast، Save و Share را انتخاب کنید.</li>
+                </ol>
+                <p className="mt-8">
+                  همچنین می‌توانید با کلیدهای{" "}
+                  <span className="font-semibold">Ctrl + S</span> در ویندوز یا{" "}
+                  <span className="font-semibold">Command + S</span> در مک نیز
+                  این کار را انجام دهید.
+                </p>
+                <p>
+                  نکته: می‌توانید به‌جای مراحل گفته شده، برای دسترسی به پنجره‌ی
+                  ذخیره‌سازی صفحه‌وب، در ویندوز از Ctrl + S و در مک از Command +
+                  S استفاده کنید. در پنجره‌ی باز شده، مطمئن شوید که Save as type
+                  روی Webpage,Complete تنظیم شده است.
+                </p>
+              </div>
+            </section>
 
-              <form onSubmit={formIK.handleSubmit} className="space-y-2">
-                <div className="relative">
-                  <textarea
-                    value={formIK.values.comment_text}
-                    onChange={formIK.handleChange}
-                    name="comment_text"
-                    placeholder="پیام خود را بنویسید..."
-                    className="w-full min-h-[350px] p-8 rounded-lg bg-background-card border-gray-300 focus:ring-2 focus:ring-teal-500 focus:outline-none text-gray-800 resize-none"
-                  ></textarea>
-                  {formIK.errors.comment_text && (
-                    <p className="text-red-500 text-sm mt-1">
-                      {formIK.errors.comment_text}
-                    </p>
-                  )}
+            {/* --- Message Box Section --- */}
+            <section
+              ref={messageRef}
+              className="w-full flex justify-center items-center py-20 px-4 bg-white"
+            >
+              <div dir="rtl" className="w-full max-w-3xl">
+                <h2 className="text-xl font-bold mb-3 text-gray-900">
+                  صندوق ارسال دیدگاه
+                </h2>
+                <p className="text-gray-600 text-sm leading-6 mb-6">
+                  دوست عزیز! با تشکر از اینکه ما را برای همراهی انتخاب کردید؛
+                  لطفا تجربه‌ی خود را درباره‌ی وبسایت صدا با به اشتراک بگذارید.
+                </p>
+
+                <form onSubmit={formIK.handleSubmit} className="space-y-2">
+                  <div className="relative">
+                    <textarea
+                      value={formIK.values.comment_text}
+                      onChange={formIK.handleChange}
+                      name="comment_text"
+                      placeholder="پیام خود را بنویسید..."
+                      className="w-full min-h-[350px] p-8 rounded-lg bg-background-card border-gray-300 focus:ring-2 focus:ring-teal-500 focus:outline-none text-gray-800 resize-none"
+                    ></textarea>
+                    {formIK.errors.comment_text && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {formIK.errors.comment_text}
+                      </p>
+                    )}
 
                     {/* Rating Stars */}
-                  <button
-                    type="button"
-                    className="absolute bottom-6 left-6 text-gray-500 hover:text-teal-600"
-                  >
-                     <div className="flex space-x-1 text-gray-300 text-2xl">
-                          <span className="hover:text-yellow-300">★</span>
-                          <span className="hover:text-yellow-300">★</span>
-                          <span className="hover:text-yellow-300">★</span>
-                          <span className="hover:text-yellow-300">★</span>
-                          <span className="hover:text-yellow-300">★</span>
-                    </div>
-                  </button>
+                    <button
+                      type="button"
+                      className="absolute bottom-6 left-6 text-gray-500 hover:text-teal-600"
+                    >
+                      <div className="flex space-x-1 text-gray-300 text-2xl">
+                        <span className="hover:text-yellow-300">★</span>
+                        <span className="hover:text-yellow-300">★</span>
+                        <span className="hover:text-yellow-300">★</span>
+                        <span className="hover:text-yellow-300">★</span>
+                        <span className="hover:text-yellow-300">★</span>
+                      </div>
+                    </button>
 
-                  <button
-                    type="submit"
-                    className="absolute bottom-8 right-8 px-6 py-2 bg-teal-600 text-white rounded-md hover:bg-teal-700 transition"
-                  >
-                    ارسال پیام
-                  </button>
-                </div>
-              </form>
-            </div>
-          </section>
-
-          {/* --- User Answers Section --- */}
-          <section
-            ref={answersRef}
-            className="bg-[#00C2C2] text-right py-20 px-8 rounded-3xl mb-16"
-          >
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-white text-2xl md:text-3xl mb-10">
-                دیدگاه‌های شما
-              </h2>
-              <div dir="rtl" className="grid md:grid-cols-2 gap-6">
-                {[...Array(6)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="bg-white p-6 rounded-2xl shadow-lg text-sm md:text-base">
-
-                         <div className="flex space-x-1 mt-4 text-yellow-300 text-2xl">
-                            <span>★</span>
-                            <span>★</span>
-                            <span>★</span>
-                            <span>★</span>
-                            <span>★</span>
-                         </div>
-
-                    <p className="text-gray-700 leading-relaxed mt-4 mb-8">
-                      قبل از آشنایی باصدا همیشه نگران حریم خصوصی‌ام بودم. حالا با مهارت‌هایی که یاد گرفتم، مطمئن‌تر و با اعتمادبه‌نفس بیشتری در فضای مجازی حضور دارم.
-                    </p>
-                    <p className="text-sm text-primary-dark text-right">دو ماه قبل</p>
+                    <button
+                      type="submit"
+                      className="absolute bottom-8 right-8 px-6 py-2 bg-teal-600 text-white rounded-md hover:bg-teal-700 transition"
+                    >
+                      ارسال پیام
+                    </button>
                   </div>
-                ))}
+                </form>
               </div>
-            </div>
-          </section>
+            </section>
 
+            {/* --- User Answers Section --- */}
+            <section
+              ref={answersRef}
+              className="bg-[#00C2C2] text-right py-20 px-8 rounded-3xl mb-16"
+            >
+              <div className="max-w-6xl mx-auto">
+                <h2 className="text-white text-2xl md:text-3xl mb-10">
+                  دیدگاه‌های شما
+                </h2>
+                <div dir="rtl" className="grid md:grid-cols-2 gap-6">
+                  {[...Array(6)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="bg-white p-6 rounded-2xl shadow-lg text-sm md:text-base"
+                    >
+                      <div className="flex space-x-1 mt-4 text-yellow-300 text-2xl">
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                      </div>
 
-    </main>
-          
-
+                      <p className="text-gray-700 leading-relaxed mt-4 mb-8">
+                        قبل از آشنایی باصدا همیشه نگران حریم خصوصی‌ام بودم. حالا
+                        با مهارت‌هایی که یاد گرفتم، مطمئن‌تر و با اعتمادبه‌نفس
+                        بیشتری در فضای مجازی حضور دارم.
+                      </p>
+                      <p className="text-sm text-primary-dark text-right">
+                        دو ماه قبل
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+          </main>
         </div>
       </div>
 

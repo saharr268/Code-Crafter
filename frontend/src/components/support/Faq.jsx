@@ -3,10 +3,12 @@ import { FiChevronDown } from "react-icons/fi";
 import Navbar from "../../components/common/Navbar";
 import { useFaqData } from "../../services/hooks/faqs";
 import { PAGE_SIZE } from "../../../src/helpers/constant/statics";
+import { map } from "lodash";
+import { CustomShimmer } from "../controllers/CustomShimmer";
 
 export default function Faq() {
   const [openIndex, setOpenIndex] = useState(null);
-  const { data: faqsSearch } = useFaqData(1, PAGE_SIZE, undefined);
+  const { data: faqsSearch, isPending } = useFaqData(1, PAGE_SIZE, undefined);
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -22,36 +24,40 @@ export default function Faq() {
         <div className="md:col-span-2 pl-16">
           <h2 className="text-2xl font-bold text-right sm:mr-6">سوالات مکرر</h2>
           <div className="space-y-4">
-            {faqsSearch?.data?.map(({ title, descriptoin }, idx) => (
-              <article
-                key={idx}
-                className="border rounded-lg shadow-sm bg-gray-50 overflow-hidden"
-                dir="rtl"
-              >
-                <button
-                  onClick={() => toggleFAQ(idx)}
-                  className="w-full flex items-center justify-between px-4 py-3 text-right"
-                  aria-expanded={openIndex === idx}
-                >
-                  <span className="text-gray-700 font-medium">{title}</span>
-                  <FiChevronDown
-                    className={`text-gray-500 transition-transform duration-300 ${
-                      openIndex === idx ? "rotate-180" : ""
-                    }`}
-                    size={20}
-                  />
-                </button>
+            {isPending
+              ? map([1, 2, 3, 4, 5, 6, 7, 8], () => (
+                  <CustomShimmer className="w- h-[40px]" />
+                ))
+              : faqsSearch?.data?.map(({ title, descriptoin }, idx) => (
+                  <article
+                    key={idx}
+                    className="border rounded-lg shadow-sm bg-gray-50 overflow-hidden"
+                    dir="rtl"
+                  >
+                    <button
+                      onClick={() => toggleFAQ(idx)}
+                      className="w-full flex items-center justify-between px-4 py-3 text-right"
+                      aria-expanded={openIndex === idx}
+                    >
+                      <span className="text-gray-700 font-medium">{title}</span>
+                      <FiChevronDown
+                        className={`text-gray-500 transition-transform duration-300 ${
+                          openIndex === idx ? "rotate-180" : ""
+                        }`}
+                        size={20}
+                      />
+                    </button>
 
-                {/* Animated content */}
-                <div
-                  className={`px-4 pb-4 text-gray-600 text-sm leading-relaxed transition-all duration-300 ease-in-out overflow-hidden ${
-                    openIndex === idx ? "max-h-96" : "max-h-0"
-                  }`}
-                >
-                  <div className="pt-2">{descriptoin}</div>
-                </div>
-              </article>
-            ))}
+                    {/* Animated content */}
+                    <div
+                      className={`px-4 pb-4 text-gray-600 text-sm leading-relaxed transition-all duration-300 ease-in-out overflow-hidden ${
+                        openIndex === idx ? "max-h-96" : "max-h-0"
+                      }`}
+                    >
+                      <div className="pt-2">{descriptoin}</div>
+                    </div>
+                  </article>
+                ))}
           </div>
         </div>
 
