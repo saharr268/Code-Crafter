@@ -11,23 +11,27 @@ const services = [
     title: "چت‌بات مجهز به تکنولوژی هوش مصنوعی",
     description:
       "معرفی بهترین منابع موجود در دنیای تکنولوژی جهت بالا بردن سطح امنیت شما.",
+      path:"/"
   },
   {
     icon: <HiArchiveBoxArrowDown className="w-12 h-12" />,
     title: "منابع قابل اطمینان برای استفاده ایمن",
     description:
       "معرفی بهترین منابع موجود در دنیای تکنولوژی جهت بالا بردن سطح امنیت شما.",
+      path:"/resources"
   },
   {
     icon: <MdQuiz className="w-12 h-12" />,
     title: "کوئیزهای مرتبط با مطالب و تست‌های کمکی",
     description: "سوالات جذاب و آموزنده، جهت محک زدن یادگیری و سطح اطلاعات.",
+    path:"/practice"
   },
   {
-    icon: <FaBookOpenReader className="w-12 h-12" />,
+    icon: <FaBookOpenReader className="w-8 h-8" />,
     title: "آموزش مطالب صحیح و کاربردی",
     description:
       "مجموعه‌ی جامع و مفید از ضروری‌ترین مطالب امنیت در فضای دیجیتال و تکنولوژی.",
+      path:"/learn"
   },
 ];
 
@@ -48,7 +52,11 @@ const CardSection = () => {
             return (
               <div
                 key={index}
-                className="group bg-white rounded-2xl shadow p-6 relative transition-all duration-300 hover:bg-primary-deep hover:shadow-lg"
+                className={`group bg-white rounded-2xl shadow p-6 relative transition-all duration-300 hover:shadow-lg 
+                 ${isPurple
+                          ? "hover:bg-[#8c58d9]"
+                          : "hover:bg-primary-deep"
+                      }`}
               >
                 {/* Header: Arrow (left) and Icon (right) */}
                 <div className="flex items-center justify-between mb-4">
@@ -57,11 +65,11 @@ const CardSection = () => {
                     className={`mt-2 rounded-full w-12 h-12 flex items-center justify-center transition-all duration-300 
                       ${
                         isPurple
-                          ? "text-accent bg-background-card group-hover:text-white group-hover:bg-white/20"
+                          ? "text-[#8c58d9] bg-[#FBFBFB] group-hover:text-white group-hover:bg-white/20"
                           : "text-primary-deep bg-[#FBFBFB] group-hover:text-white group-hover:bg-white/20"
                       }`}
                   >
-                    <GoArrowUpRight className="text-lg" />
+                   <a href={service.path}><GoArrowUpRight className="text-lg" /></a> 
                   </span>
 
                   {/* Icon on the right */}
@@ -69,7 +77,7 @@ const CardSection = () => {
                     className={`w-12 h-12 mt-2 pr-2 flex items-center justify-center rounded-full text-xl ml-6 transition-all duration-300 
                       ${
                         isPurple
-                          ? "text-accent group-hover:text-white"
+                          ? "text-[#8c58d9] group-hover:text-white"
                           : "text-primary-deep group-hover:text-white"
                       }`}
                   >

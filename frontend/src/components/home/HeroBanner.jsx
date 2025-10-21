@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { MdSecurity } from "react-icons/md";
+import { MdPrivacyTip } from "react-icons/md";
+import { FaLock } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa6";
-import { CiMobile3 } from "react-icons/ci";
-import { LuLockKeyhole } from "react-icons/lu";
+import { FaMobile } from "react-icons/fa";
 import HeroBannerImg from "../../assets/images/hero-banner.png";
 import Image from "../../assets/images/Image_Home_Mobile.png";
 import TabletImage from "../../assets/images/Hero Banner_Tablet.png";
@@ -25,8 +25,8 @@ export default function HeroBanner() {
   return (
     <div className="bg-white min-h-screen mt-14">
       {/* متن بالای بنر */}
-      <div className="max-w-4xl mx-auto text-center relative px-4">
-        <p className="text-text-body text-md sm:mb-16 md:text-xl font-semibold leading-relaxed">
+      <div className="max-w-4xl mx-auto xl:mb-16 md:mb-24 text-center relative px-8 py-4">
+        <p className="text-text-body text-md md:text-xl leading-relaxed mb-8">
           ما زنان افغان را با مهارت‌های امنیت دیجیتال توانمند می‌سازیم. صدا نه
           تنها یک آموزش‌دهنده، بلکه یک حامی برای امنیت و آزادی زنان افغان در
           دنیای دیجیتال به شمار می‌رود.
@@ -45,31 +45,25 @@ export default function HeroBanner() {
           </div>
 
           {/* کارت‌ها */}
-          <div className="flex absolute -top-48 -left-16 text-right text-text-body bg-[#FBFBFB] p-2 rounded-2xl rounded-tl-none border shadow-md">
-            حفاظت از حریم شخصی کاربران
-            <br />و احترام به حقوق آن‌ها
-            <MdSecurity className="text-primary-deep text-2xl m-2" />
+          <div className="flex w-5/12 gap-3 leading-5 absolute -top-48 -left-24 text-right text-text-body bg-[#FBFBFB] p-5 rounded-2xl rounded-tl-none border shadow-md">
+            حفاظت از حریم شخصی کاربران و احترام به حقوق آن‌ها
+            <MdPrivacyTip className="text-primary-deep text-5xl"/>
           </div>
 
-          <div className="flex absolute -top-20 -right-28 text-right text-text-body bg-[#FBFBFB] p-2 rounded-xl rounded-tr-none border shadow-md">
-            بدون نیاز به ایجاد اکونت برای
-            <br />
-            دسترسی به مطالب
-            <FaUser className="text-primary-deep text-2xl m-2" />
+          <div className="flex w-5/12 gap-3 leading-5 absolute -top-20 -right-40 text-right text-text-body bg-[#FBFBFB] p-5 rounded-xl rounded-tr-none border shadow-md">
+            بدون نیاز به ایجاد اکونت برای دسترسی به مطالب
+            <FaUser className="text-primary-deep text-3xl m-2" />
           </div>
 
-          <div className="flex text-right absolute -bottom-32 -left-20 text-text-body bg-[#FBFBFB] p-2 rounded-2xl rounded-br-none border shadow-md">
-            اپلیکیشن موبایل برای
-            <br />
-            اندروید و IOS
-            <CiMobile3 className="text-primary-deep text-2xl m-2" />
+          <div dir="rtl" className="flex w-4/12 gap-3 leading-5 text-right absolute -bottom-32 -left-32 text-text-body bg-[#FBFBFB] p-5 rounded-2xl rounded-br-none border shadow-md">
+           <FaMobile className="text-primary-deep text-2xl m-2" />
+            اپلیکیشن موبایل برای اندروید و IOS
+            
           </div>
 
-          <div className="flex absolute bottom-60 -right-16 bg-[#FBFBFB] text-text-body p-2 rounded-xl rounded-bl-none border shadow-md">
-            محیط امن و بستری وسیع برای
-            <br />
-            جستجوی آسان و مطمئن
-            <LuLockKeyhole className="text-primary-deep text-2xl m-2" />
+          <div className="flex w-5/12 gap-3 leading-5 text-right absolute bottom-60 -right-16 bg-[#FBFBFB] text-text-body p-5 rounded-xl rounded-bl-none border shadow-md">
+            محیط امن و بستری وسیع برای جستجوی آسان و مطمئن
+            <FaLock  className="text-primary-deep text-3xl m-2" />
           </div>
         </div>
       </div>
@@ -89,7 +83,7 @@ export default function HeroBanner() {
               حفاظت از حریم شخصی کاربران
               <br />و احترام به حقوق آن‌ها
             </div>
-            <MdSecurity className="text-primary-deep text-xl" />
+            <MdPrivacyTip className="text-primary-deep text-xl" />
           </div>
 
           <div className="absolute top-16 right-4 bg-[#FBFBFB]/95 text-text-body rounded-tr-none rounded-2xl backdrop-blur-sm border shadow-md p-3 text-sm flex items-center justify-end gap-2">
@@ -107,7 +101,7 @@ export default function HeroBanner() {
               <br />
               اندروید و IOS
             </div>
-            <CiMobile3 className="text-primary-deep text-xl" />
+            <FaMobile className="text-primary-deep text-xl" />
           </div>
 
           <div className="absolute bottom-64 right-0 text-right rounded-bl-none text-text-body bg-[#FBFBFB]/95 backdrop-blur-sm border shadow-md rounded-2xl p-2 text-sm flex items-center justify-end gap-1">
@@ -116,7 +110,7 @@ export default function HeroBanner() {
               <br />
               جستجوی آسان و مطمئن
             </div>
-            <LuLockKeyhole className="text-primary-deep text-xl" />
+            <FaLock className="text-primary-deep text-xl" />
           </div>
         </div>
       </div>
@@ -128,7 +122,7 @@ export default function HeroBanner() {
           <div className="flex animate-slide gap-3">
             <div className="flex bg-[#FBFBFB] border rounded-xl p-2 text-text-body shadow-md text-sm whitespace-nowrap">
               حفاظت از حریم شخصی کاربران
-              <MdSecurity className="text-primary-deep text-lg ml-2" />
+              <MdPrivacyTip className="text-primary-deep text-lg ml-2" />
             </div>
             <div className="flex bg-[#FBFBFB] text-text-body border rounded-xl p-2 shadow-md text-sm whitespace-nowrap">
               بدون نیاز به ایجاد اکونت برای دسترسی به مطالب
@@ -136,11 +130,11 @@ export default function HeroBanner() {
             </div>
             <div className="flex bg-[#FBFBFB] text-text-body border rounded-xl p-2 shadow-md text-sm whitespace-nowrap">
               اپلیکیشن موبایل برای اندروید و IOS
-              <CiMobile3 className="text-primary-deep text-lg ml-2" />
+              <FaMobile className="text-primary-deep text-lg ml-2" />
             </div>
             <div className="flex bg-[#FBFBFB] border text-text-body rounded-xl p-2 shadow-md text-sm whitespace-nowrap">
               محیط امن و بستری برای جستجوی آسان و مطمئن
-              <LuLockKeyhole className="text-primary-deep text-lg ml-2" />
+              <FaLock className="text-primary-deep text-lg ml-2" />
             </div>
           </div>
         </div>

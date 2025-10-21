@@ -13,14 +13,9 @@ export default function PopularTopics({ data, isLoading }) {
         پیشنهاد صدا برای شما{" "}
       </h2>
 
-      {/* Container with arrows and cards */}
-      <div className="flex items-center justify-between gap-6 w-full">
-        {/* Left arrow */}
-        <button className="hidden lg:flex w-12 h-12 items-center justify-center rounded-full bg-background-card text-primary-deep hover:bg-gray-300 transition shadow">
-          ←
-        </button>
-
-        {/* Cards wrapper */}
+      {/* Container of cards */}
+      <div className="flex justify-between">
+       
         <div className="flex flex-wrap justify-center lg:justify-between gap-8 flex-1">
           {!isLoading
             ? data &&
@@ -50,11 +45,6 @@ export default function PopularTopics({ data, isLoading }) {
                 <CustomShimmer className={"w-[380px] h-[360px]"} />
               ))}
         </div>
-
-        {/* Right Arrow */}
-        <button className="hidden lg:flex w-12 h-12 items-center justify-center rounded-full bg-background-card text-primary-deep hover:bg-gray-300 transition shadow">
-          ➔
-        </button>
       </div>
     </section>
   );

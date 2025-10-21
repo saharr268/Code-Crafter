@@ -16,7 +16,7 @@ const AllPosts = ({ data, isLoading }) => {
       <h2 className="text-xl font-semibold text-right mb-12">همه‌ی مطالب</h2>
 
       {/* Responsive Grid */}
-      <div className="-mx-1 sm:-mx-2 md:-mx-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-1 gap-y-16 justify-items-center">
+      <div className="-mx-1 sm:-mx-2 md:-mx-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-10 justify-items-center">
         {!isLoading
           ? data?.map(({ title, thumbnail_url, id }) => (
               <div
@@ -25,7 +25,7 @@ const AllPosts = ({ data, isLoading }) => {
                 className="flex flex-col items-center text-right"
               >
                 {/* Card */}
-                <div className="bg-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 w-96 h-72 flex justify-center items-center p-8">
+                <div className="bg-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 w-80 h-80 flex justify-center items-center p-8">
                   <img
                     src={urlImageHandler(thumbnail_url)}
                     alt={title}
