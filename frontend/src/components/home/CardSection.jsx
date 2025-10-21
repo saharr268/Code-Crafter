@@ -48,15 +48,16 @@ const CardSection = ({ setOpenChatbot }) => {
           </h2>
 
           {/* Card Grid */}
-          <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, index) => {
               const isPurple = index % 2 === 0;
 
               return (
                 <div
                   key={index}
-                  onClick={service?.onClick}
-                  className="group bg-white rounded-2xl shadow p-6 relative transition-all duration-300 hover:bg-primary-deep hover:shadow-lg"
+                  onClick={service.onClick}
+                  className={`group bg-white rounded-2xl shadow p-6 relative transition-all duration-300 hover:shadow-lg 
+                 ${isPurple ? "hover:bg-[#8c58d9]" : "hover:bg-primary-deep"}`}
                 >
                   {/* Header: Arrow (left) and Icon (right) */}
                   <div className="flex items-center justify-between mb-4">
@@ -69,9 +70,7 @@ const CardSection = ({ setOpenChatbot }) => {
                           : "text-primary-deep bg-[#FBFBFB] group-hover:text-white group-hover:bg-white/20"
                       }`}
                     >
-                      <a href={service.path}>
-                        <GoArrowUpRight className="text-lg" />
-                      </a>
+                      <GoArrowUpRight className="text-lg" />
                     </span>
 
                     {/* Icon on the right */}

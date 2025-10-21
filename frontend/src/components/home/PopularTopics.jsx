@@ -17,17 +17,17 @@ export default function PopularTopics({ data, isLoading }) {
 
         {/* Container of cards */}
         <div className="w-full flex justify-between flex-col items-center gap-6">
-          <div className="flex flex-wrap justify-center justify-between gap-6 flex-1">
+          <div className="flex flex-wrap justify-center gap-6 flex-1">
             {!isLoading
               ? data &&
                 data.map((topic) => (
                   <div
                     key={topic.id}
                     onClick={() => navigate(`learn/lesson/${topic.id}`)}
-                    className="flex flex-col items-start w-full sm:w-64 md:w-72 lg:w-50"
+                    className="flex flex-col items-start w-full sm:w-64 md:w-96 lg:w-50"
                   >
                     {/* Card */}
-                    <div className="relative bg-background-card rounded-2xl p-12 w-full h-100 flex items-center justify-center hover:shadow-md transition">
+                    <div className="relative bg-background-card rounded-2xl py-20 p-12 w-full h-100 flex items-center justify-center hover:shadow-md transition">
                       {/* Image */}
                       <CustomImage
                         src={urlImageHandler(topic.thumbnail_url)}

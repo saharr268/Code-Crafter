@@ -42,23 +42,23 @@ const Testimonials = ({ data, isLoading }) => {
         </h2>
 
         {/* دسکتاپ */}
-        <div className="hidden lg:flex items-center justify-center relative w-full">
+        <div className="hidden lg:flex items-center justify-center  w-full">
           {/* فلش چپ */}
           <button
             onClick={handlePrev}
             disabled={startIndex === 0}
-            className="absolute left-4 xl:left-12 w-12 h-12 flex items-center justify-center rounded-full bg-background-card text-primary-deep hover:bg-teal-100 transition disabled:opacity-40 shadow  cursor-pointer disabled:cursor-auto"
+            className="absolute right-8 xl:left-12 w-12 h-12 flex items-center justify-center rounded-full bg-background-card text-primary-deep hover:bg-teal-100 transition disabled:opacity-40 shadow  cursor-pointer disabled:cursor-auto"
           >
             <GoArrowLeft size={24} />
           </button>
 
           {/* کارت‌ها */}
-          <div className="flex justify-center gap-8 w-full px-20">
+          <div className="flex justify-center gap-8 w-full px-16">
             {!isLoading
               ? visibleTestimonials?.map((t, index) => (
                   <div
                     key={index}
-                    className="bg-background-card p-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow w-1/3 max-w-sm"
+                    className="bg-background-card py-8 px-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow h-64 w-1/3 max-w-sm"
                   >
                     {/* Stars */}
                     <div className="flex justify-end mb-6">
@@ -93,7 +93,7 @@ const Testimonials = ({ data, isLoading }) => {
           <button
             onClick={handleNext}
             disabled={startIndex + cardsPerPage >= data.length}
-            className="absolute right-4 xl:right-12 w-12 h-12 flex items-center justify-center rounded-full bg-background-card text-p hover:bg-teal-100 transition disabled:opacity-40 shadow cursor-pointer"
+            className="absolute right-8 xl:right-12 w-12 h-12 flex items-center justify-center rounded-full bg-background-card text-p hover:bg-teal-100 transition disabled:opacity-40 shadow cursor-pointer  disabled:cursor-auto  disabled:hover:bg-background-card"
           >
             <GoArrowRight size={24} />
           </button>
@@ -136,14 +136,14 @@ const Testimonials = ({ data, isLoading }) => {
             <button
               onClick={handlePrev}
               disabled={startIndex === 0}
-              className="w-10 h-10 flex items-center justify-center rounded-full bg-background-card text-primary-deep hover:bg-teal-100 transition disabled:opacity-40"
+              className="w-10 h-10  flex items-center justify-center rounded-full bg-background-card text-primary-deep hover:bg-teal-100 transition disabled:opacity-40"
             >
               <GoArrowLeft size={20} />
             </button>
             <button
               onClick={handleNext}
               disabled={startIndex + cardsPerPage >= data.length}
-              className="w-10 h-10 flex items-center justify-center rounded-full bg-background-card text-primary-deep hover:bg-teal-100 transition disabled:opacity-40"
+              className="w-10 h-10  flex items-center justify-center rounded-full bg-background-card text-primary-deep hover:bg-teal-100 transition disabled:opacity-40"
             >
               <GoArrowRight size={20} />
             </button>
