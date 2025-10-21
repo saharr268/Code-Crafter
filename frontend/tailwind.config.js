@@ -34,6 +34,15 @@ export default {
           light: "#EEC4F9",
         },
       },
+      keyframes: {
+        voicebar: {
+          "0%, 100%": { transform: "scaleY(0.4)" },
+          "50%": { transform: "scaleY(1)" },
+        },
+      },
+      animation: {
+        voicebar: "voicebar 1s ease-in-out infinite",
+      },
     },
   },
   plugins: [],
