@@ -4,10 +4,8 @@ import { ChatbotButton } from "../common/ChatbotButton";
 
 import heroImage from "../../assets/images/hero.png";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
-const HeroSection = () => {
-  const [openChatbot, setOpenChatbot] = useState();
+const HeroSection = ({ setOpenChatbot, openChatbot }) => {
   const navigate = useNavigate();
   return (
     <section className="flex items-center bg-background-card px-4 sm:px-20 md:px-12 m-4 md:mt-6 rounded-[40px] max-h-auto py-4">

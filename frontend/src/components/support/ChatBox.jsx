@@ -6,7 +6,8 @@ import { CommentValidation } from "../../helpers/utils/validations";
 import { CustomRate } from "../controllers/CustomRate";
 
 export default function MessageBox() {
-  const { mutateAsync: createComment } = useCreateComment();
+  const { mutateAsync: createComment, isPending: isLoading } =
+    useCreateComment();
 
   const formIK = useFormik({
     initialValues: { comment_text: "", rate: "", is_accepted: "" },
@@ -75,7 +76,7 @@ export default function MessageBox() {
                 type="submit"
                 className="px-6 py-2 bg-primary-deep text-white rounded-md hover:bg-primary-dark transition"
               >
-                ارسال پیام
+                {isLoading ? "درحال بارگذازی..." : " ارسال پیام"}
               </button>
             </div>
           </div>
