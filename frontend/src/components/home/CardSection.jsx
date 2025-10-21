@@ -56,7 +56,7 @@ const CardSection = ({ setOpenChatbot }) => {
                 <div
                   key={index}
                   onClick={service.onClick}
-                  className={`group bg-white rounded-2xl shadow p-6 relative transition-all duration-300 hover:shadow-lg 
+                  className={`group cursor-pointer bg-white rounded-2xl shadow p-6 relative transition-all duration-300 hover:shadow-lg 
                  ${isPurple ? "hover:bg-[#8c58d9]" : "hover:bg-primary-deep"}`}
                 >
                   {/* Header: Arrow (left) and Icon (right) */}
