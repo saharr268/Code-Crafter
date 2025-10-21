@@ -40,8 +40,8 @@ const AllPosts = ({ data, isLoading }) => {
                   </p>
                 </div>
               ))
-            : map([1, 2, 3, 4, 5, 6], () => (
-                <CustomShimmer className={"w-[380px] h-[360px]"} />
+            : map([1, 2, 3, 4, 5, 6, 7, 8], () => (
+                <CustomShimmer className={"w-80 h-80"} />
               ))}
         </div>
       </section>
