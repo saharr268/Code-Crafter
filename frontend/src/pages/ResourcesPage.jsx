@@ -18,19 +18,19 @@ const resources = [
     title: "اپلیکیشن‌های ارتباطات و پیام‌رسانی",
     image: secApp,
     bg: "bg-[#d5f4f9]",
-    path: "/resources/apps",
+    path: "/messaging",
   },
   {
     title: "انواع Browser Extensions",
     image: browserExt,
     bg: "bg-[#dff6f9]",
-    path: "/resources/extensions",
+    path: "/extensions",
   },
   {
     title: "انواع انتی‌ویروس",
     image: emergencyToolkit,
     bg: "bg-[#f3eaf9]",
-    path: "/resources/emergency",
+    path: "/antivirus",
   },
 ];
 
@@ -71,7 +71,7 @@ export default function ResourcesPage() {
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="absolute bottom-3 left-7 w-40 sm:w-48 object-contain"
+                  className="absolute mb-2 mt-12 left-7 w-40 sm:w-48 object-contain"
                 />
               </div>
             ))}
