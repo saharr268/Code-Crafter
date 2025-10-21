@@ -1,19 +1,11 @@
-import Faq from '../components/support/Faq'
-import Footer from '../components/common/Footer'
-import OfflineTips from '../components/support/OfflineTips'
-import AnswerQuestions from '../components/support/AnswerQuestions'
-import MessageBox from '../components/support/ChatBox'
+import Help from "../components/support/Help";
 
 const SupportPage = () => {
   return (
-    <div>
-      <Faq />
-      <OfflineTips />
-      <MessageBox/>
-      <AnswerQuestions/>
-      <Footer/>
+    <div className="bg-white">
+      <Help />
+     
     </div>
   );
 }
-
 export default SupportPage

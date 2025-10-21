@@ -1,13 +1,14 @@
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { TbMailFilled } from "react-icons/tb";
+import Logo from "../../assets/images/logo.png";
 export default function Footer() {
   return (
     <footer className="bg-background-dark text-white py-10">
       <div className="max-w-6xl mx-auto text-center px-4">
         {/* لوگو */}
         <div className="flex justify-center mt-12 mb-6">
-          <div className="bg-background-card text-background-dark px-6 py-2 rounded-full font-semibold">
-            لوگو
+          <div className="px-6 py-2 w-56 rounded-full font-semibold">
+            <img src={Logo} alt="Seda Logo"/>
           </div>
         </div>
 

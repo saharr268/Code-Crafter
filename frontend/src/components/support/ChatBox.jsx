@@ -6,6 +6,7 @@ import { CommentValidation } from "../../helpers/utils/validations";
 
 export default function MessageBox() {
   const { mutateAsync: createComment } = useCreateComment();
+
   const formIK = useFormik({
     initialValues: { comment_text: "", rate: "", is_accepted: "" },
     enableReinitialize: true,
@@ -14,64 +15,52 @@ export default function MessageBox() {
     validationSchema: CommentValidation,
     onSubmit: ({ comment_text, rate }) => {
       tryCatchHandler({
-        handler: async () => {
-          const finalValues = {
+        handler: async () =>
+          createComment({
             comment_text: comment_text || "",
             rate: rate || null,
             is_accepted: true,
-          };
-          const res = await createComment(finalValues);
-
-          return res;
-        },
+          }),
         successMessage: "دیدگاهتان فرستاده شد!",
-        errorCallback: (error) => error,
+        errorCallback: (err) => err,
       });
     },
   });
 
   return (
-    <section className="w-full flex justify-center items-center py-12 px-4 pr-96 bg-white">
-      <div
-        dir="rtl"
-        className="w-full max-w-3xl bg-slate-50 rounded-lg shadow-sm p-8"
-      >
-        <h2 className="text-xl font-bold mb-3 text-gray-900">
-          صندوق ارسال پیام
-        </h2>
+    <section className="w-full bg-white py-12 px-6">
+      <div className="max-w-3xl mx-auto bg-slate-50 rounded-lg shadow-sm p-8" dir="rtl">
+        <h2 className="text-xl font-bold mb-3 text-gray-900">صندوق ارسال پیام</h2>
         <p className="text-gray-600 text-sm leading-6 mb-6">
-          دوست عزیز! اگر جوابی برای سوالی که داری در بخش سوالات متداول وجود
-          نداشت، می‌توانی به‌صورت ناشناس برای ما پیام ارسال کنی. تیم مدیریت در
-          بخش پاسخ پیام‌های شما به آن جواب خواهد داد.
+          اگر جواب سوال شما در بخش سوالات متداول نبود، به‌صورت ناشناس پیام بفرستید.
         </p>
 
-        {/* form */}
-        <form onSubmit={formIK.handleSubmit} className="space-y-4">
-          <div className="relative">
-            <textarea
-              value={formIK.values.comment_text}
-              onChange={formIK.handleChange}
-              placeholder="پیام خود را بنویسید..."
-              className="w-full min-h-[300px] p-4 rounded-lg border  bg-gray-200 border-gray-300 focus:ring-2 focus:ring-teal-500 focus:outline-none text-gray-800 resize-none"
-            ></textarea>
-            {formIK.errors.comment_text && <p>{formIK.errors.comment_text}</p>}
+        <form onSubmit={formIK.handleSubmit} className="relative">
+          <textarea
+            name="comment_text"
+            value={formIK.values.comment_text}
+            onChange={formIK.handleChange}
+            placeholder="پیام خود را بنویسید..."
+            className="w-full min-h-[260px] p-4 rounded-lg border bg-gray-200 border-gray-300 focus:ring-2 focus:ring-teal-500 focus:outline-none text-gray-800 resize-none"
+          />
+          {formIK.errors.comment_text && (
+            <p className="text-sm text-red-500 mt-2">{formIK.errors.comment_text}</p>
+          )}
 
-            {/*  Uplode image ico*/}
-            <button
-              type="button"
-              className="absolute bottom-4 left-[670px]  text-gray-500 hover:text-teal-600"
-            >
-              <FaRegImage size={20} />
-            </button>
+          <button
+            type="button"
+            className="absolute left-6 bottom-6 text-gray-500 hover:text-teal-600"
+            aria-label="upload image"
+          >
+            <FaRegImage size={20} />
+          </button>
 
-            {/* send button */}
-            <button
-              type="submit"
-              className="px-6 py-2 bg-teal-600 absolute right-[560px] bottom-6 text-white rounded-md hover:bg-teal-700 transition"
-            >
-              ارسال پیام
-            </button>
-          </div>
+          <button
+            type="submit"
+            className="absolute right-6 bottom-6 px-6 py-2 bg-teal-600 text-white rounded-md hover:bg-teal-700 transition"
+          >
+            ارسال پیام
+          </button>
         </form>
       </div>
     </section>
