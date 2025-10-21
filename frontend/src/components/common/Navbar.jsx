@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Menu, Globe } from "lucide-react";
+import Logo from "../../assets/images/logo-s.png";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -68,13 +69,13 @@ export default function Navbar() {
           ))}
         </nav>
 
-      
         <button className="md:hidden p-2 rounded-lg bg-primary-muted ml-32 text-text-heading shadow">
           <Globe size={20} />
         </button>
 
-        <div className="flex items-center px-3 py-2 rounded-full sm:mr-10 sm:px-5 font-semibold text-sm bg-background-dark text-white">
-          لوگوی صدا
+        {/* لوگو */}
+        <div className="flex items-center w-40 sm:mr-2 sm:px-5">
+          <img src={Logo} alt="Seda Logo" />
         </div>
       </div>
     </header>

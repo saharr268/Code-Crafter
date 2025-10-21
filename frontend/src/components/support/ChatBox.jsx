@@ -28,7 +28,7 @@ export default function MessageBox() {
           return res;
         },
         successMessage: "دیدگاهتان فرستاده شد!",
-        errorCallback: (error) => error,
+        errorCallback: (err) => err,
       });
     },
   });
