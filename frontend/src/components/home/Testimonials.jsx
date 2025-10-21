@@ -1,36 +1,43 @@
-import { useState, useEffect } from "react";
-import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { CustomShimmer } from "../controllers/CustomShimmer";
 import { map } from "lodash";
 import { timeAgoFa } from "../../helpers/utils/date";
 
 const Testimonials = ({ data, isLoading }) => {
-  const [startIndex, setStartIndex] = useState(0);
+  if (isLoading) {
+    return (
+      <section className="w-full bg-white py-16 px-4 md:px-8 lg:px-12 relative overflow-hidden">
+        {/* Title */}
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
+          نظرات شما
+        </h2>
 
-  const [cardsPerPage, setCardsPerPage] = useState(3);
+        {/* Loading Shimmer */}
+        <div className="flex flex-col items-center gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
+            {Array.from({ length: 3 }).map((_, index) => (
+              <CustomShimmer key={index} className="h-48 rounded-2xl" />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
 
-  useEffect(() => {
-    const updateCardsPerPage = () => {
-      if (window.innerWidth < 640) setCardsPerPage(1);
-      else if (window.innerWidth < 1024) setCardsPerPage(2);
-      else setCardsPerPage(3);
-    };
+  if (!data || data.length === 0) {
+    return (
+      <section className="w-full bg-white py-16 px-4 md:px-8 lg:px-12 relative overflow-hidden">
+        {/* Title */}
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
+          نظرات شما
+        </h2>
 
-    updateCardsPerPage();
-    window.addEventListener("resize", updateCardsPerPage);
-    return () => window.removeEventListener("resize", updateCardsPerPage);
-  }, []);
-
-  const handleNext = () => {
-    if (startIndex + cardsPerPage < data.length) {
-      setStartIndex(startIndex + 1);
-    }
-  };
-  const handlePrev = () => {
-    if (startIndex > 0) setStartIndex(startIndex - 1);
-  };
-
-  const visibleTestimonials = data.slice(startIndex, startIndex + cardsPerPage);
+        {/* No Data Message */}
+        <div className="flex flex-col items-center gap-6">
+          <p className="text-text-body text-center">هنوز نظری ثبت نشده است</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="w-full bg-white py-16 px-4 md:px-8 lg:px-12 relative overflow-hidden">
@@ -105,12 +112,13 @@ const Testimonials = ({ data, isLoading }) => {
               key={index}
               className="bg-background-card p-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow"
             >
+              {/* Stars */}
               <div className="flex justify-end mb-6">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <span
                     key={i}
                     className={`text-xl ${
-                      i < t.stars ? "text-yellow-400" : "text-gray-300"
+                      i < testimonial.stars ? "text-[#FFCF0F]" : "text-gray-300"
                     }`}
                   >
                     ★
@@ -119,32 +127,14 @@ const Testimonials = ({ data, isLoading }) => {
               </div>
 
               <p className="text-text-body text-right leading-relaxed mb-6">
-                {t.comment_text}
+                {testimonial.comment_text}
               </p>
 
               <p className="text-primary-deep text-sm font-medium text-right">
-                {t.time}
+                {testimonial.time}
               </p>
             </div>
           ))}
-        </div>
-
-        {/* فلش‌ها پایین */}
-        <div className="flex items-center justify-center gap-4 mt-4">
-          <button
-            onClick={handlePrev}
-            disabled={startIndex === 0}
-            className="w-10 h-10 flex items-center justify-center rounded-full bg-background-card text-primary-deep hover:bg-teal-100 transition disabled:opacity-40"
-          >
-            <GoArrowLeft size={20} />
-          </button>
-          <button
-            onClick={handleNext}
-            disabled={startIndex + cardsPerPage >= data.length}
-            className="w-10 h-10 flex items-center justify-center rounded-full bg-background-card text-primary-deep hover:bg-teal-100 transition disabled:opacity-40"
-          >
-            <GoArrowRight size={20} />
-          </button>
         </div>
       </div>
     </section>

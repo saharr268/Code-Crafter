@@ -13,30 +13,25 @@ export default function PopularTopics({ data, isLoading }) {
         پیشنهاد صدا برای شما{" "}
       </h2>
 
-      {/* Container with arrows and cards */}
-      <div className="flex items-center justify-between gap-6 w-full">
-        {/* Left arrow */}
-        <button className="hidden lg:flex w-12 h-12 items-center justify-center rounded-full bg-background-card text-primary-deep hover:bg-gray-300 transition shadow">
-          ←
-        </button>
-
-        {/* Cards wrapper */}
-        <div className="flex flex-wrap justify-center lg:justify-between gap-8 flex-1">
+      {/* Container of cards */}
+      <div className="w-full flex justify-between flex-col items-center gap-6">
+       
+        <div className="flex flex-wrap justify-center justify-between gap-6 flex-1">
           {!isLoading
             ? data &&
               data.map((topic) => (
                 <div
                   key={topic.id}
                   onClick={() => navigate(`learn/lesson/${topic.id}`)}
-                  className="flex flex-col items-start w-full sm:w-64 md:w-72 lg:w-[30%]"
+                  className="flex flex-col items-start w-full sm:w-64 md:w-72 lg:w-50"
                 >
                   {/* Card */}
-                  <div className="relative bg-background-card rounded-2xl p-6 w-full h-80 flex items-center justify-center hover:shadow-md transition">
+                  <div className="relative bg-background-card rounded-2xl p-12 w-full h-100 flex items-center justify-center hover:shadow-md transition">
                     {/* Image */}
                     <CustomImage
                       src={urlImageHandler(topic.thumbnail_url)}
                       alt={topic.title}
-                      className="w-[240px] h-[240px] object-contain"
+                      className="w-[200px] h-[200px] object-contain"
                     />
                   </div>
 
@@ -50,11 +45,6 @@ export default function PopularTopics({ data, isLoading }) {
                 <CustomShimmer className={"w-[380px] h-[360px]"} />
               ))}
         </div>
-
-        {/* Right Arrow */}
-        <button className="hidden lg:flex w-12 h-12 items-center justify-center rounded-full bg-background-card text-primary-deep hover:bg-gray-300 transition shadow">
-          ➔
-        </button>
       </div>
     </section>
   );
