@@ -12,6 +12,9 @@ import { PAGE_SIZE } from "../helpers/constant/statics";
 
 import { slice } from "lodash";
 import { useCommentData } from "../services/hooks/comments";
+import { ChatbotButton } from "../components/common/ChatbotButton";
+import ChatWindow from "../components/common/ChatbotWindow";
+import { AnimationSlideIn } from "../components/common/Animations";
 
 const Home = () => {
   const [openChatbot, setOpenChatbot] = useState();
@@ -41,10 +44,14 @@ const Home = () => {
       <Testimonials data={commentData} isLoading={isPendingComment} />
       <MobileBanner />
       <PopularTopics data={lessonData} isLoading={isPendingLesson} />
-      {/* <CommentsSection /> */}
-      {/* <BannerSection /> */}
-      {/* <MostViewedSection /> */}
       <Footer />
+      <ChatbotButton
+        onClick={() => {
+          // e.stopPropagination();
+          setOpenChatbot(true);
+        }}
+      />
+      <ChatWindow isOpen={openChatbot} onClose={() => setOpenChatbot(false)} />
     </div>
   );
 };

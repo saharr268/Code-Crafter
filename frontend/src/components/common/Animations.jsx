@@ -1,0 +1,53 @@
+import { memo, useEffect, useRef } from "react";
+
+// eslint-disable-next-line no-unused-vars
+import { motion, useAnimation, useInView } from "framer-motion";
+
+const obj = {
+  left: { x: -20, y: undefined, initailX: 1, initialY: undefined },
+  right: { x: 20, y: undefined, initailX: 1, initialY: undefined },
+  up: { y: -20, x: undefined, initailX: undefined, initialY: 1 },
+  down: { y: 20, x: undefined, initailX: undefined, initialY: 1 },
+};
+
+export const AnimationSlideIn = memo(({ children, className, direction }) => {
+  const ref = useRef(null);
+  const controls = useAnimation();
+  const isInView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start({
+        x: obj[direction].initailX,
+        y: obj[direction].initialY,
+        opacity: 1,
+        transition: { duration: 0.8 },
+      });
+    }
+  }, [isInView, controls, direction]);
+
+  return (
+    <motion.div
+      ref={ref}
+      animate={controls}
+      className={className}
+      style={{ width: "100%" }}
+      initial={{ x: obj[direction]?.x, y: obj[direction]?.y, opacity: 0 }}
+    >
+      {children}
+    </motion.div>
+  );
+});
+
+export const AnimationFadeIn = memo(({ children, className }) => {
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
+      {children}
+    </motion.div>
+  );
+});

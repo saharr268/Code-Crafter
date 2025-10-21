@@ -5,6 +5,7 @@ import { TbMessageChatbotFilled } from "react-icons/tb";
 import { MdQuiz } from "react-icons/md";
 import { GoArrowUpRight } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
+import { AnimationSlideIn } from "../common/Animations";
 
 const CardSection = ({ setOpenChatbot }) => {
   const navigate = useNavigate();
@@ -38,66 +39,68 @@ const CardSection = ({ setOpenChatbot }) => {
     },
   ];
   return (
-    <section className="bg-background-card rounded-[60px] w-full py-24">
-      <div className="mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Title */}
-        <h2 className="text-2xl md:text-3xl text-text-heading font-bold text-center mb-12">
-          صدا چگونه به شما کمک می‌کند؟
-        </h2>
+    <AnimationSlideIn direction="right">
+      <section className="bg-background-card rounded-[60px] w-full py-24">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Title */}
+          <h2 className="text-2xl md:text-3xl text-text-heading font-bold text-center mb-12">
+            صدا چگونه به شما کمک می‌کند؟
+          </h2>
 
-        {/* Card Grid */}
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, index) => {
-            const isPurple = index % 2 === 0;
+          {/* Card Grid */}
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {services.map((service, index) => {
+              const isPurple = index % 2 === 0;
 
-            return (
-              <div
-                key={index}
-                onClick={service?.onClick}
-                className="group bg-white rounded-2xl shadow p-6 relative transition-all duration-300 hover:bg-primary-deep hover:shadow-lg"
-              >
-                {/* Header: Arrow (left) and Icon (right) */}
-                <div className="flex items-center justify-between mb-4">
-                  {/* Arrow on the left */}
-                  <span
-                    className={`mt-2 rounded-full w-12 h-12 flex items-center justify-center transition-all duration-300 
+              return (
+                <div
+                  key={index}
+                  onClick={service?.onClick}
+                  className="group bg-white rounded-2xl shadow p-6 relative transition-all duration-300 hover:bg-primary-deep hover:shadow-lg"
+                >
+                  {/* Header: Arrow (left) and Icon (right) */}
+                  <div className="flex items-center justify-between mb-4">
+                    {/* Arrow on the left */}
+                    <span
+                      className={`mt-2 rounded-full w-12 h-12 flex items-center justify-center transition-all duration-300 
                       ${
                         isPurple
                           ? "text-[#8c58d9] bg-[#FBFBFB] group-hover:text-white group-hover:bg-white/20"
                           : "text-primary-deep bg-[#FBFBFB] group-hover:text-white group-hover:bg-white/20"
                       }`}
-                  >
-                    <a href={service.path}>
-                      <GoArrowUpRight className="text-lg" />
-                    </a>
-                  </span>
+                    >
+                      <a href={service.path}>
+                        <GoArrowUpRight className="text-lg" />
+                      </a>
+                    </span>
 
-                  {/* Icon on the right */}
-                  <div
-                    className={`w-12 h-12 mt-2 pr-2 flex items-center justify-center rounded-full text-xl ml-6 transition-all duration-300 
+                    {/* Icon on the right */}
+                    <div
+                      className={`w-12 h-12 mt-2 pr-2 flex items-center justify-center rounded-full text-xl ml-6 transition-all duration-300 
                       ${
                         isPurple
                           ? "text-[#8c58d9] group-hover:text-white"
                           : "text-primary-deep group-hover:text-white"
                       }`}
-                  >
-                    {service.icon}
+                    >
+                      {service.icon}
+                    </div>
                   </div>
-                </div>
 
-                {/* Text content */}
-                <h3 className="font-bold text-lg mt-8 mb-4 text-right pr-2 text-text-heading group-hover:text-white transition-all duration-300">
-                  {service.title}
-                </h3>
-                <p className="text-text-body text-sm leading-relaxed text-right mb-4 pr-2 group-hover:text-white transition-all duration-300">
-                  {service.description}
-                </p>
-              </div>
-            );
-          })}
+                  {/* Text content */}
+                  <h3 className="font-bold text-lg mt-8 mb-4 text-right pr-2 text-text-heading group-hover:text-white transition-all duration-300">
+                    {service.title}
+                  </h3>
+                  <p className="text-text-body text-sm leading-relaxed text-right mb-4 pr-2 group-hover:text-white transition-all duration-300">
+                    {service.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </AnimationSlideIn>
   );
 };
 

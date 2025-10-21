@@ -1,15 +1,18 @@
-import React from 'react'
+import React from "react";
 import ResourceSection from "../components/resource/ResourceSection";
-import Footer from '../components/common/Footer';
-import Navbar from '../components/common/Navbar';
+import Footer from "../components/common/Footer";
+import Navbar from "../components/common/Navbar";
+import { AnimationSlideIn } from "../components/common/Animations";
 
 const ResourceDetails = () => {
   return (
     <div>
-      <ResourceSection />
-      <Footer/>
+      <AnimationSlideIn direction="left">
+        <ResourceSection />
+      </AnimationSlideIn>
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default ResourceDetails
+export default ResourceDetails;

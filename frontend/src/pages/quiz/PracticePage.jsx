@@ -9,6 +9,7 @@ import { urlImageHandler } from "../../helpers/utils/images";
 import { map } from "lodash";
 import { CustomShimmer } from "../../components/controllers/CustomShimmer";
 import { questionICON, timeICON } from "../../components/others/SvgComponent";
+import { AnimationSlideIn } from "../../components/common/Animations";
 
 const PracticePage = () => {
   const navigate = useNavigate();
@@ -40,61 +41,65 @@ const PracticePage = () => {
         </div>
 
         {/* Grid cards */}
-        <div className="flex flex-wrap justify-between px-[100px] gap-y-10 mt-11">
-          {!isPending
-            ? data &&
-              data?.map(
-                ({ title, question_count, thumbnail_url, id }, index) => (
-                  <div
-                    key={index}
-                    style={{ boxShadow: "0px 0px 4px 0px rgba(0, 0, 0, 0.25)" }}
-                    className="relative bg-gray-100 w-[400px] p-6  rounded-3xl shadow hover:shadow-lg transition flex flex-col justify-between"
-                  >
-                    <div className="flex flex-col gap-y-5">
-                      <h3 className="font-semibold text-lg text-gray-800 mb-4 text-right pt-6 pr-6">
-                        {title}
-                      </h3>
+        <AnimationSlideIn direction="left">
+          <div className="flex flex-wrap justify-between px-[100px] gap-y-10 mt-11">
+            {!isPending
+              ? data &&
+                data?.map(
+                  ({ title, question_count, thumbnail_url, id }, index) => (
+                    <div
+                      key={index}
+                      style={{
+                        boxShadow: "0px 0px 4px 0px rgba(0, 0, 0, 0.25)",
+                      }}
+                      className="relative bg-gray-100 w-[400px] p-6  rounded-3xl shadow hover:shadow-lg transition flex flex-col justify-between"
+                    >
+                      <div className="flex flex-col gap-y-5">
+                        <h3 className="font-semibold text-lg text-gray-800 mb-4 text-right pt-6 pr-6">
+                          {title}
+                        </h3>
 
-                      {/* Info (time & questions) */}
-                      <div className="flex gap-4 text-sm justify-end mr-6 text-gray-500 mb-8">
-                        <div className="bg-white px-4 py-2 flex items-center gap-1">
-                          <span className="flex items-center gap-1 mt-[-5px] text-[#2A2D2D] font-medium">
-                            {`نامحدود`}
-                          </span>
-                          {timeICON()}
-                        </div>
-                        <div className="bg-white px-4 py-2 flex items-center gap-1">
-                          <span className="flex items-center gap-1 mt-[-5px] text-[#2A2D2D] font-medium">
-                            {`${question_count} سوال `}
-                          </span>
-                          {questionICON()}
+                        {/* Info (time & questions) */}
+                        <div className="flex gap-4 text-sm justify-end mr-6 text-gray-500 mb-8">
+                          <div className="bg-white px-4 py-2 flex items-center gap-1">
+                            <span className="flex items-center gap-1 mt-[-5px] text-[#2A2D2D] font-medium">
+                              {`نامحدود`}
+                            </span>
+                            {timeICON()}
+                          </div>
+                          <div className="bg-white px-4 py-2 flex items-center gap-1">
+                            <span className="flex items-center gap-1 mt-[-5px] text-[#2A2D2D] font-medium">
+                              {`${question_count} سوال `}
+                            </span>
+                            {questionICON()}
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    <div className="flex justify-between items-end">
-                      <div className="">
-                        <button
-                          onClick={() => navigate(`quiz/${id}`)}
-                          className="bg-[#03C0C1] hover:bg-purple-600 transition text-white text-lg  px-5 py-3 rounded-xl"
-                        >
-                          <Link>شروع کن</Link>
-                        </button>
+                      <div className="flex justify-between items-end">
+                        <div className="">
+                          <button
+                            onClick={() => navigate(`quiz/${id}`)}
+                            className="bg-[#03C0C1] hover:bg-purple-600 transition text-white text-lg  px-5 py-3 rounded-xl"
+                          >
+                            <Link>شروع کن</Link>
+                          </button>
+                        </div>
+
+                        <img
+                          src={urlImageHandler(thumbnail_url)}
+                          alt="decoration"
+                          className="right-5 w-[180px] h-[180px] pointer-events-none select-none flex justify-start"
+                        />
                       </div>
-
-                      <img
-                        src={urlImageHandler(thumbnail_url)}
-                        alt="decoration"
-                        className="right-5 w-[180px] h-[180px] pointer-events-none select-none flex justify-start"
-                      />
                     </div>
-                  </div>
+                  )
                 )
-              )
-            : map([1, 2, 3], () => (
-                <CustomShimmer className={"w-[400px] h-[400px]"} />
-              ))}
-        </div>
+              : map([1, 2, 3], () => (
+                  <CustomShimmer className={"w-[400px] h-[400px]"} />
+                ))}
+          </div>
+        </AnimationSlideIn>
 
         {/* Footer */}
         <div className="mt-20">
