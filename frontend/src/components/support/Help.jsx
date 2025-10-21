@@ -237,43 +237,6 @@ const Help = () => {
                 </form>
               </div>
             </section>
-
-            {/* --- User Answers Section --- */}
-            <section
-              ref={answersRef}
-              className="bg-[#00C2C2] text-right py-20 px-8 rounded-3xl mb-16"
-            >
-              <div className="max-w-6xl mx-auto">
-                <h2 className="text-white text-2xl md:text-3xl mb-10">
-                  دیدگاه‌های شما
-                </h2>
-                <div dir="rtl" className="grid md:grid-cols-2 gap-6">
-                  {[...Array(6)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="bg-white p-6 rounded-2xl shadow-lg text-sm md:text-base"
-                    >
-                      <div className="flex space-x-1 mt-4 text-yellow-300 text-2xl">
-                        <span>★</span>
-                        <span>★</span>
-                        <span>★</span>
-                        <span>★</span>
-                        <span>★</span>
-                      </div>
-
-                      <p className="text-gray-700 leading-relaxed mt-4 mb-8">
-                        قبل از آشنایی باصدا همیشه نگران حریم خصوصی‌ام بودم. حالا
-                        با مهارت‌هایی که یاد گرفتم، مطمئن‌تر و با اعتمادبه‌نفس
-                        بیشتری در فضای مجازی حضور دارم.
-                      </p>
-                      <p className="text-sm text-primary-dark text-right">
-                        دو ماه قبل
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
           </main>
         </div>
       </div>
