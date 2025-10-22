@@ -78,7 +78,6 @@ const Testimonials = ({ data, isLoading }) => {
                       className="text-primary-deep text-sm font-medium text-right"
                     >
                       {timeAgoFa(t.created_at)}{" "}
-                      {/* //! CREATE THE DATE HANDLER FOR THIS */}
                     </p>
                   </div>
                 ))

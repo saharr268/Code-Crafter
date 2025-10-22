@@ -37,6 +37,7 @@ const ChatWindow = ({ isOpen, onClose }) => {
             return updated;
           });
         },
+        notShowMessage: true,
       });
     },
   });

@@ -163,9 +163,19 @@ const Help = () => {
                         >
                           <button
                             onClick={() => toggleFAQ(index)}
-                            className="w-full flex items-center justify-between px-4 py-3"
+                            className={`w-full flex items-center justify-between px-4 py-6 ${
+                              openIndex === index
+                                ? "bg-primary-dark justify-end text-white p-2"
+                                : "max-h-64"
+                            }`}
                           >
-                            <span className="text-gray-700 font-medium">
+                            <span
+                              className={`${
+                                openIndex === index
+                                  ? "text-white"
+                                  : "text-gray-700"
+                              } font-medium`}
+                            >
                               {title}
                             </span>
                             <FiChevronDown
@@ -194,13 +204,69 @@ const Help = () => {
                                   animate={{ y: 0 }}
                                   exit={{ y: -5 }}
                                   transition={{ duration: 0.25 }}
-                                  className="px-4 pb-4 text-gray-600 text-sm leading-relaxed text-right"
+                                  className={`px-4 pb-4 text-gray-600 text-sm leading-relaxed text-right ${
+                                    openIndex === index
+                                      ? "bg-primary-dark justify-end text-white p-2"
+                                      : "max-h-64"
+                                  }`}
                                 >
                                   {descriptoin}
                                 </motion.div>
                               </motion.div>
                             )}
                           </AnimatePresence>
+                        </div>
+                      ))}
+                </div>
+              </div>
+            </section>
+
+            <section ref={faqRef} className="bg-white pb-20">
+              <div className="max-w-full px-8">
+                <h2 className="text-2xl font-bold mb-8">سوالات مکرر</h2>
+                <div className="space-y-4">
+                  {isLoadingFaq
+                    ? map([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], () => (
+                        <CustomShimmer className="w- h-[40px]" />
+                      ))
+                    : faqsSearch?.data?.map(({ title, descriptoin }, index) => (
+                        <div
+                          key={index}
+                          className="accordion-item border rounded-3xl shadow-sm bg-background-card"
+                        >
+                          <button
+                            onClick={() => toggleFAQ(index)}
+                            className={`w-full flex bg-background-card rounded-3xl justify-between transition-max-height duration-800 ease-in-out overflow-hidden px-4 py-6 ${
+                              openIndex === index
+                                ? "bg-primary-dark justify-end text-white p-2"
+                                : "max-h-64"
+                            }`}
+                          >
+                            <span className="text-gray-700 text-right justify-start font-medium">
+                              <div
+                                className={`w-full text-right bg-background-card rounded-3xl justify-start px-2 py-2 ${
+                                  openIndex === index
+                                    ? "bg-primary-dark justify-end text-white"
+                                    : "max-h-64"
+                                }`}
+                              >
+                                {title}
+                                {openIndex === index && (
+                                  <div className="px-4 py-4 justify-start text-right bg-primary-dark text-white text-sm leading-relaxed">
+                                    {descriptoin}
+                                  </div>
+                                )}
+                              </div>
+                            </span>
+
+                            <FiChevronDown
+                              className={`text-gray-500 transition-all duration-800 ease-linear overflow-hidden ml-3 p-0 ${
+                                openIndex === index
+                                  ? "rotate-180 text-white"
+                                  : ""
+                              }`}
+                            />
+                          </button>
                         </div>
                       ))}
                 </div>

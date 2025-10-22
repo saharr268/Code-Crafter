@@ -5,6 +5,7 @@ export const tryCatchHandler = async ({
   handler,
   errorCallback,
   successMessage,
+  notShowMessage,
 }) => {
   try {
     const result = (await handler()) || { data: {} };
@@ -14,7 +15,7 @@ export const tryCatchHandler = async ({
 
     if (isBoolean(succeeded) && succeeded == false) throw messages;
 
-    if (succeeded == undefined || succeeded == true)
+    if (!notShowMessage && (succeeded == undefined || succeeded == true))
       successAlert({
         title: successMessage ?? "Operation Succeed",
       });
