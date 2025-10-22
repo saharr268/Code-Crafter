@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { CustomShimmer } from "../controllers/CustomShimmer";
+import { timeAgoFa } from "../../helpers/utils/date";
 
 export default function Testimonials({ data, isLoading }) {
   const prevRef = useRef(null);
@@ -41,27 +42,27 @@ export default function Testimonials({ data, isLoading }) {
           className="pb-10"
         >
           {data &&
-            data.map((t) => (
+            data?.map((t) => (
               <SwiperSlide key={t.id}>
-                {isLoading ? (
-                  <CustomShimmer className={"w-[380px] h-[256px]"} />
-                ) : (
+                {!isLoading ? (
                   <div className="bg-background-card border border-gray-100 py-8 px-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300 h-auto min-h-[250px]">
                     {/* ⭐ Stars */}
                     <div className="text-yellow-400 mb-3 text-lg">
-                      {"★".repeat(t.stars) + "☆".repeat(5 - t.stars)}
+                      {"★".repeat(t.rate) + "☆".repeat(5 - t.rate)}
                     </div>
 
                     {/* Text */}
                     <p className="text-gray-700 leading-7 text-sm sm:text-base">
-                      {t.text}
+                      {t.comment_text}
                     </p>
 
                     {/* Date */}
                     <p className="mt-6 text-teal-600 text-xs sm:text-sm font-medium">
-                      {t.date}
+                      {timeAgoFa(t.created_at)}
                     </p>
                   </div>
+                ) : (
+                  <CustomShimmer className={"w-[380px] h-[256px]"} />
                 )}
               </SwiperSlide>
             ))}
