@@ -63,14 +63,14 @@ const PracticePage = () => {
 
                         {/* Info (time & questions) */}
                         <div className="flex gap-4 text-sm justify-end mr-6 text-gray-500 mb-8">
-                          <div className="bg-white px-4 py-2 flex items-center gap-1">
-                            <span className="flex items-center gap-1 mt-[-5px] text-[#2A2D2D] font-medium">
+                          <div className="bg-white rounded-md px-4 py-2 flex items-center gap-1">
+                            <span className="flex items-center gap-1 mt-[-5px] rou text-[#2A2D2D] font-medium">
                               {`نامحدود`}
                             </span>
                             {timeICON()}
                           </div>
-                          <div className="bg-white px-4 py-2 flex items-center gap-1">
-                            <span className="flex items-center gap-1 mt-[-5px] text-[#2A2D2D] font-medium">
+                          <div className="bg-white rounded-md px-4 py-2 flex items-center gap-1">
+                            <span className="flex items-center gap-1 mt-[-5px] rou text-[#2A2D2D] font-medium">
                               {`${question_count} سوال `}
                             </span>
                             {questionICON()}
