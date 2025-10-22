@@ -8,16 +8,15 @@ const MostVisitedPost = ({ data, isLoading }) => {
   const navigate = useNavigate();
 
   return (
-    <AnimationSlideIn direction="left">
-      <div className="flex flex-col items-center justify-center mt-6 ">
-        <div className="w-full max-w-7xl ">
-          <Navbar />
-        </div>
-        {/* Page Title */}
-        <h2 className="text-right text-gray-800 font-medium text-lg md:text-xl mr-32 mb-6 w-full max-w-7xl mt-32">
-          پیشنهاد امروز صدا به شما
-        </h2>
-
+    <div className="flex flex-col items-center justify-center mt-6 ">
+      <div className="w-full max-w-7xl ">
+        <Navbar />
+      </div>
+      {/* Page Title */}
+      <h2 className="text-right text-gray-800 font-medium text-lg md:text-xl mr-32 mb-6 w-full max-w-7xl mt-32">
+        پیشنهاد امروز صدا به شما
+      </h2>
+      <AnimationSlideIn direction="right">
         {/* Card */}
         {isLoading ? (
           <CustomShimmer className="h-[368px] max-w-[1280px] w-full mx-auto" />
@@ -52,8 +51,8 @@ const MostVisitedPost = ({ data, isLoading }) => {
             </div>
           </div>
         )}
-      </div>
-    </AnimationSlideIn>
+      </AnimationSlideIn>
+    </div>
   );
 };
 

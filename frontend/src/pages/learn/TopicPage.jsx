@@ -45,7 +45,7 @@ const TopicPage = () => {
         >
           <AnimationSlideIn direction="left">
             <aside
-              className="bg-[#F5F5F5] rounded-2xl p-6 order-1 lg:order-1 h-fit lg:sticky top-20 self-start "
+              className="bg-[#F5F5F5] rounded-2xl p-6 order-1 lg:order-1 h-fit lg:sticky top-32 self-start "
               style={{ direction: "rtl" }}
             >
               <h3 className="text-2xl font-bold mb-4 text-gray-800">

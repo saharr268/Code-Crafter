@@ -62,7 +62,7 @@ const Help = () => {
   });
 
   return (
-    <div className="relative bg-white text-right overflow-hidden">
+    <div className="relative bg-white text-right">
       <Navbar className={"top-6"} />
       {/* Main Content Container */}
       <div
@@ -71,8 +71,8 @@ const Help = () => {
       >
         <div className=" w-full grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* Sticky Sidebar */}
-          <AnimationSlideIn direction="right">
-            <aside className="hidden lg:block sticky top-32 right-0 bg-black text-white rounded-2xl p-10 h-fit md:w-[300px] z-30 mr-12">
+          <aside className="hidden lg:block sticky top-32 right-0 bg-black text-white rounded-2xl p-10 h-fit md:w-[300px] z-30 mr-12">
+            <AnimationSlideIn direction="right">
               <ul className="space-y-8 text-m">
                 <li
                   onClick={() => scrollToSection(faqRef)}
@@ -93,8 +93,8 @@ const Help = () => {
                   صندوق ارسال دیدگاه
                 </li>
               </ul>
-            </aside>
-          </AnimationSlideIn>
+            </AnimationSlideIn>
+          </aside>
           {/* Floating Button - Mobile */}
           <div className="fixed bottom-6 right-6 lg:hidden z-50">
             <button

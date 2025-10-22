@@ -114,6 +114,7 @@ const ChatWindow = ({ isOpen, onClose }) => {
               className="flex items-center border-t border-gray-200 p-5"
             >
               <input
+                autoComplete="off"
                 type="text"
                 name="message"
                 value={formik.values.message}
