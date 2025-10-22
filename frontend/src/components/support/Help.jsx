@@ -11,6 +11,7 @@ import { PAGE_SIZE } from "../../helpers/constant/statics";
 import { map } from "lodash";
 import { CustomShimmer } from "../controllers/CustomShimmer";
 import { CustomRate } from "../controllers/CustomRate";
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 
 const Help = () => {
@@ -31,8 +32,10 @@ const Help = () => {
     PAGE_SIZE,
     undefined
   );
+  console.log("🚀 ~ Help ~ faqsSearch:", faqsSearch);
 
-  const { mutateAsync: createComment, isPending: isLoading } = useCreateComment();
+  const { mutateAsync: createComment, isPending: isLoading } =
+    useCreateComment();
 
   const formIK = useFormik({
     initialValues: { comment_text: "", rate: "", is_accepted: "" },
@@ -86,7 +89,7 @@ const Help = () => {
                 onClick={() => scrollToSection(messageRef)}
                 className="cursor-pointer hover:text-teal-400"
               >
-                صندوق ارسال پیام
+                صندوق ارسال دیدگاه
               </li>
             </ul>
           </aside>
@@ -132,7 +135,7 @@ const Help = () => {
                     }}
                     className="cursor-pointer hover:text-teal-400"
                   >
-                    پیام
+                    ارسال دیدگاه
                   </p>
                 </motion.div>
               )}
@@ -152,7 +155,7 @@ const Help = () => {
                           className="w-full h-[40px] bg-gray-100 rounded-lg animate-pulse"
                         />
                       ))
-                    : faqsSearch?.data?.map(({ title, description }, index) => (
+                    : faqsSearch?.data?.map(({ title, descriptoin }, index) => (
                         <div
                           key={index}
                           dir="rtl" // تنظیم جهت RTL برای هر آیتم FAQ
@@ -193,7 +196,7 @@ const Help = () => {
                                   transition={{ duration: 0.25 }}
                                   className="px-4 pb-4 text-gray-600 text-sm leading-relaxed text-right"
                                 >
-                                  {description}
+                                  {descriptoin}
                                 </motion.div>
                               </motion.div>
                             )}
@@ -212,22 +215,32 @@ const Help = () => {
               <div className="max-w-5xl mx-auto leading-8">
                 <h2 className="text-2xl mb-6">نکات دسترسی آفلاین</h2>
                 <p>
-                  تقریباً تمامی مرورگرها در پلتفرم‌های مختلف، گزینه‌ای برای دانلود کامل صفحات وب در اختیار کاربران می‌گذارند...
+                  تقریباً تمامی مرورگرها در پلتفرم‌های مختلف، گزینه‌ای برای
+                  دانلود کامل صفحات وب در اختیار کاربران می‌گذارند...
                 </p>
                 <p className="mb-6">
-                  تقریبا تمامی مرورگرها در پلتفرم‌های مختلف گزینه‌ای برای دانلود کامل صفحات وب دارند...
+                  تقریبا تمامی مرورگرها در پلتفرم‌های مختلف گزینه‌ای برای دانلود
+                  کامل صفحات وب دارند...
                 </p>
-                <h3 className="font-semibold text-lg mb-2">ذخیره وب سایت در Google Chrome</h3>
+                <h3 className="font-semibold text-lg mb-2">
+                  ذخیره وب سایت در Google Chrome
+                </h3>
                 <ol className="list-decimal list-inside space-y-1 mb-6">
                   <li>در گوشه بالا سمت راست، منوی مرورگر را باز کنید。</li>
                   <li>روی گزینه Save page as کلیک کنید。</li>
                   <li>می‌توانید Cast، Save و Share را انتخاب کنید。</li>
                 </ol>
                 <p className="mt-8">
-                  همچنین می‌توانید با کلیدهای <span className="font-semibold">Ctrl + S</span> در ویندوز یا <span className="font-semibold">Command + S</span> در مک نیز این کار را انجام دهید.
+                  همچنین می‌توانید با کلیدهای{" "}
+                  <span className="font-semibold">Ctrl + S</span> در ویندوز یا{" "}
+                  <span className="font-semibold">Command + S</span> در مک نیز
+                  این کار را انجام دهید.
                 </p>
                 <p>
-                  نکته: می‌توانید به‌جای مراحل گفته شده، برای دسترسی به پنجره‌ی ذخیره‌سازی صفحه‌وب، در ویندوز از Ctrl + S و در مک از Command + S استفاده کنید. در پنجره‌ی باز شده، مطمئن شوید که Save as type روی Webpage,Complete تنظیم شده است.
+                  نکته: می‌توانید به‌جای مراحل گفته شده، برای دسترسی به پنجره‌ی
+                  ذخیره‌سازی صفحه‌وب، در ویندوز از Ctrl + S و در مک از Command +
+                  S استفاده کنید. در پنجره‌ی باز شده، مطمئن شوید که Save as type
+                  روی Webpage,Complete تنظیم شده است.
                 </p>
               </div>
             </section>
@@ -237,9 +250,12 @@ const Help = () => {
               className="w-full flex justify-center items-center py-20 px-4 bg-white"
             >
               <div dir="rtl" className="w-full max-w-3xl">
-                <h2 className="text-xl font-bold mb-3 text-gray-900">صندوق ارسال دیدگاه</h2>
+                <h2 className="text-xl font-bold mb-3 text-gray-900">
+                  صندوق ارسال دیدگاه
+                </h2>
                 <p className="text-gray-600 text-sm leading-6 mb-6">
-                  دوست عزیز! با تشکر از اینکه ما را برای همراهی انتخاب کردید؛ لطفا تجربه‌ی خود را درباره‌ی وبسایت صدا با به اشتراک بگذارید.
+                  دوست عزیز! با تشکر از اینکه ما را برای همراهی انتخاب کردید؛
+                  لطفا تجربه‌ی خود را درباره‌ی وبسایت صدا با به اشتراک بگذارید.
                 </p>
                 <form onSubmit={formIK.handleSubmit} className="space-y-2">
                   <div className="relative bg-background-card py-8 rounded-3xl">
@@ -251,7 +267,9 @@ const Help = () => {
                       className="w-full min-h-[320px] px-8 rounded-lg bg-transparent border-gray-300 focus:ring-teal-500 focus:ring-0 focus:outline-none focus-visible:ring-0 text-gray-800 resize-none"
                     ></textarea>
                     {formIK.errors.comment_text && (
-                      <p className="text-red-500 text-sm mt-1">{formIK.errors.comment_text}</p>
+                      <p className="text-red-500 text-sm mt-1">
+                        {formIK.errors.comment_text}
+                      </p>
                     )}
                     <div className="flex px-8 justify-between items-center pt-8 border-solid border-[#DDDDDD] border-t-2">
                       <CustomRate
