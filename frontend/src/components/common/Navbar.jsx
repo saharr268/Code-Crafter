@@ -71,8 +71,8 @@ export default function Navbar({ className }) {
             ))}
           </nav>
 
-          <button className="md:hidden p-2 rounded-lg bg-primary-muted ml-32 text-text-heading shadow-2xl">
-            <Globe size={20} />
+          <button className="md:hidden p-2 rounded-lg bg-white ml-32 text-text-heading shadow-2xl">
+            <Globe size={25} />
           </button>
 
           <div className="flex items-center w-20 md:w-40 sm:mr-2 sm:px-5">
