@@ -10,6 +10,8 @@ import { timeAgoFa } from "../../helpers/utils/date";
 export default function Testimonials({ data, isLoading }) {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const swiperRef = useRef(null);
+
   return (
     <section
       className="w-full bg-white py-16 px-4 md:px-8 lg:px-12 relative overflow-hidden"
@@ -24,7 +26,7 @@ export default function Testimonials({ data, isLoading }) {
       <div className="relative w-[95%] sm:w-[90%] md:w-[85%] mx-auto px-2 sm:px-6">
         <button
           ref={prevRef}
-          className="absolute  top-[39%] left-1 sm:left-3 md:-left-[60px] -translate-y-1/2 bg-background-card text-primary-dark p-2 sm:p-3 rounded-full hover:bg-gray-200 transition-all z-10 shadow-md active:scale-95 disabled:opacity-5"
+          className="swiper-prev absolute top-[39%] left-1 sm:left-3 md:-left-[60px] -translate-y-1/2 bg-background-card text-primary-dark p-2 sm:p-3 rounded-full hover:bg-gray-200 transition-all z-10 shadow-md active:scale-95 disabled:opacity-30"
           aria-label="قبلی"
         >
           <FaArrowLeft className="text-sm sm:text-base" />
@@ -32,21 +34,29 @@ export default function Testimonials({ data, isLoading }) {
 
         <button
           ref={nextRef}
-          className="absolute top-[39%] right-1 sm:right-3 md:-right-[60px] -translate-y-1/2 bg-background-card text-primary-dark p-2 sm:p-3 rounded-full hover:bg-gray-200 transition-all z-10 shadow-md active:scale-95 disabled:opacity-5"
+          className="swiper-next absolute top-[39%] right-1 sm:right-3 md:-right-[60px] -translate-y-1/2 bg-background-card text-primary-dark p-2 sm:p-3 rounded-full hover:bg-gray-200 transition-all z-10 shadow-md active:scale-95 disabled:opacity-30"
           aria-label="بعدی"
         >
           <FaArrowRight className="text-sm sm:text-base" />
         </button>
         <Swiper
           modules={[Navigation]}
-          onInit={(swiper) => {
-            // 👇 connect buttons dynamically after swiper initializes
+          onBeforeInit={(swiper) => {
+            swiperRef.current = swiper;
             swiper.params.navigation.prevEl = prevRef.current;
             swiper.params.navigation.nextEl = nextRef.current;
-            swiper.navigation.init();
-            swiper.navigation.update();
           }}
-          loop={true}
+          onSwiper={(swiper) => {
+            setTimeout(() => {
+              swiper.navigation.init();
+              swiper.navigation.update();
+            });
+          }}
+          navigation={{
+            nextEl: ".swiper-next",
+            prevEl: ".swiper-prev",
+          }}
+          // loop={true}
           spaceBetween={20}
           slidesPerView={1}
           breakpoints={{
