@@ -39,7 +39,7 @@ export default function ResourcesPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-white min-h-screen overflow-hidden">
       <div className="fixed top-6 px-6 w-full z-50 ">
         <Navbar />
       </div>
