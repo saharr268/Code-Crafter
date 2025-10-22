@@ -53,8 +53,8 @@ export default function Navbar({ className }) {
     }`}
           >
             {[
-              { href: "/resources", text: "منابع" },
               { href: "/support", text: "پشتیبانی" },
+              { href: "/resources", text: "منابع" },
               { href: "/practice", text: "تمرین" },
               { href: "/learn", text: "آموزش" },
               { href: "/", text: "خانه" },
