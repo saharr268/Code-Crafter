@@ -9,7 +9,6 @@ const QuizResult = () => {
   const navigate = useNavigate();
   const { id: currentQuizId } = useParams();
   const { total, score, answers } = location.state || { total: 0, score: 0 };
-  console.log("🚀 ~ QuizResult ~ score:", score);
 
   return (
     <div className="flex flex-col min-h-screen bg-white">

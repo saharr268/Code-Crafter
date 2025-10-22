@@ -54,14 +54,14 @@ const Testimonials = ({ data, isLoading }) => {
             {!isLoading
               ? visibleTestimonials?.map((t, index) => (
                   <div
-                    key={index}
+                    key={index + t.id}
                     className="bg-background-card py-8 px-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow h-64 w-1/3 max-w-sm"
                   >
                     {/* Stars */}
                     <div className="flex justify-end mb-6">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <span
-                          key={i}
+                          key={i + t.id}
                           className={`text-xl ${
                             i < t.rate ? "text-[#FFCF0F]" : "text-gray-300"
                           }`}

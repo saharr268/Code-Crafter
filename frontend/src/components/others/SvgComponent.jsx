@@ -56,7 +56,7 @@ export const questionICON = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <g clip-path="url(#clip0_1332_8541)">
+    <g clipPath="url(#clip0_1332_8541)">
       <path
         d="M16.6665 5.00002H15.8332V11.6667C15.8332 12.125 15.4582 12.5 14.9998 12.5H4.99984V13.3334C4.99984 14.25 5.74984 15 6.6665 15H14.9998L18.3332 18.3334V6.66669C18.3332 5.75002 17.5832 5.00002 16.6665 5.00002ZM14.1665 9.16669V3.33335C14.1665 2.41669 13.4165 1.66669 12.4998 1.66669H3.33317C2.4165 1.66669 1.6665 2.41669 1.6665 3.33335V14.1667L4.99984 10.8334H12.4998C13.4165 10.8334 14.1665 10.0834 14.1665 9.16669Z"
         fill="#2A2D2D"
@@ -94,8 +94,8 @@ export const chatbot2ICON = () => (
         y2="24.0268"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#AD68FF" />
-        <stop offset="1" stop-color="#5A00C5" />
+        <stop stopColor="#AD68FF" />
+        <stop offset="1" stopColor="#5A00C5" />
       </linearGradient>
       <linearGradient
         id="paint1_linear_1165_4994"
@@ -105,8 +105,8 @@ export const chatbot2ICON = () => (
         y2="27.9999"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#00D8D8" />
-        <stop offset="1" stop-color="#03C0C1" />
+        <stop stopColor="#00D8D8" />
+        <stop offset="1" stopColor="#03C0C1" />
       </linearGradient>
     </defs>
   </svg>

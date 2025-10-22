@@ -32,7 +32,6 @@ const Help = () => {
     PAGE_SIZE,
     undefined
   );
-  console.log("🚀 ~ Help ~ faqsSearch:", faqsSearch);
 
   const { mutateAsync: createComment, isPending: isLoading } =
     useCreateComment();
@@ -284,16 +283,24 @@ const Help = () => {
                       className="w-full min-h-[320px] px-8 rounded-lg bg-transparent border-gray-300 focus:ring-teal-500 focus:ring-0 focus:outline-none focus-visible:ring-0 text-gray-800 resize-none"
                     ></textarea>
                     {formIK.errors.comment_text && (
-                      <p className="text-red-500 text-sm mt-1">
+                      <p className="absolute bottom-32 right-6 text-red-500 text-sm ">
                         {formIK.errors.comment_text}
                       </p>
                     )}
-                    <div className="flex px-8 justify-between items-center pt-8 border-solid border-[#DDDDDD] border-t-2">
-                      <CustomRate
-                        onChange={formIK.handleChange}
-                        value={formIK.values.rate}
-                        name="rate"
-                      />
+
+                    <div className="flex px-5 justify-between items-center pt-8 border-solid border-[#DDDDDD] border-t-2">
+                      <div>
+                        <CustomRate
+                          onChange={formIK.handleChange}
+                          value={formIK.values.rate}
+                          name="rate"
+                        />
+                        {formIK.errors.comment_text && (
+                          <p className="absolute bottom-4 right-6 text-red-500 text-sm ">
+                            {formIK.errors.comment_text}
+                          </p>
+                        )}
+                      </div>
                       <button
                         type="submit"
                         className="px-8 py-4 bg-primary-deep text-white rounded-2xl hover:bg-primary-dark transition"

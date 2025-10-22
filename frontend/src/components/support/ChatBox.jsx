@@ -60,12 +60,6 @@ export default function MessageBox() {
               className="w-full min-h-[300px] p-4 rounded-lg border bg-gray-200 border-gray-300 focus:ring-2 focus:ring-primary-deep focus:outline-none text-text-heading resize-none"
             ></textarea>
 
-            {formIK.errors.comment_text && (
-              <p className="text-red-500 text-sm mt-1">
-                {formIK.errors.comment_text}
-              </p>
-            )}
-
             <div className="flex justify-between items-center mt-4">
               <CustomRate
                 onChange={formIK.handleChange}
