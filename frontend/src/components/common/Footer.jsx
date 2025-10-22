@@ -1,7 +1,7 @@
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { TbMailFilled } from "react-icons/tb";
 import { AnimationFadeIn } from "./Animations";
-import Logo from "../../assets/images/logo.png";
+import Logo from "../../assets/images/Logo.png";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
