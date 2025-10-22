@@ -22,7 +22,7 @@ const PracticePage = () => {
   const data = getLessonData?.data;
 
   return (
-    <div>
+    <div className="overflow-hidden">
       <section className="bg-white min-h-screen">
         {/* Navbar */}
         <div className="fixed top-6 px-6 w-full z-50 ">
@@ -30,15 +30,17 @@ const PracticePage = () => {
         </div>
 
         {/* Title & description */}
-        <div className="text-right mt-32 px-10">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            تمرینات و کوییزها
-          </h2>
-          <p className="text-gray-600">
-            این سوالات سطح دانش شما را ارزیابی می‌کنند. برای هر مطلب به‌طور
-            جداگانه می‌توانید تمرینات و کوییز را انجام دهید.
-          </p>
-        </div>
+        <AnimationSlideIn direction="left">
+          <div className="text-right mt-32 px-10">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              تمرینات و کوییزها
+            </h2>
+            <p className="text-gray-600">
+              این سوالات سطح دانش شما را ارزیابی می‌کنند. برای هر مطلب به‌طور
+              جداگانه می‌توانید تمرینات و کوییز را انجام دهید.
+            </p>
+          </div>
+        </AnimationSlideIn>
 
         {/* Grid cards */}
         <AnimationSlideIn direction="left">

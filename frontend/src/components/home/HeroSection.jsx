@@ -2,8 +2,10 @@ import Navbar from "../common/Navbar";
 
 import heroImage from "../../assets/images/hero.png";
 import { AnimationSlideIn } from "../common/Animations";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   return (
     <section className="flex items-center bg-background-card px-4 sm:px-20 md:px-12 m-4 md:mt-6 rounded-[40px] max-h-auto py-4">
       {/* Navbar */}
@@ -40,8 +42,11 @@ const HeroSection = () => {
               برای محافظت و توانمندسازی توست
             </p>
 
-            <button className="bg-primary text-white px-6 py-4 mb-16 rounded-xl hover:bg-primary-dark">
-              <a href="/learn">مشاهده‌ی مطالب</a>
+            <button
+              onClick={() => navigate("/learn")}
+              className="bg-primary text-white px-6 py-4 mb-16 rounded-xl hover:bg-primary-dark"
+            >
+              مشاهده‌ی مطالب
             </button>
           </div>
         </div>

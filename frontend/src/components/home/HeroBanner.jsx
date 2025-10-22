@@ -27,11 +27,11 @@ export default function HeroBanner() {
     <AnimationSlideIn direction="right">
       <div className="bg-white min-h-screen mt-14">
         {/* متن بالای بنر */}
-        <div className="max-w-4xl mx-auto xl:mb-16 md:mb-24 text-center relative px-8 py-4">
-          <p className="text-text-body text-md md:text-xl leading-relaxed mb-8">
+        <div className="max-w-7xl mx-auto xl:mb-8 md:mb-24 text-center relative px-8 py-4">
+          <p className="text-text-body text-md md:text-[30px] leading-[40px]  font-[400] ">
             ما زنان افغان را با مهارت‌های امنیت دیجیتال توانمند می‌سازیم. صدا نه
             تنها یک آموزش‌دهنده، بلکه یک حامی برای امنیت و آزادی زنان افغان در
-            دنیای دیجیتال به شمار می‌رود.
+            دنیای دیجیتال به شمار می‌رود
           </p>
         </div>
 
@@ -47,7 +47,7 @@ export default function HeroBanner() {
             </div>
 
             {/* کارت‌ها */}
-            <div className="flex w-5/12 gap-3 leading-5 absolute -top-48 -left-24 text-right text-text-body bg-[#FBFBFB] p-5 rounded-2xl rounded-tl-none border shadow-md">
+            <div className="flex w-6/12 gap-3 leading-5 absolute -top-48 -left-48 text-right text-text-body bg-[#FBFBFB] p-5 rounded-2xl rounded-tl-none border shadow-md">
               حفاظت از حریم شخصی کاربران و احترام به حقوق آن‌ها
               <MdPrivacyTip className="text-primary-deep text-5xl" />
             </div>

@@ -17,7 +17,7 @@ const LearnPage = () => {
   const recommendedLesson = data[2]; //! RECHECK HERE
 
   return (
-    <div>
+    <div className="overflow-hidden">
       <MostVisitedPost data={recommendedLesson} isLoading={isPending} />
       <AllPosts data={data} isLoading={isPending} />
       <Footer />

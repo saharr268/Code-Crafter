@@ -2,6 +2,7 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { TbMailFilled } from "react-icons/tb";
 import { AnimationFadeIn } from "./Animations";
 import Logo from "../../assets/images/logo.png";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -24,21 +25,21 @@ export default function Footer() {
 
           {/* منو */}
           <div className="flex justify-center gap-10 mt-10 text-white">
-            <a className="hover:text-teal-500" href="/support">
+            <Link className="hover:text-teal-500" to="/support">
               پشتیبانی
-            </a>
-            <a className="hover:text-teal-500" href="/resources">
+            </Link>
+            <Link className="hover:text-teal-500" to="/resources">
               منابع
-            </a>
-            <a className="hover:text-teal-500" href="/practice">
+            </Link>
+            <Link className="hover:text-teal-500" to="/practice">
               تمرین
-            </a>
-            <a className="hover:text-teal-500" href="/learn">
+            </Link>
+            <Link className="hover:text-teal-500" to="/learn">
               آموزش
-            </a>
-            <a className="hover:text-teal-500" href="/">
+            </Link>
+            <Link className="hover:text-teal-500" to="/">
               خانه
-            </a>
+            </Link>
           </div>
 
           <div className="flex flex-col md:flex-row justify-between items-center">

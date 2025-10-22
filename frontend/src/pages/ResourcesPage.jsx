@@ -40,7 +40,7 @@ export default function ResourcesPage() {
 
   return (
     <div className="bg-white min-h-screen">
-      <div className="fixed top-6 px-6 w-full z-50 mt-6">
+      <div className="fixed top-6 px-6 w-full z-50 ">
         <Navbar />
       </div>
 

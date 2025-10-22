@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, Globe } from "lucide-react";
 import { AnimationFadeIn } from "./Animations";
 import Logo from "../../assets/images/logo-s.png";
@@ -59,15 +59,15 @@ export default function Navbar({ className }) {
               { href: "/learn", text: "آموزش" },
               { href: "/", text: "خانه" },
             ].map((link, i) => (
-              <a
+              <Link
                 key={i}
-                href={link.href}
+                to={link.href}
                 className={`px-4 py-2 rounded-full transition-all duration-300 ${
                   scrolled ? "text-white" : "text-text-heading"
                 }  hover:text-primary-dark`}
               >
                 {link.text}
-              </a>
+              </Link>
             ))}
           </nav>
 

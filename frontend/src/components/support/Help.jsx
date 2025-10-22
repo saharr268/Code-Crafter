@@ -69,9 +69,9 @@ const Help = () => {
         dir="rtl"
         className="sm:mt-10 lg:mt-0 pt-24 sm:pt-32 lg:pt-32 px-4 sm:px-6 lg:px-0"
       >
-        <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className=" w-full grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* Sticky Sidebar */}
-          <aside className="hidden lg:block sticky top-32 right-0 bg-black text-white rounded-2xl p-10 h-fit md:w-[300px] z-30 mr-8">
+          <aside className="hidden lg:block sticky top-32 right-0 bg-black text-white rounded-2xl p-10 h-fit md:w-[300px] z-30 mr-12">
             <ul className="space-y-8 text-m">
               <li
                 onClick={() => scrollToSection(faqRef)}
@@ -142,17 +142,17 @@ const Help = () => {
             </AnimatePresence>
           </div>
           {/* Main Section */}
-          <main className="w-full px-2 sm:px-6 lg:pl-12 lg:col-span-2 order-2 lg:order-2">
+          <main className="w-full sm:px-6 lg:pl-12 lg:col-span-3 order-3 lg:order-2">
             {/* FAQ Section */}
             <section ref={faqRef} className="bg-white pb-20">
-              <div className="max-w-full px-4 sm:px-8">
+              <div className="max-w-full">
                 <h2 className="text-2xl font-bold mb-8">سوالات مکرر</h2>
                 <div className="space-y-4">
                   {isLoadingFaq
                     ? map([1, 2, 3, 4, 5, 6, 7], () => (
                         <CustomShimmer
                           key={`shimmer-${Math.random()}`}
-                          className="w-full h-[40px] bg-gray-100 rounded-lg animate-pulse"
+                          className="w-full h-[64px] bg-gray-100 rounded-lg animate-pulse"
                         />
                       ))
                     : faqsSearch?.data?.map(({ title, descriptoin }, index) => (
@@ -180,7 +180,9 @@ const Help = () => {
                             </span>
                             <FiChevronDown
                               className={`text-gray-500 transition-transform duration-300 ${
-                                openIndex === index ? "rotate-180" : ""
+                                openIndex === index
+                                  ? "rotate-180 text-white"
+                                  : ""
                               }`}
                             />
                           </button>
@@ -221,57 +223,6 @@ const Help = () => {
               </div>
             </section>
 
-            <section ref={faqRef} className="bg-white pb-20">
-              <div className="max-w-full px-8">
-                <h2 className="text-2xl font-bold mb-8">سوالات مکرر</h2>
-                <div className="space-y-4">
-                  {isLoadingFaq
-                    ? map([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], () => (
-                        <CustomShimmer className="w- h-[40px]" />
-                      ))
-                    : faqsSearch?.data?.map(({ title, descriptoin }, index) => (
-                        <div
-                          key={index}
-                          className="accordion-item border rounded-3xl shadow-sm bg-background-card"
-                        >
-                          <button
-                            onClick={() => toggleFAQ(index)}
-                            className={`w-full flex bg-background-card rounded-3xl justify-between transition-max-height duration-800 ease-in-out overflow-hidden px-4 py-6 ${
-                              openIndex === index
-                                ? "bg-primary-dark justify-end text-white p-2"
-                                : "max-h-64"
-                            }`}
-                          >
-                            <span className="text-gray-700 text-right justify-start font-medium">
-                              <div
-                                className={`w-full text-right bg-background-card rounded-3xl justify-start px-2 py-2 ${
-                                  openIndex === index
-                                    ? "bg-primary-dark justify-end text-white"
-                                    : "max-h-64"
-                                }`}
-                              >
-                                {title}
-                                {openIndex === index && (
-                                  <div className="px-4 py-4 justify-start text-right bg-primary-dark text-white text-sm leading-relaxed">
-                                    {descriptoin}
-                                  </div>
-                                )}
-                              </div>
-                            </span>
-
-                            <FiChevronDown
-                              className={`text-gray-500 transition-all duration-800 ease-linear overflow-hidden ml-3 p-0 ${
-                                openIndex === index
-                                  ? "rotate-180 text-white"
-                                  : ""
-                              }`}
-                            />
-                          </button>
-                        </div>
-                      ))}
-                </div>
-              </div>
-            </section>
             {/* Offline Tips Section */}
             <section
               dir="rtl"
@@ -313,9 +264,9 @@ const Help = () => {
             {/* Message Box Section */}
             <section
               ref={messageRef}
-              className="w-full flex justify-center items-center py-20 px-4 bg-white"
+              className="w-full flex justify-center items-center py-20  bg-white"
             >
-              <div dir="rtl" className="w-full max-w-3xl">
+              <div dir="rtl" className="w-full">
                 <h2 className="text-xl font-bold mb-3 text-gray-900">
                   صندوق ارسال دیدگاه
                 </h2>

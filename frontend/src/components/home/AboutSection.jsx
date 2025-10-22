@@ -10,7 +10,7 @@ export default function AboutUs() {
       <section className="flex flex-col md:flex-row-reverse items-center justify-between px-12 md:px-20 py-12 bg-white">
         <div
           dir="rtl"
-          className="md:w-1/2 text-right justify-end sm:mr-10 md:mb-0"
+          className="md:w-1/2 pr-8 text-right justify-end sm:mr-10 md:mb-0"
         >
           <h2 className="text-2xl md:text-3xl mb-4 text-text-heading">
             درباره‌ی ما
@@ -33,11 +33,11 @@ export default function AboutUs() {
           </button>
         </div>
 
-        <div className="w-full md:w-1/2 flex justify-center">
+        <div className="w-full md:w-1/2 flex justify-center mr-20">
           <img
             src={aboutImage}
             alt="about illustration"
-            className="max-w-sm md:max-w-md"
+            className="max-w-md md:max-w-lg"
           />
         </div>
       </section>

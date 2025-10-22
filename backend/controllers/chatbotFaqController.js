@@ -12,7 +12,18 @@ export const askChatBot = async (req, res) => {
     if (result) {
       res.json({ answer: result.answer });
     } else {
-      res.json({ answer: "??" });
+      const fallbackReplies = [
+        "متأسفم، متوجه سؤالت نشدم. لطفاً دوباره بپرس 🌸",
+        "سؤال شما در پایگاه داده من نیست. میشه واضح‌تر بگی؟",
+        "اوه! این یکی رو بلد نیستم 😅",
+      ];
+
+      const randomReply =
+        fallbackReplies[Math.floor(Math.random() * fallbackReplies.length)];
+
+      res.json({
+        answer: randomReply,
+      });
     }
   } catch (error) {
     console.error(error);

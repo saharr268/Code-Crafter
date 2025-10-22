@@ -5,6 +5,7 @@ import { MainContextProvider } from "../context/MainContext";
 import { SnackbarProvider } from "notistack";
 import { SpinnerLoading } from "../common/Loading";
 import { useEffect, useState } from "react";
+import ScrollToTop from "../common/ScrollToTop";
 
 const MainLayout = () => {
   const content = useRoutes(routes);
@@ -34,6 +35,7 @@ const MainLayout = () => {
             boxShadow: "0px 8px 16px 0px rgba(145, 158, 171, 0.16)",
           }}
         >
+          <ScrollToTop />
           {isLoading ? <SpinnerLoading /> : content}
         </SnackbarProvider>
       </MainContextProvider>
