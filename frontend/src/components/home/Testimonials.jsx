@@ -1,148 +1,89 @@
-import { useState, useEffect } from "react";
-import { GoArrowLeft, GoArrowRight } from "react-icons/go";
+import "swiper/css";
+import "swiper/css/navigation";
+import { useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { CustomShimmer } from "../controllers/CustomShimmer";
-import { map } from "lodash";
-import { timeAgoFa } from "../../helpers/utils/date";
-import { AnimationSlideIn } from "../common/Animations";
 
-const Testimonials = ({ data, isLoading }) => {
-  const [startIndex, setStartIndex] = useState(0);
-
-  const [cardsPerPage, setCardsPerPage] = useState(3);
-
-  useEffect(() => {
-    const updateCardsPerPage = () => {
-      if (window.innerWidth < 640) setCardsPerPage(1);
-      else if (window.innerWidth < 1024) setCardsPerPage(2);
-      else setCardsPerPage(3);
-    };
-
-    updateCardsPerPage();
-    window.addEventListener("resize", updateCardsPerPage);
-    return () => window.removeEventListener("resize", updateCardsPerPage);
-  }, []);
-
-  const handleNext = () => {
-    if (startIndex + cardsPerPage < data.length) {
-      setStartIndex(startIndex + 1);
-    }
-  };
-  const handlePrev = () => {
-    if (startIndex > 0) setStartIndex(startIndex - 1);
-  };
-
-  const visibleTestimonials = data.slice(startIndex, startIndex + cardsPerPage);
-
+export default function Testimonials({ data, isLoading }) {
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
   return (
-    <AnimationSlideIn direction="left">
-      <section className="w-full bg-white py-16 px-4 md:px-8 lg:px-12 relative overflow-hidden">
-        {/* Title */}
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
-          نظرات شما
-        </h2>
-        <div className="hidden lg:flex items-center justify-center  w-full">
-          <button
-            onClick={handlePrev}
-            disabled={startIndex === 0}
-            className="absolute right-8 xl:left-12 w-12 h-12 flex items-center justify-center rounded-full bg-background-card text-primary-deep hover:bg-teal-100 transition disabled:opacity-40 shadow  cursor-pointer disabled:cursor-auto"
-          >
-            <GoArrowLeft size={24} />
-          </button>
+    <section
+      className="w-full bg-white py-16 px-4 md:px-8 lg:px-12 relative overflow-hidden"
+      dir="rtl"
+    >
+      {/* Title */}
+      <h2 className="text-center text-2xl md:text-3xl font-semibold mb-12 text-gray-800">
+        نظرات شما
+      </h2>
 
-          {/* کارت‌ها */}
-          <div className="flex justify-center gap-8 w-full px-16">
-            {!isLoading
-              ? visibleTestimonials?.map((t, index) => (
-                  <div
-                    key={index + t.id}
-                    className="bg-background-card py-8 px-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow h-64 w-1/3 max-w-sm"
-                  >
-                    {/* Stars */}
-                    <div className="flex justify-end mb-6">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <span
-                          key={i + t.id}
-                          className={`text-xl ${
-                            i < t.rate ? "text-[#FFCF0F]" : "text-gray-300"
-                          }`}
-                        >
-                          ★
-                        </span>
-                      ))}
+      {/* Swiper container */}
+      <div className="relative w-[95%] sm:w-[90%] md:w-[85%] mx-auto px-2 sm:px-6">
+        <Swiper
+          modules={[Navigation]}
+          onInit={(swiper) => {
+            // 👇 connect buttons dynamically after swiper initializes
+            swiper.params.navigation.prevEl = prevRef.current;
+            swiper.params.navigation.nextEl = nextRef.current;
+            swiper.navigation.init();
+            swiper.navigation.update();
+          }}
+          loop={true}
+          spaceBetween={20}
+          slidesPerView={1}
+          breakpoints={{
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+          className="pb-10"
+        >
+          {data &&
+            data.map((t) => (
+              <SwiperSlide key={t.id}>
+                {isLoading ? (
+                  <CustomShimmer className={"w-[380px] h-[256px]"} />
+                ) : (
+                  <div className="bg-background-card border border-gray-100 py-8 px-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300 h-auto min-h-[250px]">
+                    {/* ⭐ Stars */}
+                    <div className="text-yellow-400 mb-3 text-lg">
+                      {"★".repeat(t.stars) + "☆".repeat(5 - t.stars)}
                     </div>
-                    <p className="text-text-body text-right leading-relaxed mb-6">
-                      {t.comment_text}
+
+                    {/* Text */}
+                    <p className="text-gray-700 leading-7 text-sm sm:text-base">
+                      {t.text}
                     </p>
-                    <p
-                      style={{ direction: "rtl" }}
-                      className="text-primary-deep text-sm font-medium text-right"
-                    >
-                      {timeAgoFa(t.created_at)}{" "}
+
+                    {/* Date */}
+                    <p className="mt-6 text-teal-600 text-xs sm:text-sm font-medium">
+                      {t.date}
                     </p>
                   </div>
-                ))
-              : map([1, 2, 3], () => (
-                  <CustomShimmer className={"w-[380px] h-[256px]"} />
-                ))}
-          </div>
-
-          <button
-            onClick={handleNext}
-            disabled={startIndex + cardsPerPage >= data.length}
-            className="absolute right-8 xl:right-12 w-12 h-12 flex items-center justify-center rounded-full bg-background-card text-p hover:bg-teal-100 transition disabled:opacity-40 shadow cursor-pointer  disabled:cursor-auto  disabled:hover:bg-background-card"
-          >
-            <GoArrowRight size={24} />
-          </button>
-        </div>
-        <div className="flex flex-col items-center gap-6 lg:hidden">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
-            {visibleTestimonials.map((t, index) => (
-              <div
-                key={index}
-                className="bg-background-card p-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow"
-              >
-                <div className="flex justify-end mb-6">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <span
-                      key={i}
-                      className={`text-xl ${
-                        i < t.stars ? "text-yellow-400" : "text-gray-300"
-                      }`}
-                    >
-                      ★
-                    </span>
-                  ))}
-                </div>
-
-                <p className="text-text-body text-right leading-relaxed mb-6">
-                  {t.comment_text}
-                </p>
-
-                <p className="text-primary-deep text-sm font-medium text-right">
-                  {t.time}
-                </p>
-              </div>
+                )}
+              </SwiperSlide>
             ))}
-          </div>
-          <div className="flex items-center justify-center gap-4 mt-4">
-            <button
-              onClick={handlePrev}
-              disabled={startIndex === 0}
-              className="w-10 h-10  flex items-center justify-center rounded-full bg-background-card text-primary-deep hover:bg-teal-100 transition disabled:opacity-40"
-            >
-              <GoArrowLeft size={20} />
-            </button>
-            <button
-              onClick={handleNext}
-              disabled={startIndex + cardsPerPage >= data.length}
-              className="w-10 h-10  flex items-center justify-center rounded-full bg-background-card text-primary-deep hover:bg-teal-100 transition disabled:opacity-40"
-            >
-              <GoArrowRight size={20} />
-            </button>
-          </div>
-        </div>
-      </section>
-    </AnimationSlideIn>
+        </Swiper>
+
+        {/* Custom Nav Buttons */}
+        <button
+          ref={prevRef}
+          className="absolute  top-[39%] left-1 sm:left-3 md:-left-[60px] -translate-y-1/2 bg-background-card text-primary-dark p-2 sm:p-3 rounded-full hover:bg-gray-200 transition-all z-10 shadow-md active:scale-95 disabled:opacity-5"
+          aria-label="قبلی"
+        >
+          <FaArrowLeft className="text-sm sm:text-base" />
+        </button>
+
+        <button
+          ref={nextRef}
+          className="absolute top-[39%] right-1 sm:right-3 md:-right-[60px] -translate-y-1/2 bg-background-card text-primary-dark p-2 sm:p-3 rounded-full hover:bg-gray-200 transition-all z-10 shadow-md active:scale-95 disabled:opacity-5"
+          aria-label="بعدی"
+        >
+          <FaArrowRight className="text-sm sm:text-base" />
+        </button>
+      </div>
+    </section>
   );
-};
-export default Testimonials;
+}
